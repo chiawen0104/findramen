@@ -2,8 +2,12 @@
 
 {
 	'red':[],
+	'yellow':[],
+	'green':[],
 	'blue':[],
-	...
+	'orange':[],
+	'brown':[],
+	'airport'[]	
 }
 
 ### Keys in an array of one mrt line (per restaurant):
