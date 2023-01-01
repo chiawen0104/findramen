@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import { useNavigate, useLocation, useParams } from 'react-router-dom'
 
 const RightSide = styled.div`
 position: absolute;
@@ -81,8 +82,13 @@ overflow: auto;
 }
 `
 
-
 const SearchPage = () => {
+    const navigate = useNavigate();
+    const ToRestaurant = (id) => {
+    navigate("/restaurant/" + id)
+
+    }
+
     return(
         <RightSide>
         {/* {  
@@ -102,7 +108,7 @@ const SearchPage = () => {
                     </>
                 ))
         } */}
-        <div className='resBlock' >
+        <div className='resBlock' onClick = {(e)=>{ToRestaurant(e.currentTarget.id)}}>
             <div className='resImgContainer'><img className='resImg' src='https://lh4.googleusercontent.com/-cddQlSTzIi8/AAAAAAAAAAI/AAAAAAAAAAA/8V7smGl4zio/s44-p-k-no-ns-nd/photo.jpg'></img></div>
             <div className='resInfo'>
                 <div className='title'>
