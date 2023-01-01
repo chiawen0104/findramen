@@ -47,7 +47,7 @@ const Comment = () => {
                 <div className='comment'>
                     <div className='title'>
                         <div className='info'>
-                            <p className='name'> 呂韻涵 </p>
+                            <h4 className='name'> 呂韻涵 </h4>
                             <Stars rating={rating} />
                         </div>
                     </div>
