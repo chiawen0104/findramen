@@ -1,11 +1,3 @@
-/****************************************************************************
-  FileName      [ comment.js ]
-  PackageName   [ src ]
-  Author        [ Chin-Yi Cheng ]
-  Synopsis      [  ]
-  Copyright     [ 2022 11 ]
-****************************************************************************/
-
 import React from 'react'
 import { useState, useEffect } from "react";
 import Stars from '../component/stars';
@@ -25,6 +17,14 @@ const Comment = () => {
         margin-top: 2em;
         padding: 0em 2em 0em 2em;
         text-align: left;
+        &::-webkit-scrollbar{
+            width:0.5em;
+        }
+    
+        &::-webkit-scrollbar-thumb{
+            background: DarkSlateGrey;
+            border-radius: 100vw;
+        }
     }
     
     .comment {

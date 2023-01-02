@@ -1,6 +1,11 @@
 import React from 'react'
 import styled from 'styled-components';
 import { useNavigate, useLocation, useParams } from 'react-router-dom'
+import axios from 'axios'
+const instance = axios.create({
+    baseURL: 'http://localhost:4000/api'
+})
+
 
 const RightSide = styled.div`
 position: absolute;
