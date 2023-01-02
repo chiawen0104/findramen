@@ -64,6 +64,33 @@ const RestaurantPage = () => {
         width:460px;
     }
 
+    .menu{
+        width:100%;
+        height:20em;
+        display: flex;
+        justify-content: space-around;
+        align-items: start;
+    }
+
+    .menutitle{
+        font-size:35px;
+        font-weight:bolder;
+        height:100%;
+        width:100%;
+        background-image: url('https://i.ibb.co/svNVcHZ/1.png');
+        background-size:70%;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        background-position-y: 75%;
+        
+
+        h5{
+            line-height:30px;
+            font-size:20px;
+        }
+    }
+
+
     `
     const CommentContainer = styled.div`
     margin-top: 3em;
@@ -87,11 +114,26 @@ const RestaurantPage = () => {
         <Background>
             <PageContainer >
             <Information></Information>
+            <h3>↳往下滑看菜單<br/><br/></h3>
+
+            <div className='menu'>
+                <div className='menutitle'>定番
+                    <h5>濃厚豚骨番茄蝦沾麵</h5>
+                    <h5>濃出汁蝦拉麵</h5>
+                </div>
+                <div className='menutitle'>限定
+                    <h5>濃厚豚骨番茄蝦沾麵</h5>
+                    <h5>濃出汁蝦拉麵</h5>
+                </div>
+
+            </div>
+
             <h3>↳往下滑看食記</h3>
             <ReviewContainer>
                 <Review openReview={openReview} SetOpenReview={SetOpenReview}/>
             </ReviewContainer>
             </PageContainer>
+
             <CommentContainer>
             {
                 openReview?<ReviewPage SetOpenReview={SetOpenReview}></ReviewPage>:<Comment></Comment>
