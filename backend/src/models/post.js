@@ -7,7 +7,7 @@ const PostSchema = Schema({
     writer: { type: String, required: true },
     content: { type: String },
     time: { type: String },
-    url: { type: String },
+    url: { type: String }
 }, {
     collection: 'Post',
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
