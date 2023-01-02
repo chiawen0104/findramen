@@ -14,9 +14,10 @@ const Schema = mongoose.Schema
 
 const CommentSchema = Schema({
     restaurantId: { type: Number, required: true },
-    name: { type: String, required: true },
-    rating: { type: Number, required: true },
-    content: { type: String, required: true }
+    author: { type: String, required: true },
+    text: { type: String },
+    imgurl: { type: String },
+    rating: { type: String }
 }, {
     collection: 'Comment',
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
