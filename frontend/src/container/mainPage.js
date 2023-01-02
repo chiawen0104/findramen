@@ -17,6 +17,7 @@ left: 0;
 z-index: -1;
 background-image: url("https://i.ibb.co/4Zcgtsj/backgroud.png");
 background-size: cover
+
 `
 const RightSide = styled.div`
 position: absolute;

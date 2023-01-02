@@ -3,8 +3,11 @@ import { useParams } from 'react-router-dom'
 import styled from 'styled-components';
 import Information from './information';
 import Comment from './comment';
+import Review from './review';
+import ReviewPage from './reviewPage';
 
 const RestaurantPage = () => {
+    const [openReview, SetOpenReview] = useState(false);
 
     const Wrapper = styled.section`
     display: flex;
@@ -60,23 +63,23 @@ const RestaurantPage = () => {
     position: relative;
     height: 77vh;
     text-align: center;
-    background-color:brown;
     `
         
     return (
         <Wrapper>
         <Background>
             <PageContainer>
-
             <Information></Information>
             <h3>往下滑看食記</h3>
             <ReviewContainer>
-                我是食記區
+                <Review openReview={openReview} SetOpenReview={SetOpenReview}/>
             </ReviewContainer>
 
             </PageContainer>
             <CommentContainer>
-            <Comment></Comment>
+            {
+                openReview?<ReviewPage></ReviewPage>:<Comment></Comment>
+            }
             </CommentContainer>
 
         </Background>
