@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import styled from 'styled-components';
 import Information from './information';
 import Comment from './comment';
@@ -8,10 +8,27 @@ import ReviewPage from './reviewPage';
 const RestaurantPage = () => {
     const [openReview, SetOpenReview] = useState(false);
 
+    const navigate = useNavigate();
+    const ToFindRamen = () => {
+        navigate("/")
+    }
+
     const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
-    
+
+    .backtofind {
+        position:fixed;
+        font-size:100px;
+        height:10em;
+        width:5%;
+        margin:0.5em;
+    }
+
+    .backtofind:hover{
+        filter: brightness(0.8);
+        cursor: pointer;
+    }
     `;
 
     const Background = styled.div`
@@ -24,13 +41,10 @@ const RestaurantPage = () => {
     z-index: -1;
     background-image: url("https://i.ibb.co/4Zcgtsj/backgroud.png");
     background-size: cover;
-
-    .pagecontainer {
-        
-    }
     `
     const PageContainer = styled.div`
     margin-top: 7em;
+    margin-left:3em;
     position: relative;
     width: 100%;
     height: 77vh;
@@ -69,6 +83,7 @@ const RestaurantPage = () => {
         
     return (
         <Wrapper>
+        <div className='backtofind' onClick={() => {ToFindRamen()}}>🍥</div>
         <Background>
             <PageContainer >
             <Information></Information>
