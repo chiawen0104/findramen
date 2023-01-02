@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components';
 import Information from './information';
 import Comment from './comment';
 import Review from './review';
 import ReviewPage from './reviewPage';
-
 const RestaurantPage = () => {
     const [openReview, SetOpenReview] = useState(false);
 
@@ -25,15 +24,18 @@ const RestaurantPage = () => {
     z-index: -1;
     background-image: url("https://i.ibb.co/4Zcgtsj/backgroud.png");
     background-size: cover;
+
+    .pagecontainer {
+        
+    }
     `
     const PageContainer = styled.div`
-    scrollbar-color: blue;
     margin-top: 7em;
     position: relative;
     width: 100%;
     height: 77vh;
     text-align: center;
-    overflow: auto;
+    overflow: scroll;
 
     &::-webkit-scrollbar{
         width:0.5em;
@@ -68,17 +70,16 @@ const RestaurantPage = () => {
     return (
         <Wrapper>
         <Background>
-            <PageContainer>
+            <PageContainer >
             <Information></Information>
-            <h3>往下滑看食記</h3>
+            <h3>↳往下滑看食記</h3>
             <ReviewContainer>
                 <Review openReview={openReview} SetOpenReview={SetOpenReview}/>
             </ReviewContainer>
-
             </PageContainer>
             <CommentContainer>
             {
-                openReview?<ReviewPage></ReviewPage>:<Comment></Comment>
+                openReview?<ReviewPage SetOpenReview={SetOpenReview}></ReviewPage>:<Comment></Comment>
             }
             </CommentContainer>
 

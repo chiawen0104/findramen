@@ -14,7 +14,6 @@ const Review = ({openReview, SetOpenReview}) => {
 
     .reviews {
         height: 700px;
-        overflow: auto;
         margin-top: 2em;
         padding: 0em 2em 0em 2em;
         text-align: left;
@@ -29,11 +28,17 @@ const Review = ({openReview, SetOpenReview}) => {
     }
     
     .review {
+        height:12em;
         margin-top: 1em;
         padding: 0.5em;
         border-color: brown;
-        border-radius: 1em;
         border-style: solid;
+        background-color: SeaShell;
+        background-image: url('https://s1.spkimg.com/spjp/ramendb/title_image.png');
+        background-repeat: no-repeat;
+        background-position: right;
+        background-opacity:50%;
+        overflow:hidden;
     }
 
     .reviews :hover{
@@ -44,43 +49,41 @@ const Review = ({openReview, SetOpenReview}) => {
         line-height:1em;
     }
 
-    .name{
-        
+    .text{
+        width:50%;
+        height:4em;;
+        overflow:hidden;
     }
     `
     const setOpen = (e) =>{
-        if(openReview){
-            SetOpenReview(false) 
-        }else{
+
+        if(openReview==false){
             SetOpenReview(true)
         }
         console.log(openReview)
+        
     }
 
     return (
         <CommentContainer>
             <div className='reviews'>
-                <div className='review' onClick={(e) => {setOpen(e)}}>
-                    <div className='title'>
+            <div className='review'onClick={(e) => {setOpen(e)}}>
                         <div className='info'>
                             <h2 className='name'> 拉麵浪人 </h2>
                             <Stars rating={rating} />
-                            <hr></hr>
-                            <h4 className='ramen'> 雞道樂 </h4>
+                            <hr width="50%" align="left"></hr>
+                            <div className='text'>真的好好吃超好吃真的好好吃超好吃真的好好吃超好吃真的好好吃超好吃真的好好吃超好吃真的好好吃超好吃真的好好吃超好吃真的好好吃超好吃真的好好吃超好吃真的好好吃超好吃真的好好吃超好吃真的好好吃超好吃真的好好吃超好吃</div>
+                            <h3 className='watchmore'align="right" >...查看更多</h3>
                         </div>
-                    </div>
-                    
                 </div>
-                <div className='review'>
-                    <div className='title'>
+                <div className='review'onClick={(e) => {setOpen(e)}}>
                         <div className='info'>
                             <h2 className='name'> 拉麵浪人 </h2>
                             <Stars rating={rating} />
-                            <hr></hr>
-                            <h4 className='ramen'> 雞道樂 </h4>
+                            <hr width="50%" align="left"></hr>
+                            <div className='text'>真的好好吃超好吃真的好好吃超好吃真的好好吃超好吃真的好好吃超好吃真的好好吃超好吃真的好好吃超好吃真的好好吃超好吃真的好好吃超好吃真的好好吃超好吃真的好好吃超好吃真的好好吃超好吃真的好好吃超好吃真的好好吃超好吃</div>
+                            <h3 className='watchmore'align="right" >...查看更多</h3>
                         </div>
-                    </div>
-                    
                 </div>
             </div>
         </CommentContainer>
