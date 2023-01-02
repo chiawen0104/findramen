@@ -1,40 +1,44 @@
-## restData.json data structure
+## Data schema
 
+### Restaurant (Array)
+```
 {
-	'red':[],
-	'yellow':[],
-	'green':[],
-	'blue':[],
-	'orange':[],
-	'brown':[],
-	'airport'[]	
+    id: { type: Number, required: true },
+    name: { type: String, required: true },
+    site: { type: String },
+    phone: { type: String },
+    address: { type: String },
+    line: { type: String, required: true },
+    mrt: { type: String, required: true },
+    rating: { type: Number },
+    tag: [{ type: String }],
+    img: { type: String },
+    time: { type: Schema.Types.Mixed },
+    distance: { type: String },
+    walktime: { type: String },
+    regular: [{ type: String }],
+    limited: [{ type: String }]
 }
+```
 
-### Keys in an array of one mrt line (per restaurant):
-	'line'
-	'name'
-	'site'
-	'phone'
-	'full_address'
-	'mrt'
-	'rating'
-	'reviews'
-	'reviews_link'
-	'reviews_tags'
-	'reviews_per_score'
-	'photo'
-	'working_hours_old_format'
-	'description'
-	'location_link'
-	'place_id'
-	'walk_distance'
-	'walk_time'
-	'review_list'
+### Comment (Array)
+```
+{
+    restaurantId: { type: Number, required: true },
+    author: { type: String, required: true },
+    text: { type: String },
+    imgurl: { type: String },
+    rating: { type: String }
+}
+```
 
-### Keys in an array of 'review_list' (per review):
-	'author_title'
-	'review_text'
-	'review_img_urls'
-	'review_link'
-	'review_rating'
-	'review_datetime_utc'
+### Post (Array)
+```
+{
+    restaurantId: { type: Number, required: true },
+    writer: { type: String, required: true },
+    content: { type: String },
+    time: { type: String },
+    url: { type: String }
+}
+```
