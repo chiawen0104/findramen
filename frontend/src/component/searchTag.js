@@ -133,7 +133,7 @@ const Filter = ({ typeFilter, setTypeFilter, styleFilter, setStyleFilter, flavor
             >
                 {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
             </Button>
-            <Menu mode="vertical" theme="light" inlineCollapsed={collapsed}>
+            <Menu mode="vertical" theme="light">
                 <SubMenu key='items' title='品項' icon={<TagIcon src='https://cdn-icons-png.flaticon.com/512/3978/3978720.png'/>}>
                     <SubMenu key='item_1' title='熬湯'>
                         {TypeMeatTag.map((key) => (

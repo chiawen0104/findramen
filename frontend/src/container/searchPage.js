@@ -97,7 +97,7 @@ const SearchPage = () => {
 
     const getRestaurant = async () => {
         const restaurants = await instance.get('/getSearch', {params:state})
-        setRestaurant(restaurants);
+        setRestaurant(restaurants.data);
     }
     console.log(restaurants)
     console.log(state?.metroFilter)
@@ -108,70 +108,28 @@ const SearchPage = () => {
 
     const navigate = useNavigate();
     const ToRestaurant = (id) => {
-    navigate("/restaurant/" + id)
-
+        navigate("/restaurant/" + id)
     }
 
     return(
         <RightSide>
-        {/* {  
-                restaurants?.data?.contents.map(({id, img, name, price, distance, tag}) => (
+        {  
+                restaurants?.contents?.map(({id, img, name, distance, tag}) => (
                     <>
                         <div className='resBlock' id={id} key={id} onClick = {(e)=>{ToRestaurant(e.currentTarget.id)}}>
                             <div className='resImgContainer'><img className='resImg' src={img}></img></div>
                             <div className='resInfo'>
                                 <div className='title'>
                                     <p className='name'>{name}</p>
-                                    <p className='price'>{getPrice(price)}</p>
-                                    <p className='distance'>{distance/1000}&ensp;km</p>
+                                    <p className='distance'>{distance}</p>
                                 </div>
-                                <p className='description'>{tag.join(", ")}</p>
+                                <p className='description'><Tag  color={color[1]}>{tag.join(", ")}</Tag></p>
+                                
                             </div>
                         </div>
                     </>
                 ))
-        } */}
-        <div className='resBlock' onClick = {(e)=>{ToRestaurant(e.currentTarget.id)}}>
-            <div className='resImgContainer'><img className='resImg' src='https://lh4.googleusercontent.com/-cddQlSTzIi8/AAAAAAAAAAI/AAAAAAAAAAA/8V7smGl4zio/s44-p-k-no-ns-nd/photo.jpg'></img></div>
-            <div className='resInfo'>
-                <div className='title'>
-                    <p className='name'>奧特拉麵南港環球店</p>
-                    <p className='distance'>{9/1000}&ensp;km</p>
-                </div>
-                <br />
-                <Tag color={color[1]}>豚骨</Tag>
-            </div>
-        </div>
-        <div className='resBlock' >
-            <div className='resImgContainer'><img className='resImg' src='https://lh4.googleusercontent.com/-cddQlSTzIi8/AAAAAAAAAAI/AAAAAAAAAAA/8V7smGl4zio/s44-p-k-no-ns-nd/photo.jpg'></img></div>
-            <div className='resInfo'>
-                <div className='title'>
-                    <p className='name'>奧特拉麵南港環球店</p>
-                    <p className='distance'>{9/1000}&ensp;km</p>
-                </div>
-                <p className='description'>碗, 服務費, 服務人員, 雞湯, 炸雞, 高湯, 洋蔥, qr code, 玉, 細麵</p>
-            </div>
-        </div>
-        <div className='resBlock' >
-            <div className='resImgContainer'><img className='resImg' src='https://lh4.googleusercontent.com/-cddQlSTzIi8/AAAAAAAAAAI/AAAAAAAAAAA/8V7smGl4zio/s44-p-k-no-ns-nd/photo.jpg'></img></div>
-            <div className='resInfo'>
-                <div className='title'>
-                    <p className='name'>奧特拉麵南港環球店</p>
-                    <p className='distance'>{9/1000}&ensp;km</p>
-                </div>
-                <p className='description'>碗, 服務費, 服務人員, 雞湯, 炸雞, 高湯, 洋蔥, qr code, 玉, 細麵</p>
-            </div>
-        </div>
-        <div className='resBlock' >
-            <div className='resImgContainer'><img className='resImg' src='https://lh4.googleusercontent.com/-cddQlSTzIi8/AAAAAAAAAAI/AAAAAAAAAAA/8V7smGl4zio/s44-p-k-no-ns-nd/photo.jpg'></img></div>
-            <div className='resInfo'>
-                <div className='title'>
-                    <p className='name'>奧特拉麵南港環球店</p>
-                    <p className='distance'>{9/1000}&ensp;km</p>
-                </div>
-                <p className='description'>碗, 服務費, 服務人員, 雞湯, 炸雞, 高湯, 洋蔥, qr code, 玉, 細麵</p>
-            </div>
-        </div>
+        }
         </RightSide>
     )
 }

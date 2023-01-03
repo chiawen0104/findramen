@@ -5,8 +5,34 @@ import Information from './information';
 import Comment from './comment';
 import Review from './review';
 import ReviewPage from './reviewPage';
+import axios from 'axios'
+const instance = axios.create({
+    baseURL: 'http://localhost:4000/api'
+})
+
 const RestaurantPage = () => {
+    const { id } = useParams()
+    const [info, setInfo] = useState({})
+    const [comments, setComments] = useState([])
     const [openReview, SetOpenReview] = useState(false);
+
+    const getInfo = async () => {
+        const info = await instance.get('/getInfo', {params:{id}})
+        console.log(info.data)
+        setInfo(info.data);
+    }
+    const getComments = async () => {
+        const comments = await instance.get('/getCommentsByRestaurantId', {params: {restaurantId: id}});
+        console.log("com",comments.data.contents)
+        setComments(comments.data.contents);
+    }
+
+    useEffect(() => {
+        if (Object.keys(info).length === 0) {
+            getInfo()
+            getComments()
+        }
+    }, [id])
 
     const navigate = useNavigate();
     const ToFindRamen = () => {
@@ -90,6 +116,10 @@ const RestaurantPage = () => {
         }
     }
 
+    .businesstime {
+        font-size:0.5px;
+    }
+
 
     `
     const CommentContainer = styled.div`
@@ -107,23 +137,40 @@ const RestaurantPage = () => {
     height: 77vh;
     text-align: center;
     `
+
+    
         
     return (
         <Wrapper>
         <div className='backtofind' onClick={() => {ToFindRamen()}}>🍥</div>
+        {Object.keys(info).length === 0 ? 
+            <></> 
+            : 
         <Background>
             <PageContainer >
-            <Information></Information>
+            <Information name={info?.contents[0]?.name} 
+                        rating={info?.contents[0]?.rating}
+                        distance={info?.contents[0]?.distance}
+                        tag={info?.contents[0]?.tag}
+                        time={info?.contents[0]?.time}
+                        
+                        limit={info?.contents[0]?.limit}></Information>
             <h3>↳往下滑看菜單<br/><br/></h3>
 
             <div className='menu'>
                 <div className='menutitle'>定番
-                    <h5>濃厚豚骨番茄蝦沾麵</h5>
-                    <h5>濃出汁蝦拉麵</h5>
+                    {
+                        info?.contents[0]?.regular?.map(e => 
+                            <h5>{e}</h5>
+                        )
+                    }
                 </div>
                 <div className='menutitle'>限定
-                    <h5>濃厚豚骨番茄蝦沾麵</h5>
-                    <h5>濃出汁蝦拉麵</h5>
+                    {
+                        info?.contents[0]?.limited?.map(e => 
+                            <h5>{e}</h5>
+                        )
+                    }
                 </div>
 
             </div>
@@ -140,7 +187,7 @@ const RestaurantPage = () => {
             }
             </CommentContainer>
 
-        </Background>
+        </Background>}
         </Wrapper>
     )
 }
