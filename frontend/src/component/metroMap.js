@@ -236,7 +236,7 @@ const MetroGreen = styled.div`
     font-size: 20px;
 
     .greenmetroname {
-        // display:none;
+        display:none;
         position:absolute;
         cursor: pointer;
     }
@@ -309,7 +309,7 @@ const MetroOrange = styled.div`
     font-size: 20px;
 
     .orangemetroname {
-        // display:none;
+        display:none;
         position:absolute;
         cursor: pointer;
     }
@@ -408,7 +408,7 @@ const MetroYellow = styled.div`
     font-size: 20px;
 
     .yellowmetroname {
-        // display:none;
+        display:none;
         position:absolute;
         cursor: pointer;
     }
@@ -460,7 +460,7 @@ const MetroBrown = styled.div`
     font-size: 20px;
 
     .brownmetroname {
-        // display:none;
+        display:none;
         position:absolute;
         cursor: pointer;
     }
@@ -619,16 +619,16 @@ const Map = () => {
 
     const bottonClick = (classname) => {
         var thisLine = document.getElementsByClassName(classname)
-        navigate('/search', {
-            state: {
-                metroFilter:classname
-            }
-        });
+        // navigate('/search', {
+        //     state: {
+        //         metroFilter:classname
+        //     }
+        // });
         for(let i = 0; i < thisLine.length; i++){
-            if(thisLine[i].style.display == 'none'){
-                thisLine[i].style.display = 'block';
-            }else{
+            if(thisLine[i].style.display == 'block'){
                 thisLine[i].style.display = 'none';
+            }else{
+                thisLine[i].style.display = 'block';
             }
         }
     }

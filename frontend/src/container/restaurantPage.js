@@ -87,10 +87,6 @@ overflow: scroll;
     }
 }
 
-.businesstime {
-    font-size:0.5px;
-}
-
 
 `
 const CommentContainer = styled.div`

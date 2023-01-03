@@ -72,14 +72,14 @@ const Information = ({name, rating, mrt, distance, walktime, tag, time, img, sit
                     {rating === 0 ? <p>No Rating</p> : <Stars rating={rating} displayScore={true} />}
                 </div>
                 <br />
-                <div className='distance'>{"離 "+mrt+" "+distance+", 走路約 "+walktime}</div>
+                <div className='distance'>{"離"+mrt+"站"+distance+", 走路約 "+walktime}</div>
             </div>
             <div className='infoRow'>
                 <br />
                 {tag.map((tag, id)=>(<Tag color={color[id%5]}>{tag}</Tag>))}
             </div>
-            <h5>Business hours:</h5>
-            <div className='businesstime'>{getBusiness(time)}</div>
+            <h5>營業時間:</h5>
+            <h6 className='businesstime'>{getBusiness(time)}</h6>
             
             <h5>官方網站：<a href={site} target="_blank">🍜🍜🍜🍜🍜</a></h5>
         </div>
