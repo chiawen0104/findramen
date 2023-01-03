@@ -21,6 +21,7 @@ const Filter = ({ typeFilter, setTypeFilter, styleFilter, setStyleFilter, flavor
     const IngredientVegTag = ["柚子", "松露", "筍乾", "蔥", "蒜", "黑蒜", "豆芽菜", "海苔", "柑橘", "洋蔥", "高麗菜", "玉米筍"]
     const IngredientMeatTag = ["牡蠣", "蛤蜊", "叉燒", "干貝", "角煮", "雞肉丸", "鮭魚", "鯛魚", "辣肉醬"]
     const SideTag = ["炸雞", "煎餃", "炸牡蠣", "叉燒飯", "可樂餅", "炸豆腐"]
+    
     const getTagString = () => {
         const getSingleCategoryTag = (tag, filter, result) => {
             for(let i=0; i<tag.length; i++){

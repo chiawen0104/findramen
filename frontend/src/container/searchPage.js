@@ -1,5 +1,7 @@
 import {React, useState, useEffect} from 'react'
 import styled from 'styled-components';
+import NavBar from '../component/navigationBar';
+import Map from "../component/metroMap"
 import { useNavigate, useLocation, useParams } from 'react-router-dom'
 import { Divider, Tag } from 'antd';
 import axios from 'axios'
@@ -7,6 +9,40 @@ const instance = axios.create({
     baseURL: 'http://localhost:4000/api'
 })
 
+const Wrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Background = styled.div`
+width: 100%;
+height: 100%;
+position: absolute;
+top: 0;
+left: 0;
+z-index: -1;
+background-image: url("https://i.ibb.co/4Zcgtsj/backgroud.png");
+background-size: cover
+
+`
+
+const LeftSide = styled.div`
+position: absolute;
+top: 0px;
+bottom: 2rem;
+left: 0vw;
+display: flex;
+flex-flow: column;
+z-index: 10;
+padding-top: 50px;
+padding-left: 50px;
+padding-right: 50px;
+`
+
+const LeftImg = styled.img`
+height:20%;
+opacity:80%
+`
 
 const RightSide = styled.div`
 position: absolute;
@@ -92,17 +128,19 @@ const color = ['geekblue', 'purple', 'green', 'volcano', 'gold']
 
 const SearchPage = () => {
     const { state } = useLocation();
-    const { id } = useParams();
+    // const { id } = useParams();
     const [restaurants, setRestaurant] = useState([])
-
     const getRestaurant = async () => {
+        console.log(state)
         const restaurants = await instance.get('/getSearch', {params:state})
         setRestaurant(restaurants.data);
     }
-
+    
+    
     useEffect(() => {
         getRestaurant()
-    }, [state?.metroFilter])
+    }, [ state.lineFilter, state.filters]) 
+    
 
     const navigate = useNavigate();
     const ToRestaurant = (id) => {
@@ -110,10 +148,16 @@ const SearchPage = () => {
     }
 
     return(
-        <RightSide>
-        {  
+        <Wrapper>
+        <Background>
+            <Map></Map>
+            <LeftSide>
+              <LeftImg src='https://i.ibb.co/Sr2G61x/top-Left-Logo.png'></LeftImg>
+              <NavBar></NavBar>
+            </LeftSide>
+            <RightSide>
+            {  
                 restaurants?.contents?.map(({id, img, name, distance, tag}) => (
-                    <>
                         <div className='resBlock' id={id} key={id} onClick = {(e)=>{ToRestaurant(e.currentTarget.id)}}>
                             <div className='resImgContainer'><img className='resImg' src={img}></img></div>
                             <div className='resInfo'>
@@ -125,10 +169,12 @@ const SearchPage = () => {
                                 
                             </div>
                         </div>
-                    </>
                 ))
-        }
-        </RightSide>
+            }
+            </RightSide>
+        </Background>
+        </Wrapper>
+        
     )
 }
 

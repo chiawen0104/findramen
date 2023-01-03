@@ -36,7 +36,7 @@ const NavBar = () => {
                 noodleFilter: noodleFilter,
                 ingredientFilter: ingredientFilter,
                 sideFilter: sideFilter,
-                //sortBy: sortMethod
+                filters: filters
             }
         }
         );
@@ -60,7 +60,7 @@ const NavBar = () => {
 
     const color = ['geekblue', 'purple', 'green', 'volcano', 'gold']
 
-    console.log(sideFilter);
+    // console.log(filters);
 
     //const { Search } = Input;
 
@@ -81,9 +81,9 @@ const NavBar = () => {
                     setDisplay={setDisplay} />
             </div>
             <Divider orientation="left">Selected Filters</Divider>
-            {filters.length !== 0 ? filters.map((tag, id) => (<Tag color={color[id%5]}>{tag}</Tag>)): <p>無篩選</p>}
+            {filters.length !== 0 ? filters.map((tag, id) => (<Tag key={id} color={color[id%5]}>{tag}</Tag>)): <p>無篩選</p>}
             <Divider orientation="left">Selected Metros</Divider>
-            {filters.length !== 0 ? filters.map((tag, id) => (<Tag color={color[id%5]}>{tag}</Tag>)): <p>無篩選</p>}
+            {filters.length !== 0 ? filters.map((tag, id) => (<Tag key={id} color={color[id%5]}>{tag}</Tag>)): <p>無篩選</p>}
             <Divider orientation="left"></Divider>
             <Button type="default" style={{ width: 180, height: 30,}} onClick={clearTags} >
                 All Clear

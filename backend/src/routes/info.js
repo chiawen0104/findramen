@@ -13,21 +13,37 @@ import Comment from '../models/comment'
 
 exports.GetSearch = async (req, res) => {
     /*******    NOTE: DO NOT MODIFY   *******/
-    const metroFilter = req.query.metroFilter
+    const filters = req.query.filters
+    const lineFilter = req.query.lineFilter
     /****************************************/
 
-    // NOTE Hint: 
-    // use `db.collection.find({condition}).exec(err, data) {...}`
-    // When success, 
-    //   do `res.status(200).send({ message: 'success', contents: ... })`
-    // When fail,
-    //   do `res.status(403).send({ message: 'error', contents: ... })` 
-
     try{
-        let resData = 0
-        resData = await Info.find()
-        res.status(200).send({ message: 'success', contents: resData }) 
+        if (typeof(lineFilter) !== 'undefined'){
+            const lineStr = lineFilter.slice(0,-9)
 
+            if (typeof(filters) !== 'undefined'){
+                let filterData = await Info.find({ tag: { $in:  filters }, line: lineStr })
+                // console.log(filterData)
+                res.status(200).send({ message: 'success', contents: filterData })
+            }
+            else { // return all restaurants if no filters
+                let resData = await Info.find({ line: lineStr })
+                // console.log(resData)
+                res.status(200).send({ message: 'success', contents: resData }) 
+            }
+        }
+        else {
+            if (typeof(filters) !== 'undefined'){
+                let filterData = await Info.find({ tag: { $in:  filters } })
+                // console.log(filterData)
+                res.status(200).send({ message: 'success', contents: filterData })
+            }
+            else { // return all restaurants if no filters
+                let resData = await Info.find()
+                // console.log(resData)
+                res.status(200).send({ message: 'success', contents: resData }) 
+            }
+    }
     } catch(err){
         res.status(403).send({ message: 'error', contents: err })
     }
@@ -56,11 +72,9 @@ exports.GetInfo = async (req, res) => {
     //    message: 'error'
     //    contents: []
     // }
-    console.log(id)
     try{
         const resData = await Info.find({id:id})
         res.status(200).send({ message: 'success', contents: resData }) 
-
     } catch(err){
         res.status(403).send({ message: 'error', contents: err })
     }

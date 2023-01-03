@@ -236,7 +236,7 @@ const MetroGreen = styled.div`
     font-size: 20px;
 
     .greenmetroname {
-        // display:none;
+        display:none;
         position:absolute;
         cursor: pointer;
     }
@@ -309,7 +309,7 @@ const MetroOrange = styled.div`
     font-size: 20px;
 
     .orangemetroname {
-        // display:none;
+        display:none;
         position:absolute;
         cursor: pointer;
     }
@@ -408,7 +408,7 @@ const MetroYellow = styled.div`
     font-size: 20px;
 
     .yellowmetroname {
-        // display:none;
+        display:none;
         position:absolute;
         cursor: pointer;
     }
@@ -460,7 +460,7 @@ const MetroBrown = styled.div`
     font-size: 20px;
 
     .brownmetroname {
-        // display:none;
+        display:none;
         position:absolute;
         cursor: pointer;
     }
@@ -614,23 +614,27 @@ background: #E3002D;
 
 
 const Map = () => {  
+    const [lineFilter, setLineFilter] = useState('redmetroname')
 
     const navigate = useNavigate();
 
     const bottonClick = (classname) => {
         var thisLine = document.getElementsByClassName(classname)
-        navigate('/search', {
-            state: {
-                metroFilter:classname
-            }
-        });
         for(let i = 0; i < thisLine.length; i++){
-            if(thisLine[i].style.display == 'none'){
+            if (thisLine[i].style.display == 'none'){
                 thisLine[i].style.display = 'block';
-            }else{
+            } else{
                 thisLine[i].style.display = 'none';
             }
         }
+
+        setLineFilter(classname)
+
+        navigate('/search', {
+            state: {
+                lineFilter: lineFilter
+            }
+        });
     }
     
     return (
