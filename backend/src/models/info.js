@@ -1,13 +1,3 @@
-// * ////////////////////////////////////////////////////////////////////////
-// *
-// * FileName     [ data.js ]
-// * PackageName  [ server ]
-// * Synopsis     [ Schema of restaurant info ]
-// * Author       [ Chin-Yi Cheng ]
-// * Copyright    [ 2022 11 ]
-// *
-// * ////////////////////////////////////////////////////////////////////////
-
 import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
@@ -27,10 +17,7 @@ const InfoSchema = Schema({
     distance: { type: String },
     walktime: { type: String },
     regular: [{ type: String }],
-    limited: [{ type: String }]
-}, {
-    collection: 'Restaurant',
-    timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
+    limited: [{ type: String }],
 })
 
 const exportSchema = mongoose.model('Restaurant', InfoSchema)

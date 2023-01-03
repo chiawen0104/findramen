@@ -25,41 +25,8 @@ exports.GetSearch = async (req, res) => {
 
     try{
         let resData = 0
-        console.log(metroFilter)
         resData = await Info.find()
         console.log(resData)
-        if(getPrice(priceFilter) != false && mealFilter == undefined && typeFilter == undefined){       //1,0,0
-            console.log('1,0,0')
-            resData = await Info.find({price: getPrice(priceFilter)}).sort({[sortBy]: 1})
-
-        }else if(getPrice(priceFilter) == false && mealFilter != undefined && typeFilter == undefined){ //0,1,0
-            console.log('0,1,0')
-            resData = await Info.find({tag:{"$in":mealFilter}}).sort({[sortBy]: 1})
-
-        }else if(getPrice(priceFilter) == false && mealFilter == undefined && typeFilter != undefined){ //0,0,1
-            console.log('0,0,1')
-            resData = await Info.find({tag:{"$in":typeFilter}}).sort({[sortBy]: 1})
-
-        }else if(getPrice(priceFilter) != false && mealFilter != undefined && typeFilter == undefined){ //1,1,0
-            console.log('1,1,0')
-            resData = await Info.find({$and:[{price: getPrice(priceFilter)}, {tag:{"$in":mealFilter}}]}).sort({[sortBy]: 1})
-
-        }else if(getPrice(priceFilter) != false && mealFilter == undefined && typeFilter != undefined){ //1,0,1
-            console.log('1,0,1')
-            resData = await Info.find({$and:[{price: getPrice(priceFilter)}, {tag:{"$in":typeFilter}}]}).sort({[sortBy]: 1})
-
-        }else if(getPrice(priceFilter) == false && mealFilter != undefined && typeFilter != undefined){ //0,1,1
-            console.log('0,1,1')
-            resData = await Info.find({$and:[{tag:{"$in":typeFilter}}, {tag:{"$in":mealFilter}}]}).sort({[sortBy]: 1})
-
-        }else if(getPrice(priceFilter) != false && mealFilter != undefined && typeFilter != undefined){ //1,1,1
-            console.log('1,1,1')
-            resData = await Info.find({$and:[{price: getPrice(priceFilter)}, {tag:{"$in":typeFilter}}, {tag:{"$in":mealFilter}}]}).sort({[sortBy]: 1})
-
-        }else{                                                                                          //0,0,0
-            console.log('0,0,0')
-            resData = await Info.find().sort({[sortBy]: 1})
-        }
         res.status(200).send({ message: 'success', contents: resData }) 
 
     } catch(err){

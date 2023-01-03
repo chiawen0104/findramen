@@ -94,15 +94,14 @@ const SearchPage = () => {
 
     const getRestaurant = async () => {
         const restaurants = await instance.get('/getSearch', {params:state})
-        console.log(restaurants.data)
         setRestaurant(restaurants);
     }
-
-    console.log(state.metroFilter)
+    console.log(restaurants)
+    console.log(state?.metroFilter)
 
     useEffect(() => {
         getRestaurant()
-    }, [state.metroFilter])
+    }, [state?.metroFilter])
 
     const navigate = useNavigate();
     const ToRestaurant = (id) => {

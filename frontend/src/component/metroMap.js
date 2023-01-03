@@ -379,7 +379,7 @@ const Map = () => {
 
     const bottonClick = (classname) => {
         var thisLine = document.getElementsByClassName(classname)
-        navigate('/', {
+        navigate('/search', {
             state: {
                 metroFilter:classname
             }
@@ -399,80 +399,85 @@ const Map = () => {
                 <RedLine onClick={() => bottonClick('redmetroname')}>R</RedLine>
                 <BlueLine onClick={() => bottonClick('bluemetroname')}>BL</BlueLine>
                 <GreenLine onClick={() => bottonClick('greenmetroname')}>G</GreenLine>
-                <OrangeLine>O</OrangeLine>
+                <OrangeLine onClick={() => bottonClick('orangemetroname')}>O</OrangeLine>
                 <YellowLine>Y</YellowLine>
                 <BrownLine>BR</BrownLine>
                 {/* <AirLine></AirLine> */}
             </ChooseLine>
             <MetroRed>
-            <div class='redmetroname' id='tansui'>淡水</div>
-            <div class='redmetroname' id='beitou'>北投</div>
-            <div class='redmetroname' id='shipai'>石牌</div>
-            <div class='redmetroname' id='zishan'>芝山</div>
-            <div class='redmetroname' id='shilin'>士林</div>
-            <div class='redmetroname' id='minchuang'>民權西路</div>
-            <div class='redmetroname' id='shuanlian'>雙連</div>
-            <div class='redmetroname' id='chongshan'>中山</div>
-            <div class='redmetroname' id='beiche'>台北車站</div>
-            <div class='redmetroname' id='ntuhos'>台大醫</div>
-            <div class='redmetroname' id='chongchen'>中正紀念堂</div>
-            <div class='redmetroname' id='eastdoor'>東門</div>
-            <div class='redmetroname' id='daanshen'>大安<br/>森林公園</div>
-            <div class='redmetroname' id='daan'>大安</div>
-            <div class='redmetroname' id='shinyi'>信義安和</div>
-            <div class='redmetroname' id='onezeroone'>台北101/<br/>市貿</div>
-            <div class='redmetroname' id='elephant'>象山</div>
+            <div className='redmetroname' id='tansui'>淡水</div>
+            <div className='redmetroname' id='beitou'>北投</div>
+            <div className='redmetroname' id='shipai'>石牌</div>
+            <div className='redmetroname' id='zishan'>芝山</div>
+            <div className='redmetroname' id='shilin'>士林</div>
+            <div className='redmetroname' id='minchuang'>民權西路</div>
+            <div className='redmetroname' id='shuanlian'>雙連</div>
+            <div className='redmetroname' id='chongshan'>中山</div>
+            <div className='redmetroname' id='beiche'>台北車站</div>
+            <div className='redmetroname' id='ntuhos'>台大醫</div>
+            <div className='redmetroname' id='chongchen'>中正紀念堂</div>
+            <div className='redmetroname' id='eastdoor'>東門</div>
+            <div className='redmetroname' id='daanshen'>大安<br/>森林公園</div>
+            <div className='redmetroname' id='daan'>大安</div>
+            <div className='redmetroname' id='shinyi'>信義安和</div>
+            <div className='redmetroname' id='onezeroone'>台北101/<br/>市貿</div>
+            <div className='redmetroname' id='elephant'>象山</div>
             </MetroRed>
             <MetroBlue>
-            {/* <div class='bluemetroname' id='dingpu'>頂埔</div>
-            <div class='bluemetroname' id='yongning'>永寧</div>
-            <div class='bluemetroname' id='tucheng'>土城</div>
-            <div class='bluemetroname' id='haishan'>海山</div>
-            <div class='bluemetroname' id='fareast'>亞東醫院</div>
-            <div class='bluemetroname' id='fuzong'>府中</div> */}
-            <div class='bluemetroname' id='banqiao'>板橋</div>
-            {/* <div class='bluemetroname' id='xinpu'>新埔</div> */}
-            <div class='bluemetroname' id='jiangzicui'>江子翠</div>
-            <div class='bluemetroname' id='longshan'>龍山寺</div>
-            <div class='bluemetroname' id='ximen'>西門</div>
-            <div class='bluemetroname' id='beiche'>台北車站</div>
-            <div class='bluemetroname' id='shandao'>善導寺</div>
-            <div class='bluemetroname' id='xinsheng'>新生</div>
-            <div class='bluemetroname' id='fuxing'>復興</div>
-            <div class='bluemetroname' id='dunhua'>敦化</div>
-            <div class='bluemetroname' id='memorial'>紀念館</div>
-            <div class='bluemetroname' id='cityhall'>市政府</div>
-            <div class='bluemetroname' id='yongchun'>永春</div>
-            {/* <div class='bluemetroname' id='houshanpi'>後山埤</div>
-            <div class='bluemetroname' id='kunyang'>昆陽</div> */}
-            <div class='bluemetroname' id='nangang'>南港</div>
-            {/* <div class='bluemetroname' id='exhibition'>展覽館</div> */}
+            {/* <div className='bluemetroname' id='dingpu'>頂埔</div>
+            <div className='bluemetroname' id='yongning'>永寧</div>
+            <div className='bluemetroname' id='tucheng'>土城</div>
+            <div className='bluemetroname' id='haishan'>海山</div>
+            <div className='bluemetroname' id='fareast'>亞東醫院</div>
+            <div className='bluemetroname' id='fuzong'>府中</div> */}
+            <div className='bluemetroname' id='banqiao'>板橋</div>
+            {/* <div className='bluemetroname' id='xinpu'>新埔</div> */}
+            <div className='bluemetroname' id='jiangzicui'>江子翠</div>
+            <div className='bluemetroname' id='longshan'>龍山寺</div>
+            <div className='bluemetroname' id='ximen'>西門</div>
+            <div className='bluemetroname' id='beiche'>台北車站</div>
+            <div className='bluemetroname' id='shandao'>善導寺</div>
+            <div className='bluemetroname' id='xinsheng'>新生</div>
+            <div className='bluemetroname' id='fuxing'>復興</div>
+            <div className='bluemetroname' id='dunhua'>敦化</div>
+            <div className='bluemetroname' id='memorial'>紀念館</div>
+            <div className='bluemetroname' id='cityhall'>市政府</div>
+            <div className='bluemetroname' id='yongchun'>永春</div>
+            {/* <div className='bluemetroname' id='houshanpi'>後山埤</div>
+            <div className='bluemetroname' id='kunyang'>昆陽</div> */}
+            <div className='bluemetroname' id='nangang'>南港</div>
+            {/* <div className='bluemetroname' id='exhibition'>展覽館</div> */}
             </MetroBlue>
             <MetroGreen>
-            <div class='greenmetroname' id='smallegg'>台北小巨蛋</div>
-            <div class='greenmetroname' id='nangjingfuxing'>南京復興</div>
-            <div class='greenmetroname' id='songjiannanjing'>松江南京</div>
-            <div class='greenmetroname' id='beimen'>北門</div>
-            <div class='greenmetroname' id='ximen'>西門</div>
-            <div class='greenmetroname' id='guting'>古亭</div>
-            <div class='greenmetroname' id='taidiang'>台電大樓</div>
-            <div class='greenmetroname' id='gongguang'>公館</div>
-            <div class='greenmetroname' id='dapinglin'>大坪林</div>
-            <div class='greenmetroname' id='seven'>七張</div>
-            <div class='greenmetroname' id='shindiang'>新店</div>
+            <div className='greenmetroname' id='smallegg'>台北小巨蛋</div>
+            <div className='greenmetroname' id='nangjingfuxing'>南京復興</div>
+            <div className='greenmetroname' id='songjiannanjing'>松江南京</div>
+            <div className='greenmetroname' id='beimen'>北門</div>
+            <div className='greenmetroname' id='ximen'>西門</div>
+            <div className='greenmetroname' id='guting'>古亭</div>
+            <div className='greenmetroname' id='taidiang'>台電大樓</div>
+            <div className='greenmetroname' id='gongguang'>公館</div>
+            <div className='greenmetroname' id='dapinglin'>大坪林</div>
+            <div className='greenmetroname' id='seven'>七張</div>
+            <div className='greenmetroname' id='shindiang'>新店</div>
             </MetroGreen>
             <MetroOrange>
-            <div class='orangemetroname' id='danphone'>丹鳳</div>
-            <div class='orangemetroname' id='fuda'>輔大</div>
-            <div class='orangemetroname' id='shinchuang'>新莊</div>
-            <div class='orangemetroname' id='sanming'>三民高中</div>
-            <div class='orangemetroname' id='shehuei'>徐匯中學</div>
-            <div class='orangemetroname' id='sanchong'>三重國小</div>
-            <div class='orangemetroname' id='bigbridge'>大橋頭</div>
-            <div class='orangemetroname' id='chongshan'>中山國小</div>
-            <div class='orangemetroname' id='songjiannanjing'>松江南京</div>
-            <div class='orangemetroname' id='xinsheng'>新生</div>
-            <div class='orangemetroname' id='dongmen'>東門</div>
+            <div className='orangemetroname' id='danphone'>丹鳳</div>
+            <div className='orangemetroname' id='fuda'>輔大</div>
+            <div className='orangemetroname' id='shinchuang'>新莊</div>
+            <div className='orangemetroname' id='sanming'>三民高中</div>
+            <div className='orangemetroname' id='shehuei'>徐匯中學</div>
+            <div className='orangemetroname' id='sanchong'>三重國小</div>
+            <div className='orangemetroname' id='bigbridge'>大橋頭</div>
+            <div className='orangemetroname' id='chongshan'>中山國小</div>
+            <div className='orangemetroname' id='songjiannanjing'>松江南京</div>
+            <div className='orangemetroname' id='xinsheng'>新生</div>
+            <div className='orangemetroname' id='dongmen'>東門</div>
+            <div className='orangemetroname' id='guting'>古亭</div>
+            <div className='orangemetroname' id='dingxi'>頂溪</div>
+            <div className='orangemetroname' id='yongan'>永安市場</div>
+            <div className='orangemetroname' id='jingan'>景安</div>
+            <div className='orangemetroname' id='nangshijiao'>南勢角</div>
             </MetroOrange>
         </Wrapper>
     )
