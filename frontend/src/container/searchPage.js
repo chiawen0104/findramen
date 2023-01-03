@@ -1,12 +1,13 @@
 import {React, useState, useEffect} from 'react'
 import styled from 'styled-components';
 import { useNavigate, useLocation, useParams } from 'react-router-dom'
-import { Divider, Tag } from 'antd';
+import { Divider, Tag, Avatar, Card } from 'antd';
 import axios from 'axios'
 const instance = axios.create({
     baseURL: 'http://localhost:4000/api'
 })
 
+const { Meta } = Card;
 
 const RightSide = styled.div`
 position: absolute;
@@ -112,6 +113,35 @@ const SearchPage = () => {
     return(
         <RightSide>
         {  
+                restaurants?.contents?.map(({id, img, name, line, mrt, distance, walktime, tag}) => (
+                    <>
+                        <Card style={{ width: 300, height: 380}} cover={<img alt="example" src={img} style={{height: 150}}/>}
+                            id={id} key={id} onClick = {(e)=>{ToRestaurant(e.currentTarget.id)}}>
+                            <Meta
+                                avatar={<Avatar src={"https://cdn-icons-png.flaticon.com/512/5900/5900151.png"} style={{ color: 'white', backgroundColor: line }} />}
+                                title={name}
+                                description={(
+                                    <>
+                                        <p style={{fontSize: 14}}>{"離 "+mrt+" "+distance+", 走路約 "+walktime}</p>
+                                        <br></br>
+                                        {tag.map((tag, id)=>(<Tag color={color[id%5]}>{tag}</Tag>))}
+                                    </>
+                                    )}
+                            />
+                        </Card>
+                        <Divider></Divider>
+                    </>
+                ))
+        }
+        </RightSide>
+    )
+}
+
+export default SearchPage
+
+
+/*
+{  
                 restaurants?.contents?.map(({id, img, name, distance, tag}) => (
                     <>
                         <div className='resBlock' id={id} key={id} onClick = {(e)=>{ToRestaurant(e.currentTarget.id)}}>
@@ -121,15 +151,13 @@ const SearchPage = () => {
                                     <p className='name'>{name}</p>
                                     <p className='distance'>{distance}</p>
                                 </div>
-                                <p className='description'><Tag  color={color[1]}>{tag.join(", ")}</Tag></p>
+                                <br />
+                                {tag.map((tag, id)=>(<Tag color={color[id%5]}>{tag}</Tag>))}
                                 
                             </div>
                         </div>
                     </>
                 ))
         }
-        </RightSide>
-    )
-}
 
-export default SearchPage
+*/
