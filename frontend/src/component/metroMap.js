@@ -379,11 +379,6 @@ const Map = () => {
 
     const bottonClick = (classname) => {
         var thisLine = document.getElementsByClassName(classname)
-        navigate('/search', {
-            state: {
-                metroFilter:classname
-            }
-        });
         for(let i = 0; i < thisLine.length; i++){
             if(thisLine[i].style.display == 'none'){
                 thisLine[i].style.display = 'block';

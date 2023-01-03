@@ -2,7 +2,7 @@ import React from 'react'
 import Stars from '../component/stars';
 
 
-const Information = ({name, rating, distance, tag, time, img}) => {
+const Information = ({name, rating, distance, tag, time, img, site}) => {
 
     const getBusiness = (time) => {
         return (
@@ -77,7 +77,7 @@ const Information = ({name, rating, distance, tag, time, img}) => {
             <h5>Business hours:</h5>
             <div className='businesstime'>{getBusiness(time)}</div>
             
-            <h5>官方網站：<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">🍜🍜🍜🍜🍜</a></h5>
+            <h5>官方網站：<a href={site} target="_blank">🍜🍜🍜🍜🍜</a></h5>
         </div>
     )
 }
