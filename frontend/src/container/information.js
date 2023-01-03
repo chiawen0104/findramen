@@ -10,49 +10,49 @@ const Information = ({name, rating, distance, tag, time, img, site}) => {
                 {
                     Object.keys(time).includes('All') ? 
                     (<>
-                        <div className='singleDay'><div className='day'>Mon</div>
-                            <div className='time'>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>
+                        <div className='singleDay'>
+                            <div className='time'><span>Mon </span>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>
                         </div>
-                        <div className='singleDay'><div className='day'>Tue</div>
-                            <div className='time'>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>
+                        <div className='singleDay'>
+                            <div className='time'><span>Tue </span>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>
                         </div>
-                        <div className='singleDay'><div className='day'>Wed</div>
-                            <div className='time'>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>
+                        <div className='singleDay'>
+                            <div className='time'><span>Wed </span>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>
                         </div>
-                        <div className='singleDay'><div className='day'>Thu</div>
-                            <div className='time'>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>                        
+                        <div className='singleDay'>
+                            <div className='time'><span>Thu </span>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>                        
                         </div>
-                        <div className='singleDay'><div className='day'>Fri</div>
-                            <div className='time'>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>                       
+                        <div className='singleDay'>
+                            <div className='time'><span>Fri </span>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>                       
                         </div>
-                        <div className='singleDay'><div className='day'>Sat</div>
-                            <div className='time'>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>                        
+                        <div className='singleDay'>
+                            <div className='time'><span>Sat </span>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>                        
                         </div>
-                        <div className='singleDay'><div className='day'>Sun</div>
-                            <div className='time'>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>                        
+                        <div className='singleDay'>
+                            <div className='time'><span>Sun </span>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>                        
                         </div>
                     </>): 
                     (<>
-                        <div className='singleDay'><div className='day'>Mon</div>
-                        {Object.keys(time).includes('Mon')? <div className='time'>{Object.values(time)[Object.keys(time).indexOf('Mon')]}</div>:<div className='time'>Closed</div>}
+                        <div className='singleDay'>
+                        {Object.keys(time).includes('Mon')? <div className='time'><span>Mon </span>{Object.values(time)[Object.keys(time).indexOf('Mon')]}</div>:<div className='time'><span>Mon </span>Closed</div>}
                         </div>
-                        <div className='singleDay'><div className='day'>Tue</div>
-                        {Object.keys(time).includes('Tue')? <div className='time'>{Object.values(time)[Object.keys(time).indexOf('Tue')]}</div>:<div className='time'>Closed</div>}
+                        <div className='singleDay'>
+                        {Object.keys(time).includes('Tue')? <div className='time'><span>Tue </span>{Object.values(time)[Object.keys(time).indexOf('Tue')]}</div>:<div className='time'><span>Tue </span>Closed</div>}
                         </div>
-                        <div className='singleDay'><div className='day'>Wed</div>
-                        {Object.keys(time).includes('Wed')? <div className='time'>{Object.values(time)[Object.keys(time).indexOf('Wed')]}</div>:<div className='time'>Closed</div>}
+                        <div className='singleDay'>
+                        {Object.keys(time).includes('Wed')? <div className='time'><span>Wed </span>{Object.values(time)[Object.keys(time).indexOf('Wed')]}</div>:<div className='time'><span>Wed </span>Closed</div>}
                         </div>
-                        <div className='singleDay'><div className='day'>Thu</div>
-                        {Object.keys(time).includes('Thu')? <div className='time'>{Object.values(time)[Object.keys(time).indexOf('Thu')]}</div>:<div className='time'>Closed</div>}
+                        <div className='singleDay'>
+                        {Object.keys(time).includes('Thu')? <div className='time'><span>Thu </span>{Object.values(time)[Object.keys(time).indexOf('Thu')]}</div>:<div className='time'><span>Thu </span>Closed</div>}
                         </div>
-                        <div className='singleDay'><div className='day'>Fri</div>
-                        {Object.keys(time).includes('Fri')? <div className='time'>{Object.values(time)[Object.keys(time).indexOf('Fri')]}</div>:<div className='time'>Closed</div>}
+                        <div className='singleDay'>
+                        {Object.keys(time).includes('Fri')? <div className='time'><span>Fri </span>{Object.values(time)[Object.keys(time).indexOf('Fri')]}</div>:<div className='time'><span>Fri </span>Closed</div>}
                         </div>
-                        <div className='singleDay'><div className='day'>Sat</div>
-                        {Object.keys(time).includes('Sat')? <div className='time'>{Object.values(time)[Object.keys(time).indexOf('Sat')]}</div>:<div className='time'>Closed</div>}
+                        <div className='singleDay'>
+                        {Object.keys(time).includes('Sat')? <div className='time'><span>Sat </span>{Object.values(time)[Object.keys(time).indexOf('Sat')]}</div>:<div className='time'><span>Sat </span>Closed</div>}
                         </div>
-                        <div className='singleDay'><div className='day'>Sun</div>
-                        {Object.keys(time).includes('Sun')? <div className='time'>{Object.values(time)[Object.keys(time).indexOf('Sun')]}</div>:<div className='time'>Closed</div>}
+                        <div className='singleDay'>
+                        {Object.keys(time).includes('Sun')? <div className='time'><span>Sun </span>{Object.values(time)[Object.keys(time).indexOf('Sun')]}</div>:<div className='time'><span>Sun </span>Closed</div>}
                         </div>
                     </>)
                 }
