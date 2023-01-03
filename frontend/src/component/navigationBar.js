@@ -20,13 +20,11 @@ const NavBar = () => {
     //const options = ["price", "distance"];
     //const [sortMethod, setSortMethod] = useState(options[0]);
     // Blank all
-    const [filterExpanded, setFilterExpanded] = useState(false);
 
     const navigate = useNavigate();
 
     
     const navigateToSearch = () => {
-        setFilterExpanded(false)
         // TODO Part I-1: navigation to search page
         // See README for hint
         // FIXME - Modify below
@@ -45,9 +43,24 @@ const NavBar = () => {
 
     };
 
+    const clearTags = () => {
+        const checkBoxes = document.getElementsByTagName('input');
+        for (var i = 0; i < checkBoxes.length; ++i) { 
+            checkBoxes[i].checked = false; 
+        }
+        setTypeFilter([])
+        setStyleFilter([])
+        setFlavorFilter([])
+        setNoodleFilter([])
+        setIngredientFilter([])
+        setSideFilter([])
+        setFilters([])
+        setDisplay([])
+    }
+
     const color = ['geekblue', 'purple', 'green', 'volcano', 'gold']
 
-    console.log(filters);
+    console.log(sideFilter);
 
     //const { Search } = Input;
 
@@ -68,8 +81,13 @@ const NavBar = () => {
                     setDisplay={setDisplay} />
             </div>
             <Divider orientation="left">Selected Filters</Divider>
-            {filters? filters.map((tag, id) => (<Tag color={color[id%5]}>{tag}</Tag>)): <p>無篩選</p>}
+            {filters.length !== 0 ? filters.map((tag, id) => (<Tag color={color[id%5]}>{tag}</Tag>)): <p>無篩選</p>}
+            <Divider orientation="left">Selected Metros</Divider>
+            {filters.length !== 0 ? filters.map((tag, id) => (<Tag color={color[id%5]}>{tag}</Tag>)): <p>無篩選</p>}
             <Divider orientation="left"></Divider>
+            <Button type="default" style={{ width: 180, height: 30,}} onClick={clearTags} >
+                All Clear
+            </Button>
             <Button type="primary" icon={<SearchOutlined />} style={{ width: 180, height: 30,}} onClick={navigateToSearch} >
                 Search
             </Button>

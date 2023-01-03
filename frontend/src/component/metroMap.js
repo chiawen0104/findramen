@@ -75,7 +75,7 @@ const MetroRed = styled.div`
 
     #daanshen{
         top: 478px;
-        left:533px;
+        left:555px;
         text-align:center;
     }
     #daan{
@@ -307,6 +307,246 @@ const MetroOrange = styled.div`
     @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@900&display=swap');
     font-family: 'Noto Serif TC', serif;
     font-size: 20px;
+
+    .orangemetroname {
+        // display:none;
+        position:absolute;
+        cursor: pointer;
+    }
+    .orangemetroname: hover{
+        font-size:30px;
+    }
+
+    #danphone{
+        top: 500px;
+        left:35px;  
+    }
+
+    #fuda{
+        top: 500px;
+        left:85px; 
+    }
+
+    #shinchuang{
+        top: 435px;
+        left:100px;  
+    }
+
+    #sanming{
+        top: 180px;
+        left:130px; 
+    }
+
+    #shehuei{
+        top: 205px;
+        left:155px;  
+    }
+
+    #sanchong{
+        top: 255px;
+        left:205px; 
+    }
+
+    #bigbridge{
+        top: 255px;
+        left:325px;  
+    }
+
+    #chongshan{
+        top: 240px;
+        left:483px;
+        transform: rotate(-35deg) 
+    }
+
+    #songjiannanjing{
+        top: 305px;
+        left:520px;
+        transform: rotate(-35deg)
+    }
+
+    #xinsheng{
+        top: 362px;
+        left:522px;
+        transform: rotate(-35deg)
+    }
+
+    #dongmen {
+        top: 480px;
+        left:500px;
+    }
+
+    #guting{
+        top: 500px;
+        left:490px;
+    }
+
+    #dingxi{
+        top: 530px;
+        left:400px;
+    }
+
+    #yongan{
+        top: 560px;
+        left:335px;
+    }
+
+    #jingan{
+        top: 595px;
+        left:340px;
+    }
+
+    #nangshijiao{
+        top: 685px;
+        left:330px;
+    }
+    
+`
+
+const MetroYellow = styled.div`
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@900&display=swap');
+    font-family: 'Noto Serif TC', serif;
+    font-size: 20px;
+
+    .yellowmetroname {
+        // display:none;
+        position:absolute;
+        cursor: pointer;
+    }
+    .yellowmetroname: hover{
+        font-size:30px;
+    }
+
+    #xingfu{
+        top: 365px;
+        left:80px;
+    }
+
+    #xinpuminsheng{
+        top: 405px;
+        left:210px;
+        transform: rotate(-50deg)
+    }
+
+    #banqiao{
+        top: 490px;
+        left:265px;
+    }
+
+    #zhonghe{
+        top: 640px;
+        left:290px;
+    }
+
+    #jingan{
+        top: 595px;
+        left:340px;
+    }
+
+    #xiulangbridge{
+        top: 650px;
+        left:400px;
+    }
+
+    #dapinglin{
+        top: 655px;
+        left:550px;
+    }
+
+`
+
+const MetroBrown = styled.div`
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@900&display=swap');
+    font-family: 'Noto Serif TC', serif;
+    font-size: 20px;
+
+    .brownmetroname {
+        // display:none;
+        position:absolute;
+        cursor: pointer;
+    }
+    .brownmetroname: hover{
+        font-size:30px;
+    }
+
+    #software{
+        top: 265px;
+        right:75px;
+    }
+
+    #donghu{
+        top: 220px;
+        right:5px;
+    }
+
+    #huzhou{
+        top: 175px;
+        right:30px;
+    }
+
+    #gangqian{
+        top: 95px;
+        right:235px;
+    }
+
+    #xihu{
+        top: 95px;
+        right:290px;
+    }
+
+    #jiannan{
+        top: 125px;
+        right:360px;
+    }
+
+    #dazhi{
+        top: 180px;
+        right:395px;
+    }
+
+    #songshanairport{
+        top: 195px;
+        right:275px;
+        transform: rotate(-35deg)
+    }
+
+    #zhongshanjunior{
+        top: 260px;
+        right:290px;
+        transform: rotate(-35deg)
+    }
+
+    #nangjingfuxing{
+        top: 305px;
+        left:630px;
+        transform: rotate(-35deg)
+    }
+
+    #zhongxiaofuxing{
+        top: 362px;
+        left:632px;
+        transform: rotate(-35deg)
+    }
+
+    #daan{
+        top: 430px;
+        left:635px;
+    }
+
+    #techbuilding{
+        top: 523px;
+        right:335px;
+    }
+
+    #liuzhangli{
+        top: 505px;
+        right:235px;
+    }
+
+    #xinhai{
+        top: 585px;
+        right:210px;
+    }
+
 `
 
 const Wrapper = styled.div`
@@ -379,6 +619,11 @@ const Map = () => {
 
     const bottonClick = (classname) => {
         var thisLine = document.getElementsByClassName(classname)
+        navigate('/search', {
+            state: {
+                metroFilter:classname
+            }
+        });
         for(let i = 0; i < thisLine.length; i++){
             if(thisLine[i].style.display == 'none'){
                 thisLine[i].style.display = 'block';
@@ -395,8 +640,8 @@ const Map = () => {
                 <BlueLine onClick={() => bottonClick('bluemetroname')}>BL</BlueLine>
                 <GreenLine onClick={() => bottonClick('greenmetroname')}>G</GreenLine>
                 <OrangeLine onClick={() => bottonClick('orangemetroname')}>O</OrangeLine>
-                <YellowLine>Y</YellowLine>
-                <BrownLine>BR</BrownLine>
+                <YellowLine onClick={() => bottonClick('yellowmetroname')}>Y</YellowLine>
+                <BrownLine onClick={() => bottonClick('brownmetroname')}>BR</BrownLine>
                 {/* <AirLine></AirLine> */}
             </ChooseLine>
             <MetroRed>
@@ -412,7 +657,7 @@ const Map = () => {
             <div className='redmetroname' id='ntuhos'>台大醫</div>
             <div className='redmetroname' id='chongchen'>中正紀念堂</div>
             <div className='redmetroname' id='eastdoor'>東門</div>
-            <div className='redmetroname' id='daanshen'>大安<br/>森林公園</div>
+            <div className='redmetroname' id='daanshen'>安森</div>
             <div className='redmetroname' id='daan'>大安</div>
             <div className='redmetroname' id='shinyi'>信義安和</div>
             <div className='redmetroname' id='onezeroone'>台北101/<br/>市貿</div>
@@ -474,6 +719,32 @@ const Map = () => {
             <div className='orangemetroname' id='jingan'>景安</div>
             <div className='orangemetroname' id='nangshijiao'>南勢角</div>
             </MetroOrange>
+            <MetroYellow>
+            <div className='yellowmetroname' id='xingfu'>幸福</div>
+            <div className='yellowmetroname' id='xinpuminsheng'>新埔民生</div>
+            <div className='yellowmetroname' id='banqiao'>板橋</div>
+            <div className='yellowmetroname' id='zhonghe'>中和</div>
+            <div className='yellowmetroname' id='jingan'>景安</div>
+            <div className='yellowmetroname' id='xiulangbridge'>秀朗橋</div>
+            <div className='yellowmetroname' id='dapinglin'>大坪林</div>
+            </MetroYellow>
+            <MetroBrown>
+            <div className='brownmetroname' id='software'>南港軟體園區</div>
+            <div className='brownmetroname' id='donghu'>東湖</div>
+            <div className='brownmetroname' id='huzhou'>葫洲</div>
+            <div className='brownmetroname' id='gangqian'>港墘</div>
+            <div className='brownmetroname' id='xihu'>西湖</div>
+            <div className='brownmetroname' id='jiannan'>劍南路</div>
+            <div className='brownmetroname' id='dazhi'>大直</div>
+            <div className='brownmetroname' id='songshanairport'>松山機場</div>
+            <div className='brownmetroname' id='zhongshanjunior'>中山國中</div>
+            <div className='brownmetroname' id='nangjingfuxing'>南京復興</div>
+            <div className='brownmetroname' id='zhongxiaofuxing'>復興</div>
+            <div className='brownmetroname' id='daan'>大安</div>
+            <div className='brownmetroname' id='techbuilding'>科技大樓</div>
+            <div className='brownmetroname' id='liuzhangli'>六張犁</div>
+            <div className='brownmetroname' id='xinhai'>辛亥</div>
+            </MetroBrown>
         </Wrapper>
     )
 }
