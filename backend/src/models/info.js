@@ -17,7 +17,10 @@ const InfoSchema = Schema({
     distance: { type: String },
     walktime: { type: String },
     regular: [{ type: String }],
-    limited: [{ type: String }],
+    limited: [{ type: String }]
+}, {
+        collection: 'Restaurant',
+        timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
 })
 
 const exportSchema = mongoose.model('Restaurant', InfoSchema)
