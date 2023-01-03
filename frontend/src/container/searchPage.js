@@ -98,6 +98,7 @@ const SearchPage = () => {
     const getRestaurant = async () => {
         const restaurants = await instance.get('/getSearch', {params:state})
         setRestaurant(restaurants.data);
+        console.log(restaurants.data);
     }
 
     useEffect(() => {
