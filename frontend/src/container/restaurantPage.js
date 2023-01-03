@@ -153,8 +153,7 @@ const RestaurantPage = () => {
                         distance={info?.contents[0]?.distance}
                         tag={info?.contents[0]?.tag}
                         time={info?.contents[0]?.time}
-                        
-                        limit={info?.contents[0]?.limit}></Information>
+                        img={info?.contents[0]?.img}></Information>
             <h3>↳往下滑看菜單<br/><br/></h3>
 
             <div className='menu'>

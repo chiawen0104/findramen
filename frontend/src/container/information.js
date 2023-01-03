@@ -2,7 +2,7 @@ import React from 'react'
 import Stars from '../component/stars';
 
 
-const Information = ({name, rating, distance, tag, time}) => {
+const Information = ({name, rating, distance, tag, time, img}) => {
 
     const getBusiness = (time) => {
         return (
@@ -63,7 +63,7 @@ const Information = ({name, rating, distance, tag, time}) => {
 
     return (
         <div className='infoContainer'>
-            <div className='resImgContainer'><img className='resImg' src='https://lh5.googleusercontent.com/p/AF1QipNAPZGjY7QErXhoEopYOj5UmnyZkKm8iudwrVjm=w800-h500-k-no'></img></div>
+            <div className='resImgContainer'><img className='resImg' src={img}></img></div>
             <h2>{name}</h2>
             <div className='infoRow'>
                 <div className='rate'>
