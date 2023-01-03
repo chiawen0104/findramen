@@ -40,6 +40,7 @@ const Comment = (comments) => {
         margin-top: 0.5em;
         text-align: left;
     }
+
     `
 
     return (
@@ -53,6 +54,7 @@ const Comment = (comments) => {
                         <div className='title'>
                             <div className='info'>
                                 <h4 className='name'> {author} </h4>
+                                <div className='pic'><img src={imgurl}></img></div>
                                 <Stars rating={rating} />
                             </div>
                         </div>

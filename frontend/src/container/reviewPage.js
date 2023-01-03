@@ -1,7 +1,45 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components';
+import { Button } from 'antd';
 import Review from './review';
+
+const ReviewContainer = styled.div`
+margin-left: 3em;
+margin-top: 3em;
+width: 75%;
+height:100%;
+padding: 0.5em;
+border-color: brown;
+border-radius: 1em;
+border-style: solid;
+overflow:auto;
+&::-webkit-scrollbar{
+    width:0em;
+}
+
+&::-webkit-scrollbar-thumb{
+    background: brown;
+    border-radius: 100vw;
+}
+
+.backToComment{
+    height:2em;
+    align-self:end;
+    margin-left: auto;
+    background:SeaShell;
+    border:1px solid brown;
+}
+
+.backToComment:hover{
+    cursor: pointer;
+}
+
+.text{
+    margin:3em;
+    display:block;
+}
+`
 
 const ReviewPage = ({posts, postId, SetOpenReview}) => {
 
@@ -15,42 +53,7 @@ const ReviewPage = ({posts, postId, SetOpenReview}) => {
 
     console.log(postPage)
 
-    const ReviewContainer = styled.div`
-    margin-left: 3em;
-    margin-top: 3em;
-    width: 75%;
-    height:100%;
-    padding: 0.5em;
-    border-color: brown;
-    border-radius: 1em;
-    border-style: solid;
-    overflow:auto;
-    &::-webkit-scrollbar{
-        width:0em;
-    }
 
-    &::-webkit-scrollbar-thumb{
-        background: brown;
-        border-radius: 100vw;
-    }
-
-    .backToComment{
-        height:2em;
-        align-self:end;
-        margin-left: auto;
-        background:SeaShell;
-        border:1px solid brown;
-    }
-
-    .backToComment:hover{
-        cursor: pointer;
-    }
-
-    .text{
-        margin:3em;
-        display:block;
-    }
-    `
 
     const backToComment = (e) => {
         SetOpenReview(false);
@@ -63,7 +66,7 @@ const ReviewPage = ({posts, postId, SetOpenReview}) => {
         <h5 className='text'>
             {postPage.content}
         </h5>
-        <button className='backToComment' onClick={(e)=>{backToComment(e)}}>回去看留言</button>
+        <Button className='backToComment' onClick={(e)=>{backToComment(e)}}>回去看留言</Button>
         </ReviewContainer>
     )
 }
