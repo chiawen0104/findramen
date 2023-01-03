@@ -1,6 +1,7 @@
 import {React, useState, useEffect} from 'react'
 import styled from 'styled-components';
 import { useNavigate, useLocation, useParams } from 'react-router-dom'
+import { Divider, Tag } from 'antd';
 import axios from 'axios'
 const instance = axios.create({
     baseURL: 'http://localhost:4000/api'
@@ -87,6 +88,8 @@ overflow: auto;
 }
 `
 
+const color = ['geekblue', 'purple', 'green', 'volcano', 'gold']
+
 const SearchPage = () => {
     const { state } = useLocation();
     const { id } = useParams();
@@ -135,7 +138,8 @@ const SearchPage = () => {
                     <p className='name'>奧特拉麵南港環球店</p>
                     <p className='distance'>{9/1000}&ensp;km</p>
                 </div>
-                <p className='description'>碗, 服務費, 服務人員, 雞湯, 炸雞, 高湯, 洋蔥, qr code, 玉, 細麵</p>
+                <br />
+                <Tag color={color[1]}>豚骨</Tag>
             </div>
         </div>
         <div className='resBlock' >

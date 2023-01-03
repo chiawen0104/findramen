@@ -45,7 +45,7 @@ const NavBar = () => {
 
     };
 
-
+    const color = ['geekblue', 'purple', 'green', 'volcano', 'gold']
 
     console.log(filters);
 
@@ -67,8 +67,8 @@ const NavBar = () => {
                     filters={filters} setFilters={setFilters}
                     setDisplay={setDisplay} />
             </div>
-            <Divider orientation="left">Filters</Divider>
-            {filters? filters.map((tag) => (<Tag color='geekblue'>{tag}</Tag>)): <p>無篩選</p>}
+            <Divider orientation="left">Selected Filters</Divider>
+            {filters? filters.map((tag, id) => (<Tag color={color[id%5]}>{tag}</Tag>)): <p>無篩選</p>}
             <Divider orientation="left"></Divider>
             <Button type="primary" icon={<SearchOutlined />} style={{ width: 180, height: 30,}} onClick={navigateToSearch} >
                 Search
