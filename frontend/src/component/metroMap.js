@@ -614,19 +614,12 @@ background: #E3002D;
 
 
 const Map = () => {  
-    const [lineFilter, setLineFilter] = useState('redmetroname')
+    const [lineFilter, setLineFilter] = useState('')
 
     const navigate = useNavigate();
 
     const bottonClick = (classname) => {
         var thisLine = document.getElementsByClassName(classname)
-        for(let i = 0; i < thisLine.length; i++){
-            if (thisLine[i].style.display == 'none'){
-                thisLine[i].style.display = 'block';
-            } else{
-                thisLine[i].style.display = 'none';
-            }
-        }
 
         setLineFilter(classname)
 
@@ -635,6 +628,14 @@ const Map = () => {
                 lineFilter: lineFilter
             }
         });
+        
+        for(let i = 0; i < thisLine.length; i++){
+            if (thisLine[i].style.display == 'none'){
+                thisLine[i].style.display = 'block';
+            } else{
+                thisLine[i].style.display = 'none';
+            }
+        }
     }
     
     return (
