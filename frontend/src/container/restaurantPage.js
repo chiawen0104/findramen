@@ -159,7 +159,9 @@ const RestaurantPage = () => {
             <PageContainer >
             <Information name={info?.contents[0]?.name} 
                         rating={info?.contents[0]?.rating}
+                        mrt={info?.contents[0]?.mrt}
                         distance={info?.contents[0]?.distance}
+                        walktime={info?.contents[0]?.walktime}
                         tag={info?.contents[0]?.tag}
                         time={info?.contents[0]?.time}
                         img={info?.contents[0]?.img}></Information>

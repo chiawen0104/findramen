@@ -1,8 +1,9 @@
 import React from 'react'
 import Stars from '../component/stars';
+import { Divider, Tag } from 'antd';
 
 
-const Information = ({name, rating, distance, tag, time, img, site}) => {
+const Information = ({name, rating, mrt, distance, walktime, tag, time, img, site}) => {
 
     const getBusiness = (time) => {
         return (
@@ -60,6 +61,7 @@ const Information = ({name, rating, distance, tag, time, img, site}) => {
         )
     }
 
+    const color = ['geekblue', 'purple', 'green', 'volcano', 'gold']
 
     return (
         <div className='infoContainer'>
@@ -69,10 +71,12 @@ const Information = ({name, rating, distance, tag, time, img, site}) => {
                 <div className='rate'>
                     {rating === 0 ? <p>No Rating</p> : <Stars rating={rating} displayScore={true} />}
                 </div>
-                <div className='distance'>{distance}</div>
+                <br />
+                <div className='distance'>{"離 "+mrt+" "+distance+", 走路約 "+walktime}</div>
             </div>
             <div className='infoRow'>
-                {tag.join(", ")}
+                <br />
+                {tag.map((tag, id)=>(<Tag color={color[id%5]}>{tag}</Tag>))}
             </div>
             <h5>Business hours:</h5>
             <div className='businesstime'>{getBusiness(time)}</div>
