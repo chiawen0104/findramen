@@ -99,8 +99,6 @@ const SearchPage = () => {
         const restaurants = await instance.get('/getSearch', {params:state})
         setRestaurant(restaurants.data);
     }
-    console.log(restaurants)
-    console.log(state?.metroFilter)
 
     useEffect(() => {
         getRestaurant()

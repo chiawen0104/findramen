@@ -75,7 +75,7 @@ const Review = ({setPostId, posts,openReview, SetOpenReview}) => {
                 posts.length == 0 ? <h1 align="center">沒有食記</h1>:
                 posts?.map(({writer,time, content, _id}) => (
 
-                    <div className='review' id={_id} onClick={(e) => {setOpen(e.currentTarget.id)}}>
+                    <div className='review' id={_id} key={_id} onClick={(e) => {setOpen(e.currentTarget.id)}}>
                     <div className='info'>
                         <h4 className='name'> {writer} </h4>
                         <hr width="50%" align="left"></hr>

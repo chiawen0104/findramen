@@ -47,9 +47,9 @@ const Comment = (comments) => {
         <div className='comments'>
         {  
             comments.length == 0 ? <>沒有評論</>:
-            comments?.comments?.map(({author, imgurl, rating, restaurantId, text}) => (
+            comments?.comments?.map(({_id,author, imgurl, rating, restaurantId, text}) => (
 
-                    <div className='comment'>
+                    <div className='comment' key={_id}>
                         <div className='title'>
                             <div className='info'>
                                 <h4 className='name'> {author} </h4>

@@ -20,20 +20,17 @@ const RestaurantPage = () => {
 
     const getInfo = async () => {
         const info = await instance.get('/getInfo', {params:{id}})
-        console.log(info.data)
         setInfo(info.data);
     }
 
     const getComments = async () => {
         const comments = await instance.get('/getCommentsByRestaurantId', {params: {restaurantId: id}});
         setComments(comments.data.contents);
-        console.log(comments)
     }
 
     const getPosts = async () => {
         const posts = await instance.get('/getPostsByRestaurantId', {params: {restaurantId: id}});
         setPosts(posts.data.contents);
-        console.log(posts.data.contents)
     }
 
     useEffect(() => {
@@ -170,14 +167,14 @@ const RestaurantPage = () => {
                 <div className='menutitle'>定番
                     {
                         info?.contents[0]?.regular?.map(e => 
-                            <h5>{e}</h5>
+                            <h5 key={e}>{e}</h5>
                         )
                     }
                 </div>
                 <div className='menutitle'>限定
                     {
                         info?.contents[0]?.limited?.map(e => 
-                            <h5>{e}</h5>
+                            <h5 key={e}>{e}</h5>
                         )
                     }
                 </div>
