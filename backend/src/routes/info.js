@@ -26,7 +26,6 @@ exports.GetSearch = async (req, res) => {
     try{
         let resData = 0
         resData = await Info.find()
-        console.log(resData)
         res.status(200).send({ message: 'success', contents: resData }) 
 
     } catch(err){
