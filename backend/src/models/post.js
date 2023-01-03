@@ -13,6 +13,6 @@ const PostSchema = Schema({
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
 })
 
-const exportSchema = mongoose.model('Post', InfoSchema)
+const exportSchema = mongoose.model('Post', PostSchema)
 
 export default exportSchema

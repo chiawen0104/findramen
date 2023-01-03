@@ -36,10 +36,3 @@ exports.GetCommentsByRestaurantId = async (req, res) => {
         res.status(403).send({ message: 'error', contents: [] })
     }
 }
-
-exports.CreateComment = async (req, res) => {
-    /*******    NOTE: DO NOT MODIFY   *******/
-    const body = req.body
-    /****************************************/
-    // TODO Part III-3-b: create a new comment to a restaurant
-}

@@ -14,6 +14,8 @@ const RestaurantPage = () => {
     const { id } = useParams()
     const [info, setInfo] = useState({})
     const [comments, setComments] = useState([])
+    const [posts, setPosts] = useState([])
+    const [postId, setPostId] = useState(0)
     const [openReview, SetOpenReview] = useState(false);
 
     const getInfo = async () => {
@@ -21,16 +23,24 @@ const RestaurantPage = () => {
         console.log(info.data)
         setInfo(info.data);
     }
+
     const getComments = async () => {
         const comments = await instance.get('/getCommentsByRestaurantId', {params: {restaurantId: id}});
         setComments(comments.data.contents);
         console.log(comments)
     }
 
+    const getPosts = async () => {
+        const posts = await instance.get('/getPostsByRestaurantId', {params: {restaurantId: id}});
+        setPosts(posts.data.contents);
+        console.log(posts.data.contents)
+    }
+
     useEffect(() => {
         if (Object.keys(info).length === 0) {
             getInfo()
             getComments()
+            getPosts()
         }
     }, [id])
 
@@ -176,13 +186,13 @@ const RestaurantPage = () => {
 
             <h3>↳往下滑看食記</h3>
             <ReviewContainer>
-                <Review openReview={openReview} SetOpenReview={SetOpenReview}/>
+                <Review setPostId={setPostId} posts={posts} openReview={openReview} SetOpenReview={SetOpenReview}/>
             </ReviewContainer>
             </PageContainer>
 
             <CommentContainer>
             {
-                openReview?<ReviewPage SetOpenReview={SetOpenReview}></ReviewPage>:<Comment comments={comments}></Comment>
+                openReview?<ReviewPage posts={posts} postId={postId} SetOpenReview={SetOpenReview}></ReviewPage>:<Comment comments={comments}></Comment>
             }
             </CommentContainer>
 
