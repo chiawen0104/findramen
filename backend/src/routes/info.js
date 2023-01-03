@@ -13,10 +13,7 @@ import Comment from '../models/comment'
 
 exports.GetSearch = async (req, res) => {
     /*******    NOTE: DO NOT MODIFY   *******/
-    const priceFilter = req.query.priceFilter
-    const mealFilter  = req.query.mealFilter
-    const typeFilter  = req.query.typeFilter
-    const sortBy      = req.query.sortBy
+    const metroFilter = req.query.metroFilter
     /****************************************/
 
     // NOTE Hint: 
@@ -25,23 +22,12 @@ exports.GetSearch = async (req, res) => {
     //   do `res.status(200).send({ message: 'success', contents: ... })`
     // When fail,
     //   do `res.status(403).send({ message: 'error', contents: ... })` 
-    const getPrice = (priceFilter) => {
-        let priceText = []
-        if(priceFilter != undefined){
-            for (let i = 0; i < priceFilter.length; i++)
-            if(priceFilter[i] == '$'){priceText[i] = 1}
-            else if(priceFilter[i] == '$$'){priceText[i] = 2}
-            else if(priceFilter[i] == '$$$'){priceText[i] = 3}
-        }else{
-            return false
-        }
-        return (priceText)
-    }
 
     try{
         let resData = 0
-
+        console.log(metroFilter)
         resData = await Info.find()
+        console.log(resData)
         if(getPrice(priceFilter) != false && mealFilter == undefined && typeFilter == undefined){       //1,0,0
             console.log('1,0,0')
             resData = await Info.find({price: getPrice(priceFilter)}).sort({[sortBy]: 1})

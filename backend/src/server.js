@@ -12,7 +12,6 @@ import express from 'express'
 import cors from 'cors'
 import routes from './routes'
 import mongoose from 'mongoose'
-import { dataInit } from './upload'
 require('dotenv').config()
 const app = express()
 

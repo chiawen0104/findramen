@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 //google fonts
 const MetroRed = styled.div`
@@ -302,6 +303,12 @@ const MetroGreen = styled.div`
     }
 `
 
+const MetroOrange = styled.div`
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@900&display=swap');
+    font-family: 'Noto Serif TC', serif;
+    font-size: 20px;
+`
+
 const Wrapper = styled.div`
 position: absolute;
 top: 50%; left: 45%;
@@ -368,8 +375,15 @@ background: #E3002D;
 
 const Map = () => {  
 
+    const navigate = useNavigate();
+
     const bottonClick = (classname) => {
         var thisLine = document.getElementsByClassName(classname)
+        navigate('/', {
+            state: {
+                metroFilter:classname
+            }
+        });
         for(let i = 0; i < thisLine.length; i++){
             if(thisLine[i].style.display == 'none'){
                 thisLine[i].style.display = 'block';
@@ -447,6 +461,19 @@ const Map = () => {
             <div class='greenmetroname' id='seven'>七張</div>
             <div class='greenmetroname' id='shindiang'>新店</div>
             </MetroGreen>
+            <MetroOrange>
+            <div class='orangemetroname' id='danphone'>丹鳳</div>
+            <div class='orangemetroname' id='fuda'>輔大</div>
+            <div class='orangemetroname' id='shinchuang'>新莊</div>
+            <div class='orangemetroname' id='sanming'>三民高中</div>
+            <div class='orangemetroname' id='shehuei'>徐匯中學</div>
+            <div class='orangemetroname' id='sanchong'>三重國小</div>
+            <div class='orangemetroname' id='bigbridge'>大橋頭</div>
+            <div class='orangemetroname' id='chongshan'>中山國小</div>
+            <div class='orangemetroname' id='songjiannanjing'>松江南京</div>
+            <div class='orangemetroname' id='xinsheng'>新生</div>
+            <div class='orangemetroname' id='dongmen'>東門</div>
+            </MetroOrange>
         </Wrapper>
     )
 }

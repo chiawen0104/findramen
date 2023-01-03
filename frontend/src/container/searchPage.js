@@ -1,4 +1,4 @@
-import React from 'react'
+import {React, useState, useEffect} from 'react'
 import styled from 'styled-components';
 import { useNavigate, useLocation, useParams } from 'react-router-dom'
 import axios from 'axios'
@@ -88,6 +88,22 @@ overflow: auto;
 `
 
 const SearchPage = () => {
+    const { state } = useLocation();
+    const { id } = useParams();
+    const [restaurants, setRestaurant] = useState([])
+
+    const getRestaurant = async () => {
+        const restaurants = await instance.get('/getSearch', {params:state})
+        console.log(restaurants.data)
+        setRestaurant(restaurants);
+    }
+
+    console.log(state.metroFilter)
+
+    useEffect(() => {
+        getRestaurant()
+    }, [state.metroFilter])
+
     const navigate = useNavigate();
     const ToRestaurant = (id) => {
     navigate("/restaurant/" + id)
