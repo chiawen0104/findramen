@@ -43,7 +43,6 @@ const Filter = ({ typeFilter, setTypeFilter, styleFilter, setStyleFilter, flavor
         result = getSingleCategoryTag(IngredientMeatTag, ingredientFilter, result)
         result = getSingleCategoryTag(SideTag, sideFilter, result)
         
-        console.log("result: "+result);
         return result
     }
 
