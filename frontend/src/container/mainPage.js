@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import SearchPage from './searchPage';
+import NavBar from '../component/navigationBar';
 import Map from "../component/metroMap"
 
 const Wrapper = styled.section`
@@ -59,6 +60,7 @@ const mainPage = () => {
             <Map></Map>
             <LeftSide>
               <LeftImg src='https://i.ibb.co/Sr2G61x/top-Left-Logo.png'></LeftImg>
+              <NavBar></NavBar>
             </LeftSide>
             <SearchPage></SearchPage>
         </Background>
