@@ -23,8 +23,8 @@ const RestaurantPage = () => {
     }
     const getComments = async () => {
         const comments = await instance.get('/getCommentsByRestaurantId', {params: {restaurantId: id}});
-        console.log("com",comments.data.contents)
         setComments(comments.data.contents);
+        console.log(comments)
     }
 
     useEffect(() => {
@@ -182,7 +182,7 @@ const RestaurantPage = () => {
 
             <CommentContainer>
             {
-                openReview?<ReviewPage SetOpenReview={SetOpenReview}></ReviewPage>:<Comment></Comment>
+                openReview?<ReviewPage SetOpenReview={SetOpenReview}></ReviewPage>:<Comment comments={comments}></Comment>
             }
             </CommentContainer>
 

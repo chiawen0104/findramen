@@ -5,9 +5,8 @@ import styled from 'styled-components';
 import ReviewPage from './reviewPage';
 
 
-const Comment = () => {
-
-    const rating = 4.5;
+const Comment = (comments) => {
+    
     const CommentContainer = styled.div`
     // margin-left: 1em;
     padding: auto;
@@ -45,62 +44,23 @@ const Comment = () => {
 
     return (
         <CommentContainer>
-            <div className='comments'>
-                <div className='comment'>
-                    <div className='title'>
-                        <div className='info'>
-                            <h4 className='name'> 呂韻涵 </h4>
-                            <Stars rating={rating} />
+        <div className='comments'>
+        {  
+            comments.length == 0 ? <>沒有評論</>:
+            comments?.comments?.map(({author, imgurl, rating, restaurantId, text}) => (
+
+                    <div className='comment'>
+                        <div className='title'>
+                            <div className='info'>
+                                <h4 className='name'> {author} </h4>
+                                <Stars rating={rating} />
+                            </div>
                         </div>
+                        <p className='content'> {text}</p>
                     </div>
-                    <p className='content'> 敲極好吃</p>
-                </div>
-                <div className='comment'>
-                    <div className='title'>
-                        <div className='info'>
-                            <p className='name'> 呂韻涵 </p>
-                            <Stars rating={rating} />
-                        </div>
-                    </div>
-                    <p className='content'> 敲極好吃</p>
-                </div>
-                <div className='comment'>
-                    <div className='title'>
-                        <div className='info'>
-                            <p className='name'> 呂韻涵 </p>
-                            <Stars rating={rating} />
-                        </div>
-                    </div>
-                    <p className='content'> 敲極好吃</p>
-                </div>
-                <div className='comment'>
-                    <div className='title'>
-                        <div className='info'>
-                            <p className='name'> 呂韻涵 </p>
-                            <Stars rating={rating} />
-                        </div>
-                    </div>
-                    <p className='content'> 敲極好吃</p>
-                </div>
-                <div className='comment'>
-                    <div className='title'>
-                        <div className='info'>
-                            <p className='name'> 呂韻涵 </p>
-                            <Stars rating={rating} />
-                        </div>
-                    </div>
-                    <p className='content'> 敲極好吃</p>
-                </div>
-                <div className='comment'>
-                    <div className='title'>
-                        <div className='info'>
-                            <p className='name'> 呂韻涵 </p>
-                            <Stars rating={rating} />
-                        </div>
-                    </div>
-                    <p className='content'> 敲極好吃</p>
-                </div>
-            </div>
+            ))
+        }
+        </div>
         </CommentContainer>
     )
 }
