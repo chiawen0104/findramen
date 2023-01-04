@@ -16,94 +16,95 @@ exports.GetSearch = async (req, res) => {
     const filters = req.query.filters
     const lineFilter = req.query.lineFilter
     const mrtFilter = req.query.mrtFilter
-    const sortRating = req.query.sortRating
+    const nameFilter = req.query.nameFilter
     /****************************************/
-    console.log(req.query)
+    // console.log(req.query)
 
     try{
         if (typeof(lineFilter) !== 'undefined'){
             const lineStr = lineFilter.map(e => e.slice(0,-9))
-            if (typeof(filters) !== 'undefined' && typeof(mrtFilter) == 'undefined'){
-                if(sortRating){
-                    let filterData = await Info.find({ tag: { $in:  filters }, line: { $in:  lineStr } }).sort({rating: -1})
-                    res.status(200).send({ message: 'success', contents: filterData })
-                }else{
-                    let filterData = await Info.find({ tag: { $in:  filters }, line: { $in:  lineStr } })
-                    res.status(200).send({ message: 'success', contents: filterData })
-                }
-            }else if(typeof(filters) !== 'undefined' && typeof(mrtFilter) !== 'undefined'){
-                if(sortRating){
-                    let filterData = await Info.find({ tag: { $in:  filters }, mrt: { $in:  mrtFilter } }).sort({rating: -1})
-                    // console.log(filterData)
-                    res.status(200).send({ message: 'success', contents: filterData })
-                }else{
-                    let filterData = await Info.find({ tag: { $in:  filters }, mrt: { $in:  mrtFilter } })
-                    // console.log(filterData)
-                    res.status(200).send({ message: 'success', contents: filterData })
-                }
-                
-            }else if(typeof(filters) == 'undefined' && typeof(mrtFilter) !== 'undefined'){
-                if(sortRating){
-                    let filterData = await Info.find({ mrt: { $in:  mrtFilter } }).sort({rating: -1})
-                    // console.log(filterData)
-                    res.status(200).send({ message: 'success', contents: filterData })
-                }else{
-                    let filterData = await Info.find({ mrt: { $in:  mrtFilter } })
-                    // console.log(filterData)
-                    res.status(200).send({ message: 'success', contents: filterData })
-                }
+
+            // filters
+            if (typeof(filters) !== 'undefined' && typeof(mrtFilter) === 'undefined' && typeof(nameFilter) === 'undefined'){
+                let filterData = await Info.find({ tag: { $in:  filters }, line: { $in: lineStr } })
+                res.status(200).send({ message: 'success', contents: filterData })
             }
-            else { // return all restaurants if no filters
-                if(sortRating){
-                    let resData = await Info.find({ line: { $in:  lineStr } }).sort({rating: -1})
-                    res.status(200).send({ message: 'success', contents: resData }) 
-                }else{
-                    let resData = await Info.find({ line: { $in:  lineStr } })
-                    res.status(200).send({ message: 'success', contents: resData }) 
-                }
+            // filters + nameFilter
+            else if(typeof(filters) !== 'undefined' && typeof(mrtFilter) === 'undefined' && typeof(nameFilter) !== 'undefined'){
+            let filterData = await Info.find({ tag: { $in:  filters }, name: { $regex: ".*" + nameFilter + ".*"}, line: { $in: lineStr } })
+                res.status(200).send({ message: 'success', contents: filterData })
+            }
+            // filters + mrtFilter 
+            else if(typeof(filters) !== 'undefined' && typeof(mrtFilter) !== 'undefined' && typeof(nameFilter) === 'undefined'){
+                let filterData = await Info.find({ tag: { $in:  filters }, mrt: { $in:  mrtFilter }, line: { $in: lineStr } })
+                res.status(200).send({ message: 'success', contents: filterData })
+            }
+            // filters + nameFilter + mrtFilter
+            else if(typeof(filters) !== 'undefined' && typeof(mrtFilter) !== 'undefined' && typeof(nameFilter) !== 'undefined'){
+            let filterData = await Info.find({ tag: { $in:  filters }, mrt: { $in:  mrtFilter }, name: { $regex: ".*" + nameFilter + ".*"}, line: { $in: lineStr } })
+                res.status(200).send({ message: 'success', contents: filterData })
+            }
+            // mrtFilter
+            else if(typeof(filters) === 'undefined' && typeof(mrtFilter) !== 'undefined' && typeof(nameFilter) === 'undefined'){
+                let filterData = await Info.find({ mrt: { $in:  mrtFilter }, line: { $in: lineStr } })
+                res.status(200).send({ message: 'success', contents: filterData })
+            }
+            // nameFilter 
+            else if(typeof(filters) === 'undefined' && typeof(mrtFilter) === 'undefined' && typeof(nameFilter) !== 'undefined'){
+                let filterData = await Info.find({ name: { $regex: ".*" + nameFilter + ".*"}, line: { $in: lineStr } })
+                res.status(200).send({ message: 'success', contents: filterData })
+            }
+            // nameFilter + mrtFilter
+            else if(typeof(filters) === 'undefined' && typeof(mrtFilter) !== 'undefined' && typeof(nameFilter) !== 'undefined'){
+                let filterData = await Info.find({ name: { $regex: ".*" + nameFilter + ".*"}, mrt: { $in:  mrtFilter }, line: { $in: lineStr } })
+                res.status(200).send({ message: 'success', contents: filterData })
+            }
+            // only lineFilter
+            else { 
+                let resData = await Info.find({ line: { $in:  lineStr } })
+                res.status(200).send({ message: 'success', contents: resData }) 
             }
         }
         else {
-            if (typeof(filters) !== 'undefined' && typeof(mrtFilter) !== 'undefined'){
-                if(sortRating){
-                    let filterData = await Info.find({ tag: { $in:  filters }, mrt: { $in:  mrtFilter } }).sort({rating: -1})
-                    // console.log(filterData)
-                    res.status(200).send({ message: 'success', contents: filterData })
-                }else{
-                    let filterData = await Info.find({ tag: { $in:  filters }, mrt: { $in:  mrtFilter } })
-                    // console.log(filterData)
-                    res.status(200).send({ message: 'success', contents: filterData })
-                }
-            }else if(typeof(filters) == 'undefined' && typeof(mrtFilter) !== 'undefined'){
-                if(sortRating){
-                    let filterData = await Info.find({mrt: { $in:  mrtFilter } }).sort({rating: -1})
-                    // console.log(filterData)
-                    res.status(200).send({ message: 'success', contents: filterData })
-                }else{
-                    let filterData = await Info.find({mrt: { $in:  mrtFilter } })
-                    // console.log(filterData)
-                    res.status(200).send({ message: 'success', contents: filterData })
-                }
-            }else if(typeof(filters) !== 'undefined' && typeof(mrtFilter) == 'undefined'){
-                if(sortRating){
-                    let filterData = await Info.find({tag: { $in:  filters } }).sort({rating: -1})
-                    // console.log(filterData)
-                    res.status(200).send({ message: 'success', contents: filterData })
-                }else{
-                    let filterData = await Info.find({tag: { $in:  filters } })
-                    // console.log(filterData)
-                    res.status(200).send({ message: 'success', contents: filterData })
-                }
-            }else { // return all restaurants if no filters
-                if(sortRating){
-                    let resData = await Info.find().sort({rating: -1})
-                    // console.log(resData)
-                    res.status(200).send({ message: 'success', contents: resData }) 
-                }else{
-                    let resData = await Info.find()
-                    // console.log(resData)
-                    res.status(200).send({ message: 'success', contents: resData }) 
-                }  
+            // filters
+            if (typeof(filters) !== 'undefined' && typeof(mrtFilter) === 'undefined' && typeof(nameFilter) === 'undefined'){
+                let filterData = await Info.find({ tag: { $in:  filters } })
+                res.status(200).send({ message: 'success', contents: filterData })
+            }
+            // filters + nameFilter
+            else if(typeof(filters) !== 'undefined' && typeof(mrtFilter) === 'undefined' && typeof(nameFilter) !== 'undefined'){
+                let filterData = await Info.find({ tag: { $in:  filters }, name: { $regex: ".*" + nameFilter + ".*"} })
+                res.status(200).send({ message: 'success', contents: filterData })
+            }
+            // filters + mrtFilter 
+            else if(typeof(filters) !== 'undefined' && typeof(mrtFilter) !== 'undefined' && typeof(nameFilter) === 'undefined'){
+                let filterData = await Info.find({ tag: { $in:  filters }, mrt: { $regex: ".*" + nameFilter + ".*" } })
+                res.status(200).send({ message: 'success', contents: filterData })
+            }
+            // filters + nameFilter + mrtFilter
+            else if(typeof(filters) !== 'undefined' && typeof(mrtFilter) !== 'undefined' && typeof(nameFilter) !== 'undefined'){
+                let filterData = await Info.find({ tag: { $in:  filters }, mrt: { $in:  mrtFilter }, name: { $regex: ".*" + nameFilter + ".*"} })
+                res.status(200).send({ message: 'success', contents: filterData })
+            }
+            // mrtFilter
+            else if(typeof(filters) === 'undefined' && typeof(mrtFilter) !== 'undefined' && typeof(nameFilter) === 'undefined'){
+                let filterData = await Info.find({ mrt: { $in:  mrtFilter } })
+                res.status(200).send({ message: 'success', contents: filterData })
+            }
+            // nameFilter 
+            else if(typeof(filters) === 'undefined' && typeof(mrtFilter) === 'undefined' && typeof(nameFilter) !== 'undefined'){
+                let filterData = await Info.find({ name: { $regex: ".*" + nameFilter + ".*"} })
+                res.status(200).send({ message: 'success', contents: filterData })
+            }
+            // nameFilter + mrtFilter
+            else if(typeof(filters) === 'undefined' && typeof(mrtFilter) !== 'undefined' && typeof(nameFilter) !== 'undefined'){
+                let filterData = await Info.find({ name: { $regex: ".*" + nameFilter + ".*"}, mrt: { $in:  mrtFilter } })
+                res.status(200).send({ message: 'success', contents: filterData })
+            }
+            // NO filter
+            else { 
+                let resData = await Info.find()
+                res.status(200).send({ message: 'success', contents: resData }) 
             }
     }
     } catch(err){
@@ -116,18 +117,7 @@ exports.GetInfo = async (req, res) => {
     /*******    NOTE: DO NOT MODIFY   *******/
     const id = req.query.id
     /****************************************/
-
-    // NOTE USE THE FOLLOWING FORMAT. Send type should be 
-    // if success:
-    // {
-    //    message: 'success'
-    //    contents: the data to be sent. Hint: A dictionary of the restaruant's information.
-    // }
-    // else:
-    // {
-    //    message: 'error'
-    //    contents: []
-    // }
+    
     try{
         const resData = await Info.find({id:id})
         res.status(200).send({ message: 'success', contents: resData }) 
