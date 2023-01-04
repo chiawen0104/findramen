@@ -90,7 +90,7 @@ const SearchPage = () => {
 
     useEffect(() => {
         getRestaurant()
-    }, [state.lineFilter, state.filters])
+    }, [state?.lineFilter, state?.filters])
 
     const navigate = useNavigate();
     const ToRestaurant = (id) => {
@@ -135,26 +135,3 @@ const SearchPage = () => {
 }
 
 export default SearchPage
-
-
-/*
-{  
-                restaurants?.contents?.map(({id, img, name, distance, tag}) => (
-                    <>
-                        <div className='resBlock' id={id} key={id} onClick = {(e)=>{ToRestaurant(e.currentTarget.id)}}>
-                            <div className='resImgContainer'><img className='resImg' src={img}></img></div>
-                            <div className='resInfo'>
-                                <div className='title'>
-                                    <p className='name'>{name}</p>
-                                    <p className='distance'>{distance}</p>
-                                </div>
-                                <br />
-                                {tag.map((tag, id)=>(<Tag color={color[id%5]}>{tag}</Tag>))}
-                                
-                            </div>
-                        </div>
-                    </>
-                ))
-        }
-
-*/
