@@ -630,7 +630,7 @@ const Map = () => {
         });
         
         for(let i = 0; i < thisLine.length; i++){
-            if (thisLine[i].style.display == 'none'){
+            if (thisLine[i].style.display === 'none'){
                 thisLine[i].style.display = 'block';
             } else{
                 thisLine[i].style.display = 'none';

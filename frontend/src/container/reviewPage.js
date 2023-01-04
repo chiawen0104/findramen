@@ -7,7 +7,7 @@ import Review from './review';
 const ReviewContainer = styled.div`
 margin-left: 3em;
 margin-top: 3em;
-width: 75%;
+width: 80%;
 height:100%;
 padding: 0.5em;
 border-color: brown;
@@ -38,6 +38,11 @@ overflow:auto;
 .text{
     margin:3em;
     display:block;
+    text-align: start;
+    word-break: break-all;
+    word-spacing: 6px;
+    white-space: pre-wrap;
+    user-select: text;
 }
 `
 

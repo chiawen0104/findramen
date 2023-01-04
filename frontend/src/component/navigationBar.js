@@ -2,9 +2,8 @@ import React from 'react'
 import { useState } from "react";
 import { SearchOutlined } from '@ant-design/icons';
 import Filter from './searchTag';
-import { MdTune, MdOutlineKeyboardArrowDown, MdOutlineKeyboardArrowUp } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
-import { Button, Input, Divider, Tag } from 'antd';
+import { Button, Divider, Tag } from 'antd';
 
 const NavBar = () => {
 

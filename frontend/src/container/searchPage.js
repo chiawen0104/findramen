@@ -103,7 +103,7 @@ const SearchPage = () => {
               <LeftImg src='https://i.ibb.co/Sr2G61x/top-Left-Logo.png'></LeftImg>
               <NavBar></NavBar>
             </LeftSide>
-            {/* <SearchPage></SearchPage> */}
+            {/*<SearchPage></SearchPage>*/}
             <RightSide>
             {  
                 restaurants?.contents?.map(({id, img, name, line, mrt, distance, walktime, tag}) => (

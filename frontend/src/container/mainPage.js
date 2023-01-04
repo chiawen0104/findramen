@@ -62,7 +62,7 @@ const mainPage = () => {
               <LeftImg src='https://i.ibb.co/Sr2G61x/top-Left-Logo.png'></LeftImg>
               <NavBar></NavBar>
             </LeftSide>
-            {/* <SearchPage></SearchPage> */}
+            {/*<SearchPage></SearchPage>*/}
         </Background>
         </Wrapper>
     )
