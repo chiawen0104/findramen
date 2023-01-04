@@ -79,6 +79,8 @@ const SearchPage = () => {
     const { state } = useLocation();
     const { id } = useParams();
     const [restaurants, setRestaurant] = useState([])
+    const [mrtFilter, setmrtFilter] = useState([])
+    const [lineFilter, setLineFilter] = useState([])
 
     const getRestaurant = async () => {
         const restaurants = await instance.get('/getSearch', {params:state})
@@ -98,10 +100,10 @@ const SearchPage = () => {
     return(
         <Wrapper>
         <Background>
-            <Map></Map>
+            <Map lineFilter={lineFilter} setLineFilter={setLineFilter}mrtFilter={mrtFilter} setmrtFilter={setmrtFilter}></Map>
             <LeftSide>
               <LeftImg src='https://i.ibb.co/Sr2G61x/top-Left-Logo.png'></LeftImg>
-              <NavBar></NavBar>
+              <NavBar lineFilter={lineFilter} setLineFilter={setLineFilter} mrtFilter={mrtFilter}setmrtFilter={setmrtFilter}></NavBar>
             </LeftSide>
             {/* <SearchPage></SearchPage> */}
             <RightSide>

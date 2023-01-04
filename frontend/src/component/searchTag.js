@@ -48,7 +48,6 @@ const Filter = ({ typeFilter, setTypeFilter, styleFilter, setStyleFilter, flavor
     }
 
     const modifyFilter = (key, filter) => {
-        // change filter state on clicking the pertaining checkboxes
         let exist = false;
 
         for(let i = 0; i < filter.length; i++){

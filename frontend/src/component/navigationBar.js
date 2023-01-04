@@ -1,12 +1,11 @@
 import React from 'react'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SearchOutlined } from '@ant-design/icons';
 import Filter from './searchTag';
-import { MdTune, MdOutlineKeyboardArrowDown, MdOutlineKeyboardArrowUp } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
 import { Button, Input, Divider, Tag } from 'antd';
 
-const NavBar = () => {
+const NavBar = ({lineFilter, setLineFilter, mrtFilter, setmrtFilter}) => {
 
     const [typeFilter, setTypeFilter] = useState([])
     const [styleFilter, setStyleFilter] = useState([])
@@ -22,14 +21,12 @@ const NavBar = () => {
     // Blank all
 
     const navigate = useNavigate();
-
     
     const navigateToSearch = () => {
-        // TODO Part I-1: navigation to search page
-        // See README for hint
-        // FIXME - Modify below
-        navigate('/search', {
+        navigate('/', {
             state: {
+                lineFilter: lineFilter,
+                mrtFilter: mrtFilter,
                 typeFilter: typeFilter,
                 styleFilter: styleFilter,
                 flavorFilter: flavorFilter,
@@ -40,7 +37,6 @@ const NavBar = () => {
             }
         }
         );
-
     };
 
     const clearTags = () => {
@@ -56,6 +52,9 @@ const NavBar = () => {
         setSideFilter([])
         setFilters([])
         setDisplay([])
+        setmrtFilter([])
+
+
     }
 
     const color = ['geekblue', 'purple', 'green', 'volcano', 'gold']
@@ -63,6 +62,8 @@ const NavBar = () => {
     // console.log(filters);
 
     //const { Search } = Input;
+
+
 
     return (
         <div style={{
@@ -83,7 +84,7 @@ const NavBar = () => {
             <Divider orientation="left">Selected Filters</Divider>
             {filters.length !== 0 ? filters.map((tag, id) => (<Tag key={id} color={color[id%5]}>{tag}</Tag>)): <p>無篩選</p>}
             <Divider orientation="left">Selected Metros</Divider>
-            {filters.length !== 0 ? filters.map((tag, id) => (<Tag key={id} color={color[id%5]}>{tag}</Tag>)): <p>無篩選</p>}
+            {mrtFilter.length !== 0 ? mrtFilter.map((tag, id) => (<Tag key={id} color={color[id%5]}>{tag}</Tag>)): <p>無篩選</p>}
             <Divider orientation="left"></Divider>
             <Button type="default" style={{ width: 180, height: 30,}} onClick={clearTags} >
                 All Clear

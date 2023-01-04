@@ -15,30 +15,44 @@ exports.GetSearch = async (req, res) => {
     /*******    NOTE: DO NOT MODIFY   *******/
     const filters = req.query.filters
     const lineFilter = req.query.lineFilter
+    const mrtFilter = req.query.mrtFilter
     /****************************************/
+    console.log(req.query)
 
     try{
         if (typeof(lineFilter) !== 'undefined'){
-            const lineStr = lineFilter.slice(0,-9)
-
-            if (typeof(filters) !== 'undefined'){
-                let filterData = await Info.find({ tag: { $in:  filters }, line: lineStr })
+            const lineStr = lineFilter.map(e => e.slice(0,-9))
+            if (typeof(filters) !== 'undefined' && typeof(mrtFilter) == 'undefined'){
+                let filterData = await Info.find({ tag: { $in:  filters }, line: { $in:  lineStr } })
+                res.status(200).send({ message: 'success', contents: filterData })
+            }else if(typeof(filters) !== 'undefined' && typeof(mrtFilter) !== 'undefined'){
+                let filterData = await Info.find({ tag: { $in:  filters }, mrt: { $in:  mrtFilter } })
+                // console.log(filterData)
+                res.status(200).send({ message: 'success', contents: filterData })
+            }else if(typeof(filters) == 'undefined' && typeof(mrtFilter) !== 'undefined'){
+                let filterData = await Info.find({ mrt: { $in:  mrtFilter } })
                 // console.log(filterData)
                 res.status(200).send({ message: 'success', contents: filterData })
             }
             else { // return all restaurants if no filters
-                let resData = await Info.find({ line: lineStr })
-                // console.log(resData)
+                let resData = await Info.find({ line: { $in:  lineStr } })
                 res.status(200).send({ message: 'success', contents: resData }) 
             }
         }
         else {
-            if (typeof(filters) !== 'undefined'){
-                let filterData = await Info.find({ tag: { $in:  filters } })
+            if (typeof(filters) !== 'undefined' && typeof(mrtFilter) !== 'undefined'){
+                let filterData = await Info.find({ tag: { $in:  filters }, mrt: { $in:  mrtFilter } })
                 // console.log(filterData)
                 res.status(200).send({ message: 'success', contents: filterData })
-            }
-            else { // return all restaurants if no filters
+            }else if(typeof(filters) == 'undefined' && typeof(mrtFilter) !== 'undefined'){
+                let filterData = await Info.find({mrt: { $in:  mrtFilter } })
+                // console.log(filterData)
+                res.status(200).send({ message: 'success', contents: filterData })
+            }else if(typeof(filters) !== 'undefined' && typeof(mrtFilter) == 'undefined'){
+                let filterData = await Info.find({tag: { $in:  filters } })
+                // console.log(filterData)
+                res.status(200).send({ message: 'success', contents: filterData })
+            }else { // return all restaurants if no filters
                 let resData = await Info.find()
                 // console.log(resData)
                 res.status(200).send({ message: 'success', contents: resData }) 

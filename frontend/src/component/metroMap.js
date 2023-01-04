@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { MdClosedCaptionDisabled } from 'react-icons/md';
 
 //google fonts
 const MetroRed = styled.div`
@@ -613,60 +614,80 @@ background: #E3002D;
 `
 
 
-const Map = () => {  
-    const [lineFilter, setLineFilter] = useState('')
-
+const Map = ({lineFilter, setLineFilter, mrtFilter, setmrtFilter}) => {  
     const navigate = useNavigate();
 
-    const bottonClick = (classname) => {
+    const modifyFilter = (key, filter) => {
+        let exist = false;
+
+        for(let i = 0; i < filter.length; i++){
+            if(key === filter[i]){
+                filter.splice(i,1);
+                exist = true;
+            }
+        }
+        if(exist == false){
+            filter.push(key)
+        }
+        return filter
+    }
+
+    const lineBottonClick = (classname) => {
         var thisLine = document.getElementsByClassName(classname)
 
-        setLineFilter(classname)
+        
+        setLineFilter(modifyFilter(classname, lineFilter))
 
-        navigate('/search', {
+        navigate('/', {
             state: {
                 lineFilter: lineFilter
             }
         });
         
         for(let i = 0; i < thisLine.length; i++){
-            if (thisLine[i].style.display == 'none'){
-                thisLine[i].style.display = 'block';
-            } else{
+            if (thisLine[i].style.display == 'block'){
                 thisLine[i].style.display = 'none';
+            } else{
+                thisLine[i].style.display = 'block';
             }
         }
     }
+
+    const stationBottonClick = (stationname) => {
+        setmrtFilter(modifyFilter(stationname, mrtFilter))
+        console.log(mrtFilter)
+    }
+
     
     return (
         <Wrapper >
             <ChooseLine>
-                <RedLine onClick={() => bottonClick('redmetroname')}>R</RedLine>
-                <BlueLine onClick={() => bottonClick('bluemetroname')}>BL</BlueLine>
-                <GreenLine onClick={() => bottonClick('greenmetroname')}>G</GreenLine>
-                <OrangeLine onClick={() => bottonClick('orangemetroname')}>O</OrangeLine>
-                <YellowLine onClick={() => bottonClick('yellowmetroname')}>Y</YellowLine>
-                <BrownLine onClick={() => bottonClick('brownmetroname')}>BR</BrownLine>
+                <RedLine onClick={() => lineBottonClick('redmetroname')}>R</RedLine>
+                <BlueLine onClick={() => lineBottonClick('bluemetroname')}>BL</BlueLine>
+                <GreenLine onClick={() => lineBottonClick('greenmetroname')}>G</GreenLine>
+                <OrangeLine onClick={() => lineBottonClick('orangemetroname')}>O</OrangeLine>
+                <YellowLine onClick={() => lineBottonClick('yellowmetroname')}>Y</YellowLine>
+                <BrownLine onClick={() => lineBottonClick('brownmetroname')}>BR</BrownLine>
                 {/* <AirLine></AirLine> */}
             </ChooseLine>
             <MetroRed>
-            <div className='redmetroname' id='tansui'>淡水</div>
-            <div className='redmetroname' id='beitou'>北投</div>
-            <div className='redmetroname' id='shipai'>石牌</div>
-            <div className='redmetroname' id='zishan'>芝山</div>
-            <div className='redmetroname' id='shilin'>士林</div>
-            <div className='redmetroname' id='minchuang'>民權西路</div>
-            <div className='redmetroname' id='shuanlian'>雙連</div>
-            <div className='redmetroname' id='chongshan'>中山</div>
-            <div className='redmetroname' id='beiche'>台北車站</div>
-            <div className='redmetroname' id='ntuhos'>台大醫</div>
-            <div className='redmetroname' id='chongchen'>中正紀念堂</div>
-            <div className='redmetroname' id='eastdoor'>東門</div>
-            <div className='redmetroname' id='daanshen'>安森</div>
-            <div className='redmetroname' id='daan'>大安</div>
-            <div className='redmetroname' id='shinyi'>信義安和</div>
-            <div className='redmetroname' id='onezeroone'>台北101/<br/>市貿</div>
-            <div className='redmetroname' id='elephant'>象山</div>
+            <div className='redmetroname' id='tansui' onClick={(e) => stationBottonClick(e.target.textContent)}>淡水</div>
+            <div className='redmetroname' id='beitou'onClick={(e) => stationBottonClick(e.target.textContent)}>北投</div>
+            <div className='redmetroname' id='shipai'onClick={(e) => stationBottonClick(e.target.textContent)}>石牌</div>
+            <div className='redmetroname' id='zishan'onClick={(e) => stationBottonClick(e.target.textContent)}>芝山</div>
+            <div className='redmetroname' id='shilin'onClick={(e) => stationBottonClick(e.target.textContent)}>士林</div>
+            <div className='redmetroname' id='minchuang'onClick={(e) => stationBottonClick(e.target.textContent)}>民權西路</div>
+            <div className='redmetroname' id='shuanlian'onClick={(e) => stationBottonClick(e.target.textContent)}>雙連</div>
+            <div className='redmetroname' id='chongshan'onClick={(e) => stationBottonClick(e.target.textContent)}>中山</div>
+            <div className='redmetroname' id='beiche'onClick={(e) => stationBottonClick(e.target.textContent)}>台北車站</div>
+            <div className='redmetroname' id='ntuhos'onClick={(e) => stationBottonClick('台大醫院')}>台大醫</div>
+            <div className='redmetroname' id='chongchen'onClick={(e) => stationBottonClick(e.target.textContent)}>中正紀念堂</div>
+            <div className='redmetroname' id='eastdoor'onClick={(e) => stationBottonClick(e.target.textContent)}>東門</div>
+            <div className='redmetroname' id='daanshen'onClick={(e) => stationBottonClick('大安森林公園')}>安森</div>
+            <div className='redmetroname' id='daan'onClick={(e) => stationBottonClick(e.target.textContent)}>大安</div>
+            <div className='redmetroname' id='shinyi'onClick={(e) => stationBottonClick(e.target.textContent)}>信義安和</div>
+            <div className='redmetroname' id='onezeroone'onClick={(e) => stationBottonClick('台北101/世貿')}>台北101/<br/>市貿</div>
+            <div className='redmetroname' id='elephant'onClick={(e) => stationBottonClick(e.target.textContent)}>象山</div>
             </MetroRed>
             <MetroBlue>
             {/* <div className='bluemetroname' id='dingpu'>頂埔</div>
@@ -675,80 +696,80 @@ const Map = () => {
             <div className='bluemetroname' id='haishan'>海山</div>
             <div className='bluemetroname' id='fareast'>亞東醫院</div>
             <div className='bluemetroname' id='fuzong'>府中</div> */}
-            <div className='bluemetroname' id='banqiao'>板橋</div>
+            <div className='bluemetroname' id='banqiao'onClick={(e) => stationBottonClick(e.target.textContent)}>板橋</div>
             {/* <div className='bluemetroname' id='xinpu'>新埔</div> */}
-            <div className='bluemetroname' id='jiangzicui'>江子翠</div>
-            <div className='bluemetroname' id='longshan'>龍山寺</div>
-            <div className='bluemetroname' id='ximen'>西門</div>
-            <div className='bluemetroname' id='beiche'>台北車站</div>
-            <div className='bluemetroname' id='shandao'>善導寺</div>
-            <div className='bluemetroname' id='xinsheng'>新生</div>
-            <div className='bluemetroname' id='fuxing'>復興</div>
-            <div className='bluemetroname' id='dunhua'>敦化</div>
-            <div className='bluemetroname' id='memorial'>紀念館</div>
-            <div className='bluemetroname' id='cityhall'>市政府</div>
-            <div className='bluemetroname' id='yongchun'>永春</div>
+            <div className='bluemetroname' id='jiangzicui'onClick={(e) => stationBottonClick(e.target.textContent)}>江子翠</div>
+            <div className='bluemetroname' id='longshan'onClick={(e) => stationBottonClick(e.target.textContent)}>龍山寺</div>
+            <div className='bluemetroname' id='ximen'onClick={(e) => stationBottonClick(e.target.textContent)}>西門</div>
+            <div className='bluemetroname' id='beiche'onClick={(e) => stationBottonClick(e.target.textContent)}>台北車站</div>
+            <div className='bluemetroname' id='shandao'onClick={(e) => stationBottonClick(e.target.textContent)}>善導寺</div>
+            <div className='bluemetroname' id='xinsheng'onClick={(e) => stationBottonClick('忠孝新生')}>新生</div>
+            <div className='bluemetroname' id='fuxing'onClick={(e) => stationBottonClick('忠孝復興')}>復興</div>
+            <div className='bluemetroname' id='dunhua'onClick={(e) => stationBottonClick('忠孝敦化')}>敦化</div>
+            <div className='bluemetroname' id='memorial'onClick={(e) => stationBottonClick('國父紀念館')}>紀念館</div>
+            <div className='bluemetroname' id='cityhall'onClick={(e) => stationBottonClick(e.target.textContent)}>市政府</div>
+            <div className='bluemetroname' id='yongchun'onClick={(e) => stationBottonClick(e.target.textContent)}>永春</div>
             {/* <div className='bluemetroname' id='houshanpi'>後山埤</div>
             <div className='bluemetroname' id='kunyang'>昆陽</div> */}
-            <div className='bluemetroname' id='nangang'>南港</div>
+            <div className='bluemetroname' id='nangang'onClick={(e) => stationBottonClick(e.target.textContent)}>南港</div>
             {/* <div className='bluemetroname' id='exhibition'>展覽館</div> */}
             </MetroBlue>
             <MetroGreen>
-            <div className='greenmetroname' id='smallegg'>台北小巨蛋</div>
-            <div className='greenmetroname' id='nangjingfuxing'>南京復興</div>
-            <div className='greenmetroname' id='songjiannanjing'>松江南京</div>
-            <div className='greenmetroname' id='beimen'>北門</div>
-            <div className='greenmetroname' id='ximen'>西門</div>
-            <div className='greenmetroname' id='guting'>古亭</div>
-            <div className='greenmetroname' id='taidiang'>台電大樓</div>
-            <div className='greenmetroname' id='gongguang'>公館</div>
-            <div className='greenmetroname' id='dapinglin'>大坪林</div>
-            <div className='greenmetroname' id='seven'>七張</div>
-            <div className='greenmetroname' id='shindiang'>新店</div>
+            <div className='greenmetroname' id='smallegg'onClick={(e) => stationBottonClick(e.target.textContent)}>台北小巨蛋</div>
+            <div className='greenmetroname' id='nangjingfuxing'onClick={(e) => stationBottonClick(e.target.textContent)}>南京復興</div>
+            <div className='greenmetroname' id='songjiannanjing'onClick={(e) => stationBottonClick(e.target.textContent)}>松江南京</div>
+            <div className='greenmetroname' id='beimen'onClick={(e) => stationBottonClick(e.target.textContent)}>北門</div>
+            <div className='greenmetroname' id='ximen'onClick={(e) => stationBottonClick(e.target.textContent)}>西門</div>
+            <div className='greenmetroname' id='guting'onClick={(e) => stationBottonClick(e.target.textContent)}>古亭</div>
+            <div className='greenmetroname' id='taidiang'onClick={(e) => stationBottonClick(e.target.textContent)}>台電大樓</div>
+            <div className='greenmetroname' id='gongguang'onClick={(e) => stationBottonClick(e.target.textContent)}>公館</div>
+            <div className='greenmetroname' id='dapinglin'onClick={(e) => stationBottonClick(e.target.textContent)}>大坪林</div>
+            <div className='greenmetroname' id='seven'onClick={(e) => stationBottonClick(e.target.textContent)}>七張</div>
+            <div className='greenmetroname' id='shindiang'onClick={(e) => stationBottonClick(e.target.textContent)}>新店</div>
             </MetroGreen>
             <MetroOrange>
-            <div className='orangemetroname' id='danphone'>丹鳳</div>
-            <div className='orangemetroname' id='fuda'>輔大</div>
-            <div className='orangemetroname' id='shinchuang'>新莊</div>
-            <div className='orangemetroname' id='sanming'>三民高中</div>
-            <div className='orangemetroname' id='shehuei'>徐匯中學</div>
-            <div className='orangemetroname' id='sanchong'>三重國小</div>
-            <div className='orangemetroname' id='bigbridge'>大橋頭</div>
-            <div className='orangemetroname' id='chongshan'>中山國小</div>
-            <div className='orangemetroname' id='songjiannanjing'>松江南京</div>
-            <div className='orangemetroname' id='xinsheng'>新生</div>
-            <div className='orangemetroname' id='dongmen'>東門</div>
-            <div className='orangemetroname' id='guting'>古亭</div>
-            <div className='orangemetroname' id='dingxi'>頂溪</div>
-            <div className='orangemetroname' id='yongan'>永安市場</div>
-            <div className='orangemetroname' id='jingan'>景安</div>
-            <div className='orangemetroname' id='nangshijiao'>南勢角</div>
+            <div className='orangemetroname' id='danphone'onClick={(e) => stationBottonClick(e.target.textContent)}>丹鳳</div>
+            <div className='orangemetroname' id='fuda'onClick={(e) => stationBottonClick(e.target.textContent)}>輔大</div>
+            <div className='orangemetroname' id='shinchuang'onClick={(e) => stationBottonClick(e.target.textContent)}>新莊</div>
+            <div className='orangemetroname' id='sanming'onClick={(e) => stationBottonClick(e.target.textContent)}>三民高中</div>
+            <div className='orangemetroname' id='shehuei'onClick={(e) => stationBottonClick(e.target.textContent)}>徐匯中學</div>
+            <div className='orangemetroname' id='sanchong'onClick={(e) => stationBottonClick(e.target.textContent)}>三重國小</div>
+            <div className='orangemetroname' id='bigbridge'onClick={(e) => stationBottonClick(e.target.textContent)}>大橋頭</div>
+            <div className='orangemetroname' id='chongshan'onClick={(e) => stationBottonClick(e.target.textContent)}>中山國小</div>
+            <div className='orangemetroname' id='songjiannanjing'onClick={(e) => stationBottonClick(e.target.textContent)}>松江南京</div>
+            <div className='orangemetroname' id='xinsheng'onClick={(e) => stationBottonClick(e.target.textContent)}>新生</div>
+            <div className='orangemetroname' id='dongmen'onClick={(e) => stationBottonClick(e.target.textContent)}>東門</div>
+            <div className='orangemetroname' id='guting'onClick={(e) => stationBottonClick(e.target.textContent)}>古亭</div>
+            <div className='orangemetroname' id='dingxi'onClick={(e) => stationBottonClick(e.target.textContent)}>頂溪</div>
+            <div className='orangemetroname' id='yongan'onClick={(e) => stationBottonClick(e.target.textContent)}>永安市場</div>
+            <div className='orangemetroname' id='jingan'onClick={(e) => stationBottonClick(e.target.textContent)}>景安</div>
+            <div className='orangemetroname' id='nangshijiao'onClick={(e) => stationBottonClick(e.target.textContent)}>南勢角</div>
             </MetroOrange>
             <MetroYellow>
-            <div className='yellowmetroname' id='xingfu'>幸福</div>
-            <div className='yellowmetroname' id='xinpuminsheng'>新埔民生</div>
-            <div className='yellowmetroname' id='banqiao'>板橋</div>
-            <div className='yellowmetroname' id='zhonghe'>中和</div>
-            <div className='yellowmetroname' id='jingan'>景安</div>
-            <div className='yellowmetroname' id='xiulangbridge'>秀朗橋</div>
-            <div className='yellowmetroname' id='dapinglin'>大坪林</div>
+            <div className='yellowmetroname' id='xingfu'onClick={(e) => stationBottonClick(e.target.textContent)}>幸福</div>
+            <div className='yellowmetroname' id='xinpuminsheng'onClick={(e) => stationBottonClick(e.target.textContent)}>新埔民生</div>
+            <div className='yellowmetroname' id='banqiao'onClick={(e) => stationBottonClick(e.target.textContent)}>板橋</div>
+            <div className='yellowmetroname' id='zhonghe'onClick={(e) => stationBottonClick(e.target.textContent)}>中和</div>
+            <div className='yellowmetroname' id='jingan'onClick={(e) => stationBottonClick(e.target.textContent)}>景安</div>
+            <div className='yellowmetroname' id='xiulangbridge'onClick={(e) => stationBottonClick(e.target.textContent)}>秀朗橋</div>
+            <div className='yellowmetroname' id='dapinglin'onClick={(e) => stationBottonClick(e.target.textContent)}>大坪林</div>
             </MetroYellow>
             <MetroBrown>
-            <div className='brownmetroname' id='software'>南港軟體園區</div>
-            <div className='brownmetroname' id='donghu'>東湖</div>
-            <div className='brownmetroname' id='huzhou'>葫洲</div>
-            <div className='brownmetroname' id='gangqian'>港墘</div>
-            <div className='brownmetroname' id='xihu'>西湖</div>
-            <div className='brownmetroname' id='jiannan'>劍南路</div>
-            <div className='brownmetroname' id='dazhi'>大直</div>
-            <div className='brownmetroname' id='songshanairport'>松山機場</div>
-            <div className='brownmetroname' id='zhongshanjunior'>中山國中</div>
-            <div className='brownmetroname' id='nangjingfuxing'>南京復興</div>
-            <div className='brownmetroname' id='zhongxiaofuxing'>復興</div>
-            <div className='brownmetroname' id='daan'>大安</div>
-            <div className='brownmetroname' id='techbuilding'>科技大樓</div>
-            <div className='brownmetroname' id='liuzhangli'>六張犁</div>
-            <div className='brownmetroname' id='xinhai'>辛亥</div>
+            <div className='brownmetroname' id='software'onClick={(e) => stationBottonClick(e.target.textContent)}>南港軟體園區</div>
+            <div className='brownmetroname' id='donghu'onClick={(e) => stationBottonClick(e.target.textContent)}>東湖</div>
+            <div className='brownmetroname' id='huzhou'onClick={(e) => stationBottonClick(e.target.textContent)}>葫洲</div>
+            <div className='brownmetroname' id='gangqian'onClick={(e) => stationBottonClick(e.target.textContent)}>港墘</div>
+            <div className='brownmetroname' id='xihu'onClick={(e) => stationBottonClick(e.target.textContent)}>西湖</div>
+            <div className='brownmetroname' id='jiannan'onClick={(e) => stationBottonClick(e.target.textContent)}>劍南路</div>
+            <div className='brownmetroname' id='dazhi'onClick={(e) => stationBottonClick(e.target.textContent)}>大直</div>
+            <div className='brownmetroname' id='songshanairport'onClick={(e) => stationBottonClick(e.target.textContent)}>松山機場</div>
+            <div className='brownmetroname' id='zhongshanjunior'onClick={(e) => stationBottonClick(e.target.textContent)}>中山國中</div>
+            <div className='brownmetroname' id='nangjingfuxing'onClick={(e) => stationBottonClick(e.target.textContent)}>南京復興</div>
+            <div className='brownmetroname' id='zhongxiaofuxing'onClick={(e) => stationBottonClick(e.target.textContent)}>復興</div>
+            <div className='brownmetroname' id='daan'onClick={(e) => stationBottonClick(e.target.textContent)}>大安</div>
+            <div className='brownmetroname' id='techbuilding'onClick={(e) => stationBottonClick(e.target.textContent)}>科技大樓</div>
+            <div className='brownmetroname' id='liuzhangli'onClick={(e) => stationBottonClick(e.target.textContent)}>六張犁</div>
+            <div className='brownmetroname' id='xinhai'onClick={(e) => stationBottonClick(e.target.textContent)}>辛亥</div>
             </MetroBrown>
         </Wrapper>
     )

@@ -141,17 +141,12 @@ const RestaurantPage = () => {
     }, [id])
 
     const navigate = useNavigate();
-    const ToFindRamen = () => {
-        navigate("/")
-    }
-
-    
 
     
         
     return (
         <Wrapper>
-        <div className='backtofind' onClick={() => {ToFindRamen()}}>🍥</div>
+        <div className='backtofind' onClick={() => {navigate(-1)}}>🍥</div>
         {Object.keys(info).length === 0 ? 
             <></> 
             : 
