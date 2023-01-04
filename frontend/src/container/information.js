@@ -1,9 +1,10 @@
 import React from 'react'
 import Stars from '../component/stars';
 import { Divider, Tag } from 'antd';
+import { PhoneFilled, EnvironmentFilled, GlobalOutlined } from '@ant-design/icons';
 
 
-const Information = ({name, rating, mrt, distance, walktime, tag, time, img, site}) => {
+const Information = ({name, rating, mrt, distance, walktime, phone, address, tag, time, img, site}) => {
 
     const getBusiness = (time) => {
         return (
@@ -12,32 +13,32 @@ const Information = ({name, rating, mrt, distance, walktime, tag, time, img, sit
                     Object.keys(time).includes('All') ? 
                     (<>
                         <div className='singleDay'>
-                            <div className='time'><span>Mon </span>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>
+                            <div className='time' style={{wordSpacing: '10px'}}><span>Mon </span>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>
                         </div>
                         <div className='singleDay'>
-                            <div className='time'><span>Tue </span>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>
+                            <div className='time' style={{wordSpacing: '10px'}}><span>Tue </span>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>
                         </div>
                         <div className='singleDay'>
-                            <div className='time'><span>Wed </span>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>
+                            <div className='time' style={{wordSpacing: '10px'}}><span>Wed </span>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>
                         </div>
                         <div className='singleDay'>
-                            <div className='time'><span>Thu </span>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>                        
+                            <div className='time' style={{wordSpacing: '10px'}}><span>Thu </span>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>                        
                         </div>
                         <div className='singleDay'>
-                            <div className='time'><span>Fri </span>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>                       
+                            <div className='time' style={{wordSpacing: '10px'}}><span>Fri </span>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>                       
                         </div>
                         <div className='singleDay'>
-                            <div className='time'><span>Sat </span>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>                        
+                            <div className='time' style={{wordSpacing: '10px'}}><span>Sat </span>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>                        
                         </div>
                         <div className='singleDay'>
-                            <div className='time'><span>Sun </span>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>                        
+                            <div className='time' style={{wordSpacing: '10px'}}><span>Sun </span>{Object.values(time)[Object.keys(time).indexOf('All')]}</div>                        
                         </div>
                     </>): 
                     (<>
-                        <div className='singleDay' >
+                        <div className='singleDay'>
                         {Object.keys(time).includes('Mon')? <div className='time' style={{wordSpacing: '10px'}}><span style={{color: 'darkgreen'}}>Mon </span>{Object.values(time)[Object.keys(time).indexOf('Mon')]}</div>:<div className='time' style={{wordSpacing: '10px'}}><span style={{color: 'red'}}>Mon </span>Closed</div>}
                         </div>
-                        <div className='singleDay' style={{whiteSpace: 'pre-wrap'}}>
+                        <div className='singleDay'>
                         {Object.keys(time).includes('Tue')? <div className='time' style={{wordSpacing: '10px'}}><span style={{color: 'darkgreen'}}>Tue </span>{Object.values(time)[Object.keys(time).indexOf('Tue')]}</div>:<div className='time' style={{wordSpacing: '10px'}}><span style={{color: 'red'}}>Tue </span>Closed</div>}
                         </div>
                         <div className='singleDay'>
@@ -65,7 +66,7 @@ const Information = ({name, rating, mrt, distance, walktime, tag, time, img, sit
 
     return (
         <div className='infoContainer'>
-            <div className='resImgContainer'><img className='resImg' src={img} style={{height: 300}}></img></div>
+            <div className='resImgContainer'><img className='resImg' src={img} style={{height: 250}}></img></div>
             <h2>{name}</h2>
             <div className='infoRow'>
                 <div className='rate'>
@@ -73,6 +74,8 @@ const Information = ({name, rating, mrt, distance, walktime, tag, time, img, sit
                 </div>
                 <br />
                 <div className='distance'>{"離"+mrt+"站"+distance+", 走路約 "+walktime}</div>
+                <div className='phone'><PhoneFilled /> {phone}</div>
+                <div className='address'><EnvironmentFilled /> {address}</div>
             </div>
             <div className='infoRow'>
                 <br />
@@ -81,7 +84,7 @@ const Information = ({name, rating, mrt, distance, walktime, tag, time, img, sit
             <h3>營業時間:</h3>
             <h4 className='businesstime'>{getBusiness(time)}</h4>
             
-            <h5>官方網站：<a href={site} target="_blank">🍜🍜🍜🍜🍜</a></h5>
+            <h5><GlobalOutlined /> 官網： <a href={site} target="_blank"> 🍜🍜🍜🍜🍜</a></h5>
         </div>
     )
 }

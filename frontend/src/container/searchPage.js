@@ -119,7 +119,7 @@ const SearchPage = () => {
                                 description={(
                                     <>
                                         <p style={{fontSize: 14}}>{"離"+mrt+"站"+distance+", 走路約"+walktime}</p>
-                                        <Rate disabled defaultValue={rating}/>
+                                        <Rate disabled allowHalf defaultValue={rating}/>
                                         <br />
                                         <br />
                                         {tag.map((tag, id)=>(<Tag color={color[id%5]}>{tag}</Tag>))}

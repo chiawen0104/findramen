@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { SearchOutlined, DeleteOutlined, TagsOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import Filter from './searchTag';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Button, Divider, Tag } from 'antd';
+import { Button, Divider, Tag, Switch } from 'antd';
 
 const NavBar = ({lineFilter, mrtFilter, setmrtFilter}) => {
     const [typeFilter, setTypeFilter] = useState([])
@@ -13,6 +13,8 @@ const NavBar = ({lineFilter, mrtFilter, setmrtFilter}) => {
     const [ingredientFilter, setIngredientFilter] = useState([])
     const [sideFilter, setSideFilter] = useState([])
     const [filters, setFilters] = useState([])
+    const [isHighRating, setIsHighRating] = useState(false)
+
 
     const [display, setDisplay] = useState("")
     //const options = ["price", "distance"];
@@ -32,7 +34,8 @@ const NavBar = ({lineFilter, mrtFilter, setmrtFilter}) => {
                 noodleFilter: noodleFilter,
                 ingredientFilter: ingredientFilter,
                 sideFilter: sideFilter,
-                filters: filters
+                filters: filters,
+                sortRating: isHighRating
             }
         }
         );
@@ -54,6 +57,18 @@ const NavBar = ({lineFilter, mrtFilter, setmrtFilter}) => {
         setmrtFilter([])
 
 
+    }
+
+    const highRatingFirst = (checked) => {
+        if(checked){
+            isHighRating = true
+            setIsHighRating(isHighRating)
+        }
+        else{
+            isHighRating = false
+            setIsHighRating(isHighRating)
+        }
+        
     }
 
     const color = ['geekblue', 'purple', 'green', 'volcano', 'gold']
@@ -85,12 +100,15 @@ const NavBar = ({lineFilter, mrtFilter, setmrtFilter}) => {
             <Divider orientation="left" style={{ width: 180, height: 50, fontSize: 16, fontStyle:'oblique', color:'gray'}}><EnvironmentOutlined /> Selected Metros</Divider>
             {mrtFilter.length !== 0 ? mrtFilter.map((tag, id) => (<Tag key={id} color={color[id%5]}>{tag}</Tag>)): <p>無篩選</p>}
             <Divider orientation="left"></Divider>
-            <Button type="default" icon={<DeleteOutlined />} style={{ width: 180, height: 50, fontSize: 16}} onClick={clearTags} >
+            <Button type="default" icon={<DeleteOutlined />} style={{ width: 180, height: 40, fontSize: 16}} onClick={clearTags} >
                 Clear
             </Button>
             <br />
             <br />
-            <Button type="primary" icon={<SearchOutlined />} style={{ width: 180, height: 50, fontSize: 16}} onClick={navigateToSearch} >
+            <Switch defaultChecked checkedChildren="高分優先" unCheckedChildren="不論評分" onChange={highRatingFirst} />  
+            <br />
+            <br />
+            <Button type="primary" icon={<SearchOutlined />} style={{ width: 180, height: 40, fontSize: 16}} onClick={navigateToSearch} >
                 Search
             </Button>
         </div>

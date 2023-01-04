@@ -157,6 +157,8 @@ const RestaurantPage = () => {
                         mrt={info?.contents[0]?.mrt}
                         distance={info?.contents[0]?.distance}
                         walktime={info?.contents[0]?.walktime}
+                        phone={info?.contents[0]?.phone}
+                        address={info?.contents[0]?.address}
                         tag={info?.contents[0]?.tag}
                         time={info?.contents[0]?.time}
                         img={info?.contents[0]?.img}
