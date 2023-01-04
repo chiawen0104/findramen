@@ -52,7 +52,7 @@ width: 100%;
 }
 
 .text{
-    width:50%;
+    width:90%;
     height:4em;;
     overflow:hidden;
 }
@@ -96,25 +96,3 @@ const Review = ({setPostId, posts,openReview, SetOpenReview}) => {
     )
 }
 export default Review
-
-/*
-<CommentContainer>
-            <div className='reviews'>
-            {  
-                posts.length == 0 ? <h1 align="center">沒有食記</h1>:
-                posts?.map(({writer,time, content, _id}) => (
-
-                    <div className='review' id={_id} key={_id} onClick={(e) => {setOpen(e.currentTarget.id)}}>
-                    <div className='info'>
-                        <h4 className='name'> {writer} </h4>
-                        <hr width="50%" align="left"></hr>
-                        <div className='text'>{content}</div>
-                        <h3 className='watchmore'align="left" >...查看更多</h3>
-                    </div>
-                    </div>
-                ))
-            }
-
-            </div>
-        </CommentContainer>
-        */

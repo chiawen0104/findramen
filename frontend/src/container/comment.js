@@ -35,10 +35,18 @@ const Comment = (comments) => {
         border-radius: 1em;
         border-style: solid;
     }
+    .comment .title .info .pic {
+        object-position: right top;
+        vertical-align: top;
+    }
     
+
     .content {
         margin-top: 0.5em;
         text-align: left;
+        word-break: keep-all;
+        word-spacing: 4px;
+        white-space: break-spaces;
     }
 
     `
@@ -54,7 +62,7 @@ const Comment = (comments) => {
                         <div className='title'>
                             <div className='info'>
                                 <h4 className='name'> {author} </h4>
-                                <div className='pic'><img src={imgurl}></img></div>
+                                {imgurl? <div className='pic'><img height="150" src={imgurl}></img></div>: <></>}
                                 <Stars rating={rating} />
                             </div>
                         </div>
