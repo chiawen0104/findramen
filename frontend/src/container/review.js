@@ -60,7 +60,6 @@ width: 100%;
 
 const Review = ({setPostId, posts,openReview, SetOpenReview}) => {
 
-    const rating = 4.5;
     
     const setOpen = (e) =>{
 

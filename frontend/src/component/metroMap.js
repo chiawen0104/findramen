@@ -655,7 +655,11 @@ const Map = ({lineFilter, setLineFilter, mrtFilter, setmrtFilter}) => {
 
     const stationBottonClick = (stationname) => {
         setmrtFilter(modifyFilter(stationname, mrtFilter))
-        console.log(mrtFilter)
+        navigate('/', {
+            state: {
+                mrtFilter: mrtFilter
+            }
+        });
     }
 
     

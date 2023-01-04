@@ -92,7 +92,8 @@ const SearchPage = () => {
     
     useEffect(() => {
         getRestaurant()
-    }, [state.lineFilter, state.filters])
+        console.log(mrtFilter);
+    }, [state?.lineFilter, state?.filters, state?.mrtFilter])
 
     const navigate = useNavigate();
     const ToRestaurant = (id) => {
@@ -102,12 +103,11 @@ const SearchPage = () => {
     return(
         <Wrapper>
         <Background>
-            <Map lineFilter={lineFilter} setLineFilter={setLineFilter}mrtFilter={mrtFilter} setmrtFilter={setmrtFilter}></Map>
+            <Map lineFilter={lineFilter} setLineFilter={setLineFilter} mrtFilter={mrtFilter} setmrtFilter={setmrtFilter}></Map>
             <LeftSide>
               <LeftImg src='https://i.ibb.co/Sr2G61x/top-Left-Logo.png'></LeftImg>
-              <NavBar lineFilter={lineFilter} setLineFilter={setLineFilter} mrtFilter={mrtFilter}setmrtFilter={setmrtFilter}></NavBar>
+              <NavBar lineFilter={lineFilter} mrtFilter={mrtFilter}setmrtFilter={setmrtFilter}></NavBar>
             </LeftSide>
-            {/*<SearchPage></SearchPage>*/}
             <RightSide>
             {  
                 restaurants?.contents?.map(({id, img, name, line, mrt, distance, walktime, tag, rating}) => (
@@ -139,26 +139,3 @@ const SearchPage = () => {
 }
 
 export default SearchPage
-
-
-/*
-{  
-                restaurants?.contents?.map(({id, img, name, distance, tag}) => (
-                    <>
-                        <div className='resBlock' id={id} key={id} onClick = {(e)=>{ToRestaurant(e.currentTarget.id)}}>
-                            <div className='resImgContainer'><img className='resImg' src={img}></img></div>
-                            <div className='resInfo'>
-                                <div className='title'>
-                                    <p className='name'>{name}</p>
-                                    <p className='distance'>{distance}</p>
-                                </div>
-                                <br />
-                                {tag.map((tag, id)=>(<Tag color={color[id%5]}>{tag}</Tag>))}
-                                
-                            </div>
-                        </div>
-                    </>
-                ))
-        }
-
-*/

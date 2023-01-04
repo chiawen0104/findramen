@@ -2,11 +2,10 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import { SearchOutlined, DeleteOutlined, TagsOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import Filter from './searchTag';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Button, Divider, Tag } from 'antd';
 
-const NavBar = ({lineFilter, setLineFilter, mrtFilter, setmrtFilter}) => {
-
+const NavBar = ({lineFilter, mrtFilter, setmrtFilter}) => {
     const [typeFilter, setTypeFilter] = useState([])
     const [styleFilter, setStyleFilter] = useState([])
     const [flavorFilter, setFlavorFilter] = useState([])
