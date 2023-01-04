@@ -90,7 +90,8 @@ const SearchPage = () => {
 
     useEffect(() => {
         getRestaurant()
-    }, [state?.lineFilter, state?.filters])
+        console.log(mrtFilter);
+    }, [state?.lineFilter, state?.filters, state?.mrtFilter])
 
     const navigate = useNavigate();
     const ToRestaurant = (id) => {
@@ -100,12 +101,11 @@ const SearchPage = () => {
     return(
         <Wrapper>
         <Background>
-            <Map lineFilter={lineFilter} setLineFilter={setLineFilter}mrtFilter={mrtFilter} setmrtFilter={setmrtFilter}></Map>
+            <Map lineFilter={lineFilter} setLineFilter={setLineFilter} mrtFilter={mrtFilter} setmrtFilter={setmrtFilter}></Map>
             <LeftSide>
               <LeftImg src='https://i.ibb.co/Sr2G61x/top-Left-Logo.png'></LeftImg>
-              <NavBar lineFilter={lineFilter} setLineFilter={setLineFilter} mrtFilter={mrtFilter}setmrtFilter={setmrtFilter}></NavBar>
+              <NavBar lineFilter={lineFilter} mrtFilter={mrtFilter}setmrtFilter={setmrtFilter}></NavBar>
             </LeftSide>
-            {/*<SearchPage></SearchPage>*/}
             <RightSide>
             {  
                 restaurants?.contents?.map(({id, img, name, line, mrt, distance, walktime, tag}) => (
