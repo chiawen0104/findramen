@@ -95,17 +95,17 @@ const NavBar = ({lineFilter, mrtFilter, setmrtFilter}) => {
                     filters={filters} setFilters={setFilters}
                     setDisplay={setDisplay} />
             </div>
-            <Divider orientation="left" style={{ width: 180, height: 50, fontSize: 16, fontStyle:'oblique', color:'gray'}}><TagsOutlined /> Selected Filters</Divider>
-            {filters.length !== 0 ? filters.map((tag, id) => (<Tag key={id} color={color[id%5]}>{tag}</Tag>)): <p>無篩選</p>}
-            <Divider orientation="left" style={{ width: 180, height: 50, fontSize: 16, fontStyle:'oblique', color:'gray'}}><EnvironmentOutlined /> Selected Metros</Divider>
-            {mrtFilter.length !== 0 ? mrtFilter.map((tag, id) => (<Tag key={id} color={color[id%5]}>{tag}</Tag>)): <p>無篩選</p>}
+            <Divider orientation="left" style={{ width: 180, height: 10, fontSize: 16, fontStyle:'oblique', color:'gray'}}><TagsOutlined /> Selected Filters</Divider>
+            {filters.length !== 0 ? filters.map((tag, id) => (<Tag key={id} color={color[id%5]}>{tag}</Tag>)): <h5 style={{textAlign: 'center'}}>無篩選</h5>}
+            <Divider orientation="left" style={{ width: 180, height: 10, fontSize: 16, fontStyle:'oblique', color:'gray'}}><EnvironmentOutlined /> Selected Metros</Divider>
+            {mrtFilter.length !== 0 ? mrtFilter.map((tag, id) => (<Tag key={id} color={color[id%5]}>{tag}</Tag>)): <h5 style={{textAlign: 'center'}}>無篩選</h5>}
             <Divider orientation="left"></Divider>
             <Button type="default" icon={<DeleteOutlined />} style={{ width: 180, height: 40, fontSize: 16}} onClick={clearTags} >
                 Clear
             </Button>
             <br />
             <br />
-            <Switch defaultChecked checkedChildren="高分優先" unCheckedChildren="不論評分" onChange={highRatingFirst} />  
+            <Switch defaultUnChecked checkedChildren="高分優先" unCheckedChildren="不論評分" onChange={highRatingFirst} />  
             <br />
             <br />
             <Button type="primary" icon={<SearchOutlined />} style={{ width: 180, height: 40, fontSize: 16}} onClick={navigateToSearch} >
