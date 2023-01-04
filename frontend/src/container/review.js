@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect , useLayoutEffect} from "react";
 import Stars from '../component/stars';
 import styled from 'styled-components';
-import { Card, Divider } from 'antd';
+import { Card, Divider, Col, Row } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
 const CommentContainer = styled.div`
@@ -13,7 +13,7 @@ width: 100%;
 .reviews {
     height: 700px;
     margin-top: 2em;
-    padding: 0em 2em 0em 2em;
+    
     text-align: left;
     &::-webkit-scrollbar{
         width:0.5em;
@@ -60,7 +60,27 @@ width: 100%;
 
 const Review = ({setPostId, posts,openReview, SetOpenReview}) => {
 
+
+    const getPostImg = (postId) =>{
+        let postPage = 0;
+        if(posts.length !== 0){
+            for(let i = 0; i < posts.length; i++){
+                if(posts[i]._id == postId){
+                    postPage = posts[i];
+                }
+            }
+        }
+        let url = postPage.url + "embed"
+
+        return(
+            <>
+            <div ></div>
+                <iframe src={url} width='100%' height="100%" frameborder="0" allowtransparency="true" style={{marginTop: '10px'}} ></iframe>
+            </>
+        )
+    }
     
+
     const setOpen = (e) =>{
 
         if(openReview==false){
@@ -74,17 +94,26 @@ const Review = ({setPostId, posts,openReview, SetOpenReview}) => {
         <CommentContainer>
             <div className='reviews'>
             {  
-                posts.length == 0 ? <h1 align="center">沒有食記</h1>:
+                posts.length === 0 ? <h1 align="center">沒有食記</h1>:
                 posts?.map(({writer,time, content, _id}) => (
                     <>
-                        <Card title={writer} style={{ width: 400, backgroundColor: 'cornsilk',}} id={_id} key={_id} onClick={(e) => {setOpen(e.currentTarget.id)}}>
-                            <div className='info'>
-                                <div className='postTime'>{time}</div>
-                                <br />
-                                <div className='text' align="right">{content}</div>
-                                <h3 className='watchmore'align="left" >...查看更多</h3>
-                            </div>
-                        </Card>
+                        <Row gutter={12}>
+                            <Col span={15}>
+                                <Card title={writer} style={{ width: 340, backgroundColor: 'cornsilk',}} id={_id} key={_id} onClick={(e) => {setOpen(e.currentTarget.id)}}>
+                                    <div className='info'>
+                                        <div className='postTime'>{time}</div>
+                                        <br />
+                                        <div className='text' align="right">{content}</div>
+                                        <h3 className='watchmore'align="left" >...查看更多</h3>
+                                    </div>
+                                </Card>
+                            </Col>
+                            <Col span={25}>
+                                <Card style={{ width: 180, height: '17em', backgroundColor: 'ivory',align: 'right'}} id={_id} key={_id} onClick={(e) => {setOpen(e.currentTarget.id)}}>
+                                    {getPostImg(_id)}
+                                </Card>
+                            </Col>
+                        </Row>    
                         <Divider></Divider>
                     </>
                 ))
@@ -95,3 +124,5 @@ const Review = ({setPostId, posts,openReview, SetOpenReview}) => {
     )
 }
 export default Review
+
+/*padding: 0em 2em 0em 2em;*/

@@ -4,7 +4,6 @@ import NavBar from '../component/navigationBar';
 import Map from "../component/metroMap"
 import { useNavigate, useLocation, useParams } from 'react-router-dom'
 import { Divider, Tag, Avatar, Card, Rate } from 'antd';
-import { TagsOutlined, } from '@ant-design/icons';
 import axios from 'axios'
 const instance = axios.create({
     baseURL: 'http://localhost:4000/api'
