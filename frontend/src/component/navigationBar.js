@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from "react";
-import { SearchOutlined } from '@ant-design/icons';
+import { SearchOutlined, DeleteOutlined, TagsOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import Filter from './searchTag';
 import { useNavigate } from 'react-router-dom';
 import { Button, Divider, Tag } from 'antd';
@@ -81,15 +81,17 @@ const NavBar = ({lineFilter, setLineFilter, mrtFilter, setmrtFilter}) => {
                     filters={filters} setFilters={setFilters}
                     setDisplay={setDisplay} />
             </div>
-            <Divider orientation="left">Selected Filters</Divider>
+            <Divider orientation="left" style={{ width: 180, height: 50, fontSize: 16, fontStyle:'oblique', color:'gray'}}><TagsOutlined /> Selected Filters</Divider>
             {filters.length !== 0 ? filters.map((tag, id) => (<Tag key={id} color={color[id%5]}>{tag}</Tag>)): <p>無篩選</p>}
-            <Divider orientation="left">Selected Metros</Divider>
+            <Divider orientation="left" style={{ width: 180, height: 50, fontSize: 16, fontStyle:'oblique', color:'gray'}}><EnvironmentOutlined /> Selected Metros</Divider>
             {mrtFilter.length !== 0 ? mrtFilter.map((tag, id) => (<Tag key={id} color={color[id%5]}>{tag}</Tag>)): <p>無篩選</p>}
             <Divider orientation="left"></Divider>
-            <Button type="default" style={{ width: 180, height: 30,}} onClick={clearTags} >
-                All Clear
+            <Button type="default" icon={<DeleteOutlined />} style={{ width: 180, height: 50, fontSize: 16}} onClick={clearTags} >
+                Clear
             </Button>
-            <Button type="primary" icon={<SearchOutlined />} style={{ width: 180, height: 30,}} onClick={navigateToSearch} >
+            <br />
+            <br />
+            <Button type="primary" icon={<SearchOutlined />} style={{ width: 180, height: 50, fontSize: 16}} onClick={navigateToSearch} >
                 Search
             </Button>
         </div>

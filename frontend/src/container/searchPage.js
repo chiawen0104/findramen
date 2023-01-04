@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import NavBar from '../component/navigationBar';
 import Map from "../component/metroMap"
 import { useNavigate, useLocation, useParams } from 'react-router-dom'
-import { Divider, Tag, Avatar, Card } from 'antd';
+import { Divider, Tag, Avatar, Card, Rate } from 'antd';
+import { TagsOutlined, } from '@ant-design/icons';
 import axios from 'axios'
 const instance = axios.create({
     baseURL: 'http://localhost:4000/api'
@@ -88,6 +89,7 @@ const SearchPage = () => {
         // console.log(restaurants.data);
     }
 
+    
     useEffect(() => {
         getRestaurant()
     }, [state.lineFilter, state.filters])
@@ -108,9 +110,9 @@ const SearchPage = () => {
             {/*<SearchPage></SearchPage>*/}
             <RightSide>
             {  
-                restaurants?.contents?.map(({id, img, name, line, mrt, distance, walktime, tag}) => (
+                restaurants?.contents?.map(({id, img, name, line, mrt, distance, walktime, tag, rating}) => (
                     <>
-                        <Card style={{ width: 300, height: 380}} cover={<img alt="example" src={img} style={{height: 150}} />}
+                        <Card style={{ width: 300, height: 400}} cover={<img alt="example" src={img} style={{height: 150}} />}
                             id={id} key={id} onClick = {(e)=>{ToRestaurant(e.currentTarget.id)}}>
                             <Meta
                                 avatar={<Avatar src={"https://cdn-icons-png.flaticon.com/512/5900/5900151.png"} style={{ color: 'white', backgroundColor: line }} />}
@@ -118,7 +120,9 @@ const SearchPage = () => {
                                 description={(
                                     <>
                                         <p style={{fontSize: 14}}>{"離"+mrt+"站"+distance+", 走路約"+walktime}</p>
-                                        <br></br>
+                                        <Rate disabled defaultValue={rating}/>
+                                        <br />
+                                        <br />
                                         {tag.map((tag, id)=>(<Tag color={color[id%5]}>{tag}</Tag>))}
                                     </>
                                     )}

@@ -9,6 +9,7 @@ import SubMenu from 'antd/es/menu/SubMenu';
 
 
 
+
 const Filter = ({ typeFilter, setTypeFilter, styleFilter, setStyleFilter, flavorFilter, setFlavorFilter, noodleFilter,
     setNoodleFilter, ingredientFilter, setIngredientFilter, sideFilter, setSideFilter, filters, setFilters, setDisplay }) => {
     const [collapsed, setCollapsed] = useState(false);
@@ -132,80 +133,80 @@ const Filter = ({ typeFilter, setTypeFilter, styleFilter, setStyleFilter, flavor
             >
                 {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
             </Button>
-            <Menu mode="vertical" theme="light">
-                <SubMenu key='items' title='品項' icon={<TagIcon src='https://cdn-icons-png.flaticon.com/512/3978/3978720.png'/>}>
-                    <SubMenu key='item_1' title='熬湯'>
+            <Menu mode="vertical" theme="light" inlineCollapsed={collapsed}>
+                <SubMenu key='items' title='品項' icon={<TagIcon src='https://cdn-icons-png.flaticon.com/512/3978/3978720.png'/>} style={{ fontWeight: '450', fontSize: 18}}>
+                    <SubMenu key='item_1' title='熬湯' style={{ fontWeight: '420', fontSize: 16}}>
                         {TypeMeatTag.map((key) => (
                             <div className='inputBlock' key={key} id={key} style={{height: 30}}>
-                                <input type="checkbox" value={key} defaultChecked={typeFilter.includes(key)} onChange={e => modifyTypeFilter(e.target.value)} />
-                                <label htmlFor={key}> {key} </label>
+                                <input type="checkbox" value={key} defaultChecked={typeFilter.includes(key)} onChange={e => modifyTypeFilter(e.target.value)} style={{ width: 18, height: 18}}/>
+                                <label htmlFor={key} style={{ fontWeight: '420', fontSize: 16}}> {key} </label>
                             </div>
                         ))}
                     </SubMenu>
-                    <SubMenu key='item_2' title='調味'>
+                    <SubMenu key='item_2' title='調味' style={{ fontWeight: '420', fontSize: 16}}>
                         {TypeSauceTag.map((key) => (
                             <div className='inputBlock' key={key} id={key} style={{height: 30}}>
-                                <input type="checkbox" value={key} defaultChecked={typeFilter.includes(key)} onChange={e => modifyTypeFilter(e.target.value)} />
-                                <label htmlFor={key}> {key} </label>
+                                <input type="checkbox" value={key} defaultChecked={typeFilter.includes(key)} onChange={e => modifyTypeFilter(e.target.value)} style={{ width: 18, height: 18}} />
+                                <label htmlFor={key} style={{ fontWeight: '420', fontSize: 16}}> {key} </label>
                             </div>
                         ))}
                     </SubMenu>
-                    <SubMenu key='item_3' title='派系'>
+                    <SubMenu key='item_3' title='派系' style={{ fontWeight: '420', fontSize: 16}}>
                         {TypeSectTag.map((key) => (
                             <div className='inputBlock' key={key} id={key} style={{height: 30}}>
-                                <input type="checkbox" value={key} defaultChecked={typeFilter.includes(key)} onChange={e => modifyTypeFilter(e.target.value)} />
-                                <label htmlFor={key}> {key} </label>
+                                <input type="checkbox" value={key} defaultChecked={typeFilter.includes(key)} onChange={e => modifyTypeFilter(e.target.value)} style={{ width: 18, height: 18}} />
+                                <label htmlFor={key} style={{ fontWeight: '420', fontSize: 16}}> {key} </label>
                             </div>
                         ))}
                     </SubMenu>
                 </SubMenu>
-                <SubMenu key='styles' title='風格' icon={<TagIcon src='https://cdn-icons-png.flaticon.com/512/6630/6630080.png'/>}>
+                <SubMenu key='styles' title='風格' icon={<TagIcon src='https://cdn-icons-png.flaticon.com/512/6630/6630080.png'/>} style={{ fontWeight: '450', fontSize: 18}}>
                     {StyleTag.map((key) => (
                         <div className='inputBlock' key={key} id={key} style={{height: 30}}>
-                            <input type="checkbox" value={key} defaultChecked={styleFilter.includes(key)} onChange={e => modifyStyleFilter(e.target.value)} />
-                            <label htmlFor={key}> {key} </label>
+                            <input type="checkbox" value={key} defaultChecked={styleFilter.includes(key)} onChange={e => modifyStyleFilter(e.target.value)} style={{ width: 18, height: 18}} />
+                            <label htmlFor={key} style={{ fontWeight: '420', fontSize: 16}}> {key} </label>
                         </div>
                     ))}
                 </SubMenu>
-                <SubMenu key='flavors' title='口味' icon={<TagIcon src='https://cdn-icons-png.flaticon.com/512/3600/3600877.png' />}>
+                <SubMenu key='flavors' title='口味' icon={<TagIcon src='https://cdn-icons-png.flaticon.com/512/3600/3600877.png' />} style={{ fontWeight: '450', fontSize: 18,}}>
                     {FlavorTag.map((key) => (
                         <div className='inputBlock' key={key} id={key} style={{height: 30}}>
-                            <input type="checkbox" value={key} defaultChecked={flavorFilter.includes(key)} onChange={e => modifyFlavorFilter(e.target.value)} />
-                            <label htmlFor={key}> {key} </label>
+                            <input type="checkbox" value={key} defaultChecked={flavorFilter.includes(key)} onChange={e => modifyFlavorFilter(e.target.value)} style={{ width: 18, height: 18}} />
+                            <label htmlFor={key} style={{ fontWeight: '420', fontSize: 16}}> {key} </label>
                         </div>
                     ))}
                 </SubMenu>
-                <SubMenu key='noodles' title='麵條' icon={<TagIcon src='https://cdn-icons-png.flaticon.com/512/8080/8080839.png' />}>
+                <SubMenu key='noodles' title='麵條' icon={<TagIcon src='https://cdn-icons-png.flaticon.com/512/8080/8080839.png' />} style={{ fontWeight: '450', fontSize: 18, }}>
                     {NoodleTag.map((key) => (
                         <div className='inputBlock' key={key} id={key} style={{height: 30}}>
-                            <input type="checkbox" value={key} defaultChecked={flavorFilter.includes(key)} onChange={e => modifyNoodleFilter(e.target.value)} />
-                            <label htmlFor={key}> {key} </label>
+                            <input type="checkbox" value={key} defaultChecked={flavorFilter.includes(key)} onChange={e => modifyNoodleFilter(e.target.value)} style={{ width: 18, height: 18}} />
+                            <label htmlFor={key} style={{ fontWeight: '420', fontSize: 16}}> {key} </label>
                         </div>
                     ))}
                 </SubMenu>
-                <SubMenu key='ingredients' title='配料' icon={<TagIcon src='https://cdn-icons-png.flaticon.com/512/1181/1181922.png' />}>
-                    <SubMenu key='ingredient_veg' title='蔬果'>
+                <SubMenu key='ingredients' title='配料' icon={<TagIcon src='https://cdn-icons-png.flaticon.com/512/1181/1181922.png' />} style={{ fontWeight: '450', fontSize: 18,}}>
+                    <SubMenu key='ingredient_veg' title='蔬果' style={{ fontWeight: '420', fontSize: 16}}>
                         {IngredientVegTag.map((key) => (
                             <div className='inputBlock' key={key} id={key} style={{height: 30}}>
-                                <input type="checkbox" value={key} defaultChecked={flavorFilter.includes(key)} onChange={e => modifyIngredientFilter(e.target.value)} />
-                                <label htmlFor={key}> {key} </label>
+                                <input type="checkbox" value={key} defaultChecked={flavorFilter.includes(key)} onChange={e => modifyIngredientFilter(e.target.value)} style={{ width: 18, height: 18}} />
+                                <label htmlFor={key} style={{ fontWeight: '420', fontSize: 16}}> {key} </label>
                             </div>
                         ))}
                     </SubMenu>
-                    <SubMenu key='ingredient_meat' title='肉'>
+                    <SubMenu key='ingredient_meat' title='肉' style={{ fontWeight: '420', fontSize: 16}}>
                         {IngredientMeatTag.map((key) => (
                             <div className='inputBlock' key={key} id={key} style={{height: 30}}>
-                                <input type="checkbox" value={key} defaultChecked={flavorFilter.includes(key)} onChange={e => modifyIngredientFilter(e.target.value)} />
-                                <label htmlFor={key}> {key} </label>
+                                <input type="checkbox" value={key} defaultChecked={flavorFilter.includes(key)} onChange={e => modifyIngredientFilter(e.target.value)} style={{ width: 18, height: 18}} />
+                                <label htmlFor={key} style={{ fontWeight: '420', fontSize: 16}}> {key} </label>
                             </div>
                         ))}
                     </SubMenu>
                 </SubMenu>
-                <SubMenu key='sides' title='副食' icon={<TagIcon src='https://cdn-icons-png.flaticon.com/512/837/837606.png' />}>
+                <SubMenu key='sides' title='副食' icon={<TagIcon src='https://cdn-icons-png.flaticon.com/512/837/837606.png' />} style={{ fontWeight: '450', fontSize: 18}}>
                     {SideTag.map((key) => (
                         <div className='inputBlock' key={key} id={key} style={{height: 30}}>
-                            <input type="checkbox" value={key} defaultChecked={flavorFilter.includes(key)} onChange={e => modifySideFilter(e.target.value)} />
-                            <label htmlFor={key}> {key} </label>
+                            <input type="checkbox" value={key} defaultChecked={flavorFilter.includes(key)} onChange={e => modifySideFilter(e.target.value)} style={{ width: 18, height: 18}} />
+                            <label htmlFor={key} style={{ fontWeight: '420', fontSize: 16}}> {key} </label>
                         </div>
                     ))}
                 </SubMenu>
