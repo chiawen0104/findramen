@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Card, Divider, Col, Row } from 'antd';
+import '../css/review.css'
 
+/*
 const CommentContainer = styled.div`
 // margin-left: 1em;
 padding: auto;
@@ -54,7 +56,7 @@ width: 100%;
     overflow:hidden;
 }
 `
-
+*/
 const Review = ({setPostId, posts,openReview, SetOpenReview}) => {
 
 
@@ -88,7 +90,7 @@ const Review = ({setPostId, posts,openReview, SetOpenReview}) => {
     }
 
     return (
-        <CommentContainer>
+        <section className='CommentContainer'>
             <div className='reviews'>
             {  
                 posts.length === 0 ? <h1 align="center">沒有食記</h1>:
@@ -117,7 +119,7 @@ const Review = ({setPostId, posts,openReview, SetOpenReview}) => {
             }
 
             </div>
-        </CommentContainer>
+        </section>
     )
 }
 export default Review

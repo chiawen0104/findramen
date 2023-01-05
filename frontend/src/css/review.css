@@ -1,0 +1,51 @@
+.CommentContainer {
+    padding: auto;
+    width: 100%;
+}
+
+.CommentContainer .reviews {
+    height: 700px;
+    margin-top: 2em;
+    
+    text-align: left;
+}
+
+.CommentContainer .reviews::-webkit-scrollbar{
+    width:0.5em;
+}
+
+.CommentContainer .reviews::-webkit-scrollbar-thumb{
+    background: DarkSlateGrey;
+    border-radius: 100vw;
+}
+
+.CommentContainer .review {
+    height:12em;
+    margin-top: 1em;
+    padding: 0.5em;
+    border-color: brown;
+    border-style: solid;
+    background-color: SeaShell;
+    background-image: url('https://s1.spkimg.com/spjp/ramendb/title_image.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    overflow:hidden;
+}
+
+.CommentContainer.name{
+    width: 50%;
+}
+
+.CommentContainer .reviews :hover{
+    cursor: pointer;
+}
+
+.CommentContainer .info {
+    line-height:1em;
+}
+
+.CommentContainer .text{
+    width:90%;
+    height:4em;;
+    overflow:hidden;
+}

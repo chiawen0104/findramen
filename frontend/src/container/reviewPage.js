@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components';
+import '../css/reviewPage.css'
 import { Button } from 'antd';
 
+/*
 const ReviewContainer = styled.div`
 margin-left: 3em;
 margin-top: 3em;
@@ -43,7 +45,7 @@ overflow:auto;
     user-select: text;
 }
 `
-
+*/
 const ReviewPage = ({posts, postId, SetOpenReview}) => {
 
     let postPage = 0;
