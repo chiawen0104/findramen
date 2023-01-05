@@ -137,15 +137,15 @@ const SearchPage = () => {
     }, [state?.lineFilter, state?.filters, state?.mrtFilter, state?.nameFilter])
 
     return(
-        <section className='Wrapper'>
-        <div className='Background'>
+        <Wrapper>
+        <Background>
             <Map lineFilter={lineFilter} setLineFilter={setLineFilter} mrtFilter={mrtFilter} setmrtFilter={setmrtFilter}></Map>
-            <div className='LeftSide'>
-              <img className='LeftImg' src='https://i.ibb.co/Sr2G61x/top-Left-Logo.png'></img>
+            <LeftSide>
+              <LeftImg src='https://i.ibb.co/Sr2G61x/top-Left-Logo.png'></LeftImg>
               <NavBar lineFilter={lineFilter} mrtFilter={mrtFilter}setmrtFilter={setmrtFilter}></NavBar>
-            </div>
+            </LeftSide>
             <Button shape='circle' icon={<InfoOutlined />} onClick={popInfo} style={{position: 'absolute', top: '90%', left: '50px', width: '45px', height: '45px', zIndex: '50'}} />
-            <div className='RightSide'>
+            <RightSide>
             <div style={ {margin: 'initial', padding: 20 } }> 
                 <input type="text" name="search" id="search" style={{ width: 210, height: 35, fontSize: 16 }} placeholder="請輸入餐廳名稱 (不限路線)" value={ nameFilter } onChange={ handleChange }></input>
                 &nbsp;
@@ -174,9 +174,9 @@ const SearchPage = () => {
                     </>
                 ))
             }
-            </div>
-        </div>
-        </section>
+            </RightSide>
+        </Background>
+        </Wrapper>
     )
 }
 

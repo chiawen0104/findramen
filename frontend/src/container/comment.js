@@ -50,7 +50,7 @@ const Comment = (comments) => {
     `
 */
     return (
-        <section className='CommentContainer'>
+        <CommentContainer>
         <div className='comments'>
         {  
             comments.length == 0 ? <>沒有評論</>:
@@ -69,7 +69,7 @@ const Comment = (comments) => {
             ))
         }
         </div>
-        </section>
+        </CommentContainer>
     )
 }
 export default Comment
