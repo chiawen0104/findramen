@@ -76,14 +76,22 @@
     font-size:20px;
 }
 
-.Background .CommentContainer{
+
+.Background .CommentContainer {
     margin-top: 3em;
-    width: 100%;
+    width: 50%;
     height: 77vh;
     text-align: center;
 }
 
-
+@supports (display: flex) {
+  .Background .CommentContainer {
+    margin-top: 3em;
+    width: 100%;
+    height: 77vh;
+    text-align: center;
+  }
+}
 
 .Background .ReviewContainer{
     margin-top: 7.3em;

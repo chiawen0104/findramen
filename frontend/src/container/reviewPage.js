@@ -5,7 +5,7 @@ import { Button } from 'antd';
 const ReviewContainer = styled.div`
 margin-left: 3em;
 margin-top: 3em;
-width: 80%;
+width: 70%;
 height:100%;
 padding: 0.5em;
 border-color: brown;
