@@ -23,7 +23,7 @@ top: 0;
 left: 0;
 z-index: -1;
 background-image: url("https://i.ibb.co/4Zcgtsj/backgroud.png");
-background-size: cover
+background-size: cover;
 `
 
 const LeftSide = styled.div`
