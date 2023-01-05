@@ -1,10 +1,8 @@
 import Post from '../models/post'
 
 exports.GetPostsByRestaurantId = async (req, res) => {
-    /*******    NOTE: DO NOT MODIFY   *******/
     const id = req.query.restaurantId
-    /****************************************/
-
+   
     try{
         let post = 0;
         
