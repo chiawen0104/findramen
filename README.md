@@ -1,9 +1,8 @@
 # [111-1] Web Programming Final
 ## (Group 58)FindRamen 找拉麵
-組員：
-B08703035 財金四 呂韻涵（組長）
-B08703131 財金四 鄧濬澤
-B07610058 生傳五 盧家雯
+- B08703035 財金四 呂韻涵（組長）
+- B08703131 財金四 鄧濬澤
+- B07610058 生傳五 盧家雯
 
 ## Demo影片連結：https://www.youtube.com/watch?v=E7bcJCm4G6U
 ## FindRamen網站連結：https://findramen-production.up.railway.app/
@@ -118,7 +117,6 @@ Railway（有每月500小時限制）, DockerFile
 
 ## 組員負責項目
 組長：呂韻涵，組員：鄧濬澤、盧家雯
-
 * 呂韻涵： 資料搜集彙整、前端、撰寫報告（README）
 * 鄧濬澤： 前端、前後端連接、後端、拍demo影片
 * 盧家雯： 建立資料庫、資料搜集與清理、後端、前端、deploy
