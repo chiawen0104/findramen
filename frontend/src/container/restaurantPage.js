@@ -5,10 +5,9 @@ import Information from './information';
 import Comment from './comment';
 import Review from './review';
 import ReviewPage from './reviewPage';
+
 import { api } from '../connection'
-// const instance = axios.create({
-//     baseURL: 'http://localhost:4000/api'
-// })
+
 
 
 const Wrapper = styled.section`
