@@ -84,19 +84,6 @@
     text-align: center;
 }
 
-@media not all and (min-resolution:.001dpcm)
-{ @supports (-webkit-appearance:none) and (stroke-color:transparent) {
-
-    .Background .CommentContainer {
-        margin-top: 3em;
-        width: 50%;
-        height: 77vh;
-        text-align: center;
-      }
-}}
-
-
-
 .Background .ReviewContainer{
     margin-top: 7.3em;
     margin-left:11em;
