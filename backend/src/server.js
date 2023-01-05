@@ -8,6 +8,11 @@ require('dotenv').config()
 
 const app = express()
 
+if (process.env.NODE_ENV !== "production") {
+    app.use(cors());
+    app.use(express.json())
+}
+
 // define routes
 app.get("/api", (req, res) => {
     // send the request back to the client
@@ -27,8 +32,8 @@ else {
     console.log("development mode")
 }
 
-app.use(cors())
-app.use(express.json())
+// app.use(cors())
+// app.use(express.json())
 
 const port = process.env.PORT || 4000
 
