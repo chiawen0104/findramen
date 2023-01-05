@@ -1,9 +1,6 @@
 import React from 'react'
-import { useState, useEffect , useLayoutEffect} from "react";
-import Stars from '../component/stars';
 import styled from 'styled-components';
 import { Card, Divider, Col, Row } from 'antd';
-import { useNavigate } from 'react-router-dom';
 
 const CommentContainer = styled.div`
 // margin-left: 1em;
@@ -124,5 +121,3 @@ const Review = ({setPostId, posts,openReview, SetOpenReview}) => {
     )
 }
 export default Review
-
-/*padding: 0em 2em 0em 2em;*/

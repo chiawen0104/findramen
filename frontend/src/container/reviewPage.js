@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import React from 'react'
 import styled from 'styled-components';
 import { Button } from 'antd';
-import Review from './review';
 
 const ReviewContainer = styled.div`
 margin-left: 3em;
@@ -48,16 +46,12 @@ overflow:auto;
 
 const ReviewPage = ({posts, postId, SetOpenReview}) => {
 
-    console.log(postId);
     let postPage = 0;
     for(let i = 0; i < posts.length; i++){
         if(posts[i]._id == postId){
             postPage = posts[i];
         }
     }
-
-    console.log(postPage)
-
 
 
     const backToComment = (e) => {

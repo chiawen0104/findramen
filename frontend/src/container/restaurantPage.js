@@ -11,9 +11,6 @@ const instance = axios.create({
 })
 
 
-
-
-
 const Wrapper = styled.section`
 display: flex;
 flex-direction: column;

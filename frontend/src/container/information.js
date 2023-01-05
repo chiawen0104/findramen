@@ -1,14 +1,9 @@
 import React from 'react'
 import Stars from '../component/stars';
 import styled from 'styled-components';
-import { Divider, Tag } from 'antd';
+import { Tag } from 'antd';
 import { PhoneFilled, EnvironmentFilled, GlobalOutlined } from '@ant-design/icons';
 
-
-const BusinessTime = styled.div`
-text-align: left;
-display: inline-grid;
-`
 
 const Information = ({name, rating, mrt, distance, walktime, phone, address, tag, time, img, site}) => {
 
@@ -90,7 +85,6 @@ const Information = ({name, rating, mrt, distance, walktime, phone, address, tag
             </div>
             <h3 style={ {fontSize: '18px'}}>營業時間：</h3>
             <h4 className='businesstime'>{getBusiness(time)}</h4>
-            {/* <h5 style={ {fontSize: '18px'}}><GlobalOutlined/> 官網： <a href={site} target="_blank">點擊連結</a></h5> */}
         </div>
     )
 }

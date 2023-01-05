@@ -80,7 +80,6 @@ const color = ['geekblue', 'purple', 'green', 'volcano', 'gold']
 
 const SearchPage = () => {
     const { state } = useLocation();
-    const { id } = useParams();
     const [restaurants, setRestaurant] = useState([])
     const [mrtFilter, setmrtFilter] = useState([])
     const [lineFilter, setLineFilter] = useState([])
@@ -122,6 +121,7 @@ const SearchPage = () => {
               <p>中間的捷運圖可以點選想要的捷運線（上方按鈕）/捷運站（站名），</p>
               <p>標籤和捷運都選擇好後，可以決定是否要優先顯示評分高的店家，</p>
               <p>按下Search就會篩選出符合條件的店家，點選右方的店家會跳到店家資訊頁面</p>
+              <p>若想找特定的店家，也可以在右上方欄位裡輸入店名，並按下搜尋即可</p>
             </div>
           ),
           width: '35%',
@@ -131,7 +131,7 @@ const SearchPage = () => {
 
     useEffect(() => {
         getRestaurant()
-        // console.log(mrtFilter);
+        
     }, [state?.lineFilter, state?.filters, state?.mrtFilter, state?.nameFilter])
 
     return(
@@ -142,7 +142,7 @@ const SearchPage = () => {
               <LeftImg src='https://i.ibb.co/Sr2G61x/top-Left-Logo.png'></LeftImg>
               <NavBar lineFilter={lineFilter} mrtFilter={mrtFilter}setmrtFilter={setmrtFilter}></NavBar>
             </LeftSide>
-            <Button shape='circle' icon={<InfoOutlined style={{width: '80%'}}/>} onClick={popInfo} style={{position: 'absolute', top: '94%', left: '35px', width: '50px', height: '50px'}} />
+            <Button shape='circle' icon={<InfoOutlined />} onClick={popInfo} style={{position: 'absolute', top: '90%', left: '50px', width: '45px', height: '45px', zIndex: '50'}} />
             <RightSide>
             <div style={ {margin: 'initial', padding: 20 } }> 
                 <input type="text" name="search" id="search" style={{ width: 210, height: 30, fontSize: 16 }} placeholder="請輸入餐廳名稱 (不限路線)" value={ nameFilter } onChange={ handleChange }></input>

@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import styled from 'styled-components';
 import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
   } from '@ant-design/icons';
-import { TagIcon } from './tagIcon';
-import { Button, Menu, Select, Input, Checkbox, Cascader } from 'antd';
+import { Button, Menu, Select } from 'antd';
 import SubMenu from 'antd/es/menu/SubMenu';
 
-
+const TagIcon = styled.img`
+    width: 1.5em;
+    height: 1.5em;   
+    z-index:10;
+`
 
 
 const Filter = ({ typeFilter, setTypeFilter, styleFilter, setStyleFilter, flavorFilter, setFlavorFilter, noodleFilter,
@@ -114,8 +118,6 @@ const Filter = ({ typeFilter, setTypeFilter, styleFilter, setStyleFilter, flavor
     const toggleCollapsed = () => {
         setCollapsed(!collapsed);
     };
-
-    const { Option } = Select;
 
     return (
         <div

@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MdClosedCaptionDisabled } from 'react-icons/md';
 
 //google fonts
 const MetroRed = styled.div`
@@ -672,7 +670,6 @@ const Map = ({lineFilter, setLineFilter, mrtFilter, setmrtFilter}) => {
                 <OrangeLine onClick={() => lineBottonClick('orangemetroname')}>O</OrangeLine>
                 <YellowLine onClick={() => lineBottonClick('yellowmetroname')}>Y</YellowLine>
                 <BrownLine onClick={() => lineBottonClick('brownmetroname')}>BR</BrownLine>
-                {/* <AirLine></AirLine> */}
             </ChooseLine>
             <MetroRed>
             <div className='redmetroname' id='tansui' onClick={(e) => stationBottonClick(e.target.textContent)}>淡水</div>
@@ -694,14 +691,7 @@ const Map = ({lineFilter, setLineFilter, mrtFilter, setmrtFilter}) => {
             <div className='redmetroname' id='elephant'onClick={(e) => stationBottonClick(e.target.textContent)}>象山</div>
             </MetroRed>
             <MetroBlue>
-            {/* <div className='bluemetroname' id='dingpu'>頂埔</div>
-            <div className='bluemetroname' id='yongning'>永寧</div>
-            <div className='bluemetroname' id='tucheng'>土城</div>
-            <div className='bluemetroname' id='haishan'>海山</div>
-            <div className='bluemetroname' id='fareast'>亞東醫院</div>
-            <div className='bluemetroname' id='fuzong'>府中</div> */}
             <div className='bluemetroname' id='banqiao'onClick={(e) => stationBottonClick(e.target.textContent)}>板橋</div>
-            {/* <div className='bluemetroname' id='xinpu'>新埔</div> */}
             <div className='bluemetroname' id='jiangzicui'onClick={(e) => stationBottonClick(e.target.textContent)}>江子翠</div>
             <div className='bluemetroname' id='longshan'onClick={(e) => stationBottonClick(e.target.textContent)}>龍山寺</div>
             <div className='bluemetroname' id='ximen'onClick={(e) => stationBottonClick(e.target.textContent)}>西門</div>
@@ -713,10 +703,7 @@ const Map = ({lineFilter, setLineFilter, mrtFilter, setmrtFilter}) => {
             <div className='bluemetroname' id='memorial'onClick={(e) => stationBottonClick('國父紀念館')}>紀念館</div>
             <div className='bluemetroname' id='cityhall'onClick={(e) => stationBottonClick(e.target.textContent)}>市政府</div>
             <div className='bluemetroname' id='yongchun'onClick={(e) => stationBottonClick(e.target.textContent)}>永春</div>
-            {/* <div className='bluemetroname' id='houshanpi'>後山埤</div>
-            <div className='bluemetroname' id='kunyang'>昆陽</div> */}
             <div className='bluemetroname' id='nangang'onClick={(e) => stationBottonClick(e.target.textContent)}>南港</div>
-            {/* <div className='bluemetroname' id='exhibition'>展覽館</div> */}
             </MetroBlue>
             <MetroGreen>
             <div className='greenmetroname' id='smallegg'onClick={(e) => stationBottonClick(e.target.textContent)}>台北小巨蛋</div>

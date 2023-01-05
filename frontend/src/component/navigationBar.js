@@ -1,9 +1,9 @@
 import React from 'react'
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { SearchOutlined, DeleteOutlined, TagsOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import Filter from './searchTag';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { Button, Divider, Tag, Switch } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import { Button, Divider, Tag } from 'antd';
 
 const NavBar = ({lineFilter, mrtFilter, setmrtFilter}) => {
     const [typeFilter, setTypeFilter] = useState([])
@@ -13,13 +13,7 @@ const NavBar = ({lineFilter, mrtFilter, setmrtFilter}) => {
     const [ingredientFilter, setIngredientFilter] = useState([])
     const [sideFilter, setSideFilter] = useState([])
     const [filters, setFilters] = useState([])
-    const [isHighRating, setIsHighRating] = useState(false)
-
-
     const [display, setDisplay] = useState("")
-    //const options = ["price", "distance"];
-    //const [sortMethod, setSortMethod] = useState(options[0]);
-    // Blank all
 
     const navigate = useNavigate();
     
@@ -35,7 +29,6 @@ const NavBar = ({lineFilter, mrtFilter, setmrtFilter}) => {
                 ingredientFilter: ingredientFilter,
                 sideFilter: sideFilter,
                 filters: filters,
-                sortRating: isHighRating
             }
         }
         );
@@ -55,29 +48,9 @@ const NavBar = ({lineFilter, mrtFilter, setmrtFilter}) => {
         setFilters([])
         setDisplay([])
         setmrtFilter([])
-
-
-    }
-
-    const highRatingFirst = (checked) => {
-        if(checked){
-            isHighRating = true
-            setIsHighRating(isHighRating)
-        }
-        else{
-            isHighRating = false
-            setIsHighRating(isHighRating)
-        }
-        
     }
 
     const color = ['geekblue', 'purple', 'green', 'volcano', 'gold']
-
-    // console.log(filters);
-
-    //const { Search } = Input;
-
-
 
     return (
         <div style={{
@@ -103,9 +76,6 @@ const NavBar = ({lineFilter, mrtFilter, setmrtFilter}) => {
             <Button type="default" icon={<DeleteOutlined />} style={{ width: 180, height: 40, fontSize: 16}} onClick={clearTags} >
                 Clear
             </Button>
-            <br />
-            <br />
-            <Switch defaultUnChecked checkedChildren="高分優先" unCheckedChildren="不論評分" onChange={highRatingFirst} />  
             <br />
             <br />
             <Button type="primary" icon={<SearchOutlined />} style={{ width: 180, height: 40, fontSize: 16}} onClick={navigateToSearch} >

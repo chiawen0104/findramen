@@ -1,9 +1,6 @@
 import React from 'react'
-import { useState, useEffect } from "react";
 import Stars from '../component/stars';
 import styled from 'styled-components';
-import ReviewPage from './reviewPage';
-
 
 const Comment = (comments) => {
     
