@@ -1,13 +1,3 @@
-// * ////////////////////////////////////////////////////////////////////////
-// *
-// * FileName     [ comment.js ]
-// * PackageName  [ server ]
-// * Synopsis     [ Schema of comment ]
-// * Author       [ Chin-Yi Cheng ]
-// * Copyright    [ 2022 11 ]
-// *
-// * ////////////////////////////////////////////////////////////////////////
-
 import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema

@@ -1,13 +1,3 @@
-// * ////////////////////////////////////////////////////////////////////////
-// *
-// * FileName     [ index.js ]
-// * PackageName  [ server ]
-// * Synopsis     [ Define backend APIs ]
-// * Author       [ Chin-Yi Cheng ]
-// * Copyright    [ 2022 11 ]
-// *
-// * ////////////////////////////////////////////////////////////////////////
-
 import infoRoute from './info'
 import commentRoute from './comment'
 import postRoute from './post'
