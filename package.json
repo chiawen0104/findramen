@@ -1,10 +1,13 @@
 {
-  "scripts": {
-    "frontend": "cd ./frontend && yarn start",
-    "backend": "cd ./backend && yarn server"
-  },
   "name": "finalramen",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "cd frontend && yarn start",
+    "server": "cd backend && yarn server",
+    "install:prod": "cd frontend && yarn install --freeze-lockfile && cd ../backend && yarn install --freeze-lockfile",
+    "build": "cd frontend && yarn build",
+    "deploy": "cd backend && yarn deploy"
+  }
 }

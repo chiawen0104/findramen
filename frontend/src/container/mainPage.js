@@ -4,10 +4,11 @@ import NavBar from '../component/navigationBar';
 import Map from "../component/metroMap"
 import { useNavigate, useLocation, useParams } from 'react-router-dom'
 import { Divider, Tag, Avatar, Card } from 'antd';
-import axios from 'axios'
-const instance = axios.create({
-    baseURL: 'http://localhost:4000/api'
-})
+import { api } from '../connection'
+
+// const instance = api.create({
+//     baseURL: 'http://localhost:4000/api'
+// })
 
 const Wrapper = styled.section`
   display: flex;
@@ -83,7 +84,7 @@ const SearchPage = () => {
     const [lineFilter, setLineFilter] = useState([])
 
     const getRestaurant = async () => {
-        const restaurants = await instance.get('/getSearch', {params:state})
+        const restaurants = await api.get('/getSearch', {params:state})
         setRestaurant(restaurants.data);
         // console.log(restaurants.data);
     }
