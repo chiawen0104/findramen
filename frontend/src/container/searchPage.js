@@ -10,10 +10,6 @@ import { api } from '../connection'
 //     baseURL: 'http://localhost:4000/api'
 // })
 
-
-const { Meta } = Card;
-
-/*
 const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
@@ -48,6 +44,8 @@ height:20%;
 opacity:80%
 `
 
+const { Meta } = Card;
+
 const RightSide = styled.div`
 position: absolute;
 top: 50px;
@@ -76,7 +74,6 @@ div:hover {
 }
 
 `
-*/
 
 const color = ['geekblue', 'purple', 'green', 'volcano', 'gold']
 

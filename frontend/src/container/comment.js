@@ -1,10 +1,9 @@
 import React from 'react'
 import Stars from '../component/stars';
-import '../css/comment.css'
 import styled from 'styled-components';
 
 const Comment = (comments) => {
-    /*
+    
     const CommentContainer = styled.div`
     // margin-left: 1em;
     padding: auto;
@@ -48,7 +47,7 @@ const Comment = (comments) => {
     }
 
     `
-*/
+
     return (
         <CommentContainer>
         <div className='comments'>
