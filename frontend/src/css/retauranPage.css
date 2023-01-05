@@ -83,16 +83,6 @@
     text-align: center;
 }
 
-@media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) {
-    /* Insert your Safari-specific styles here */
-    .Background .CommentContainer{
-        margin-top: 3em;
-        width: 50%;
-        height: 77vh;
-        text-align: center;
-    }
-}
-
 .Background .ReviewContainer{
     margin-top: 7.3em;
     margin-left:11em;
