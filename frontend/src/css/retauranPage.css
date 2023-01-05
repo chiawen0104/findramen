@@ -1,0 +1,95 @@
+
+.Wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.Wrapper .backtofind{
+    position:fixed;
+    font-size:100px;
+    height:10em;
+    width:5%;
+    margin:0.5em;
+}
+
+.Wrapper .backtofind:hover{
+    filter: brightness(0.8);
+    cursor: pointer;
+}
+
+.Background{
+    display:flex;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-image: url("https://i.ibb.co/4Zcgtsj/backgroud.png");
+    background-size: cover;
+}
+
+.Background .Pagecontainer{
+    margin-top: 7em;
+    margin-left:3em;
+    position: relative;
+    width: 100%;
+    height: 77vh;
+    text-align: center;
+    overflow: scroll;
+}
+
+.Background .Pagecontainer::-webkit-scrollbar{
+    width:0.5em;
+}
+
+.Background .Pagecontainer::-webkit-scrollbar-thumb{
+    background: DarkSlateGrey;
+    border-radius: 100vw;
+}
+
+.Background .Pagecontainer .resImgContainer .resImg{
+    width:460px;
+}
+
+.Background .Pagecontainer .menu{
+    width:100%;
+    height:20em;
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+}
+
+.Background .Pagecontainer .menutitle{
+    font-size:35px;
+    font-weight:bolder;
+    height:100%;
+    width:100%;
+    background-image: url('https://i.ibb.co/svNVcHZ/1.png');
+    background-size:70%;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 75%;
+}
+
+.Background .Pagecontainer .menutitle h5{
+    line-height:30px;
+    font-size:20px;
+}
+
+.Background .CommentContainer{
+    margin-top: 3em;
+    position: relative;
+    width: 100%;
+    height: 77vh;
+    text-align: center;
+}
+
+.Background .ReviewContainer{
+    margin-top: 7.3em;
+    margin-left:11em;
+    margin-right:11em;
+    position: relative;
+    height: 77vh;
+    text-align: center;
+}

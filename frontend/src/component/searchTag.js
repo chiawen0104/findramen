@@ -6,6 +6,7 @@ import {
   } from '@ant-design/icons';
 import { Button, Menu, Select } from 'antd';
 import SubMenu from 'antd/es/menu/SubMenu';
+import '../css/tagIcon.css'
 
 const TagIcon = styled.img`
     width: 1.5em;
@@ -136,7 +137,7 @@ const Filter = ({ typeFilter, setTypeFilter, styleFilter, setStyleFilter, flavor
                 {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
             </Button>
             <Menu mode="vertical" theme="light" inlineCollapsed={collapsed}>
-                <SubMenu key='items' title='品項' icon={<TagIcon src='https://cdn-icons-png.flaticon.com/512/3978/3978720.png'/>} style={{ fontWeight: '450', fontSize: 18}}>
+                <SubMenu key='items' title='品項' icon={<img className='TagIcon' src='https://cdn-icons-png.flaticon.com/512/3978/3978720.png'/>} style={{ fontWeight: '450', fontSize: 18}}>
                     <SubMenu key='item_1' title='熬湯' style={{ fontWeight: '420', fontSize: 16}}>
                         {TypeMeatTag.map((key) => (
                             <div className='inputBlock' key={key} id={key} style={{height: 30}}>
@@ -162,7 +163,7 @@ const Filter = ({ typeFilter, setTypeFilter, styleFilter, setStyleFilter, flavor
                         ))}
                     </SubMenu>
                 </SubMenu>
-                <SubMenu key='styles' title='風格' icon={<TagIcon src='https://cdn-icons-png.flaticon.com/512/6630/6630080.png'/>} style={{ fontWeight: '450', fontSize: 18}}>
+                <SubMenu key='styles' title='風格' icon={<img className='TagIcon' src='https://cdn-icons-png.flaticon.com/512/6630/6630080.png'/>} style={{ fontWeight: '450', fontSize: 18}}>
                     {StyleTag.map((key) => (
                         <div className='inputBlock' key={key} id={key} style={{height: 30}}>
                             <input type="checkbox" value={key} defaultChecked={styleFilter.includes(key)} onChange={e => modifyStyleFilter(e.target.value)} style={{ width: 18, height: 18}} />
@@ -170,7 +171,7 @@ const Filter = ({ typeFilter, setTypeFilter, styleFilter, setStyleFilter, flavor
                         </div>
                     ))}
                 </SubMenu>
-                <SubMenu key='flavors' title='口味' icon={<TagIcon src='https://cdn-icons-png.flaticon.com/512/3600/3600877.png' />} style={{ fontWeight: '450', fontSize: 18,}}>
+                <SubMenu key='flavors' title='口味' icon={<img className='TagIcon' src='https://cdn-icons-png.flaticon.com/512/3600/3600877.png' />} style={{ fontWeight: '450', fontSize: 18,}}>
                     {FlavorTag.map((key) => (
                         <div className='inputBlock' key={key} id={key} style={{height: 30}}>
                             <input type="checkbox" value={key} defaultChecked={flavorFilter.includes(key)} onChange={e => modifyFlavorFilter(e.target.value)} style={{ width: 18, height: 18}} />
@@ -178,7 +179,7 @@ const Filter = ({ typeFilter, setTypeFilter, styleFilter, setStyleFilter, flavor
                         </div>
                     ))}
                 </SubMenu>
-                <SubMenu key='noodles' title='麵條' icon={<TagIcon src='https://cdn-icons-png.flaticon.com/512/8080/8080839.png' />} style={{ fontWeight: '450', fontSize: 18, }}>
+                <SubMenu key='noodles' title='麵條' icon={<img className='TagIcon' src='https://cdn-icons-png.flaticon.com/512/8080/8080839.png' />} style={{ fontWeight: '450', fontSize: 18, }}>
                     {NoodleTag.map((key) => (
                         <div className='inputBlock' key={key} id={key} style={{height: 30}}>
                             <input type="checkbox" value={key} defaultChecked={flavorFilter.includes(key)} onChange={e => modifyNoodleFilter(e.target.value)} style={{ width: 18, height: 18}} />
@@ -186,7 +187,7 @@ const Filter = ({ typeFilter, setTypeFilter, styleFilter, setStyleFilter, flavor
                         </div>
                     ))}
                 </SubMenu>
-                <SubMenu key='ingredients' title='配料' icon={<TagIcon src='https://cdn-icons-png.flaticon.com/512/1181/1181922.png' />} style={{ fontWeight: '450', fontSize: 18,}}>
+                <SubMenu key='ingredients' title='配料' icon={<img className='TagIcon' src='https://cdn-icons-png.flaticon.com/512/1181/1181922.png' />} style={{ fontWeight: '450', fontSize: 18,}}>
                     <SubMenu key='ingredient_veg' title='蔬果' style={{ fontWeight: '420', fontSize: 16}}>
                         {IngredientVegTag.map((key) => (
                             <div className='inputBlock' key={key} id={key} style={{height: 30}}>
@@ -204,7 +205,7 @@ const Filter = ({ typeFilter, setTypeFilter, styleFilter, setStyleFilter, flavor
                         ))}
                     </SubMenu>
                 </SubMenu>
-                <SubMenu key='sides' title='副食' icon={<TagIcon src='https://cdn-icons-png.flaticon.com/512/837/837606.png' />} style={{ fontWeight: '450', fontSize: 18}}>
+                <SubMenu key='sides' title='副食' icon={<img className='TagIcon' src='https://cdn-icons-png.flaticon.com/512/837/837606.png' />} style={{ fontWeight: '450', fontSize: 18}}>
                     {SideTag.map((key) => (
                         <div className='inputBlock' key={key} id={key} style={{height: 30}}>
                             <input type="checkbox" value={key} defaultChecked={flavorFilter.includes(key)} onChange={e => modifySideFilter(e.target.value)} style={{ width: 18, height: 18}} />
