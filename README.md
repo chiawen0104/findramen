@@ -5,14 +5,14 @@
 - B07610058 生傳五 盧家雯
 
 ## Demo影片連結：https://www.youtube.com/watch?v=E7bcJCm4G6U
-## FindRamen網站連結：https://findramen-production.up.railway.app/
-開啟連結請使用Chrome瀏覽器並開啟全螢幕（Safari排版會跑掉ＱＱ），並將螢幕大小縮放至80%（command加上-），目前沒有支援手機尺寸的介面，麻煩使用電腦網頁開啟。
+## Deploy網站連結：https://findramen-production.up.railway.app/
+開啟連結請使用Chrome瀏覽器並開啟全螢幕（Safari排版會跑掉ＱＱ），並將螢幕大小縮放至80%（command加上-），目前沒有支援手機尺寸的介面，麻煩使用電腦開啟網頁。
 
 ## GitHub 公開連結：https://github.com/chiawen0104/findramen.git
 ## FB社團貼文連結：https://www.facebook.com/groups/NTURicWebProg/permalink/1828605354154043/
 
 ## 在本機端開啟流程
-將github上的final檔案clone下來後，到backend資料夾開終端機先yarn install，再yarn server開啟後端（載入餐廳資訊）；再到frontend資料夾開另一個終端機先yarn install，再yarn start開啟前端（純網站頁面）。
+將github上的final檔案clone下來後，到backend資料夾開終端機先yarn install，再yarn server開啟後端（載入餐廳資訊）；再開另一個終端機到frontend資料夾先yarn install，再yarn start開啟前端（純網站頁面）。
 ### 下載套件
 - Under 'findramen/backend': download the packages:
 ```
