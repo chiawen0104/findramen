@@ -83,6 +83,12 @@
     text-align: center;
 }
 
+@media not all and (min-resolution:.001dpcm) {
+    .Background .CommentContainer {
+      width: 50%;
+    }
+  }
+
 .Background .ReviewContainer{
     margin-top: 7.3em;
     margin-left:11em;

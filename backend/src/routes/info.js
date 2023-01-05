@@ -1,24 +1,11 @@
-// * ////////////////////////////////////////////////////////////////////////
-// *
-// * FileName     [ info.js ]
-// * PackageName  [ server ]
-// * Synopsis     [ Get restaurant info from database ]
-// * Author       [ Chin-Yi Cheng ]
-// * Copyright    [ 2022 11 ]
-// *
-// * ////////////////////////////////////////////////////////////////////////
-
 import Info from '../models/info'
-import Comment from '../models/comment'
 
 exports.GetSearch = async (req, res) => {
-    /*******    NOTE: DO NOT MODIFY   *******/
     const filters = req.query.filters
     const lineFilter = req.query.lineFilter
     const mrtFilter = req.query.mrtFilter
     const nameFilter = req.query.nameFilter
-    /****************************************/
-    // console.log(req.query)
+   
 
     try{
         if (typeof(lineFilter) !== 'undefined'){
@@ -114,9 +101,7 @@ exports.GetSearch = async (req, res) => {
 }
 
 exports.GetInfo = async (req, res) => {
-    /*******    NOTE: DO NOT MODIFY   *******/
     const id = req.query.id
-    /****************************************/
     
     try{
         const resData = await Info.find({id:id})
