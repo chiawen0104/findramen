@@ -687,7 +687,7 @@ const Map = ({lineFilter, setLineFilter, mrtFilter, setmrtFilter}) => {
             <div className='redmetroname' id='daanshen'onClick={(e) => stationBottonClick('大安森林公園')}>安森</div>
             <div className='redmetroname' id='daan'onClick={(e) => stationBottonClick(e.target.textContent)}>大安</div>
             <div className='redmetroname' id='shinyi'onClick={(e) => stationBottonClick(e.target.textContent)}>信義安和</div>
-            <div className='redmetroname' id='onezeroone'onClick={(e) => stationBottonClick('台北101/世貿')}>台北101/<br/>市貿</div>
+            <div className='redmetroname' id='onezeroone'onClick={(e) => stationBottonClick('台北101/世貿')}>台北101/<br/>世貿</div>
             <div className='redmetroname' id='elephant'onClick={(e) => stationBottonClick(e.target.textContent)}>象山</div>
             </MetroRed>
             <MetroBlue>
