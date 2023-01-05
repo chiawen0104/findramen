@@ -3,7 +3,7 @@
     flex-direction: column;
 }
 
-.Wrapper .Background {
+.Background {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -14,7 +14,7 @@
     background-size: cover;
 }
 
-.Wrapper .Background .LeftSide {
+.LeftSide {
     position: absolute;
     top: 0px;
     bottom: 2rem;
@@ -27,12 +27,12 @@
     padding-right: 50px;
 }
 
-.Wrapper .Background .LeftSide .LeftImg {
+.LeftImg {
     height:20%;
     opacity:80%
 }
 
-.Wrapper .Background .RightSide {
+.RightSide {
     position: absolute;
     top: 50px;
     bottom: 2rem;
@@ -46,15 +46,15 @@
     overflow: auto;
 }
 
-.Wrapper .Background .RightSide::-webkit-scrollbar{
+.RightSide::-webkit-scrollbar{
     width:0.5em;
 }
 
-.Wrapper .Background .RightSide::-webkit-scrollbar-thumb{
+.RightSide::-webkit-scrollbar-thumb{
     background: DarkSlateGrey;
     border-radius: 100vw;
 }
 
-.Wrapper .Background .RightSide .div:hover {
+.RightSide .div:hover {
     cursor: pointer;
 }

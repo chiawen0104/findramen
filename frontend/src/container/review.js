@@ -90,7 +90,7 @@ const Review = ({setPostId, posts,openReview, SetOpenReview}) => {
     }
 
     return (
-        <div className='CommentContainer'>
+        <section className='CommentContainer'>
             <div className='reviews'>
             {  
                 posts.length === 0 ? <h1 align="center">沒有食記</h1>:
@@ -119,7 +119,7 @@ const Review = ({setPostId, posts,openReview, SetOpenReview}) => {
             }
 
             </div>
-        </div>
+        </section>
     )
 }
 export default Review
