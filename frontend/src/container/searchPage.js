@@ -145,7 +145,6 @@ const SearchPage = () => {
             <RightSide>
             <div style={ {margin: 'initial', padding: 20 } }> 
                 <input type="text" name="search" id="search" style={{ width: 210, height: 30, fontSize: 16 }} placeholder="請輸入餐廳名稱 (不限路線)" value={ nameFilter } onChange={ handleChange }></input>
-                &ensp;
                 <Button type="primary" icon={<SearchOutlined />} style={{ width: 50, height: 30 }} onClick={navigateToSearch} ></Button>
             </div>
             {  
