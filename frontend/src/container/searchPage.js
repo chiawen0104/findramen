@@ -144,7 +144,7 @@ const SearchPage = () => {
             <Button shape='circle' icon={<InfoOutlined />} onClick={popInfo} style={{position: 'absolute', top: '90%', left: '50px', width: '45px', height: '45px', zIndex: '50'}} />
             <RightSide>
             <div style={ {margin: 'initial', padding: 20 } }> 
-                <input type="text" name="search" id="search" style={{ width: 200, height: 30, fontSize: 16 }} placeholder="請輸入餐廳名稱 (不限路線)" value={ nameFilter } onChange={ handleChange }></input>
+                <input type="text" name="search" id="search" style={{ width: 210, height: 35, fontSize: 16 }} placeholder="請輸入餐廳名稱 (不限路線)" value={ nameFilter } onChange={ handleChange }></input>
                 &nbsp;
                 <Button type="primary" icon={<SearchOutlined />} style={{ width: 50, height: 35 }} onClick={navigateToSearch} ></Button>
             </div>
