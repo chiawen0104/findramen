@@ -8,6 +8,13 @@ require('dotenv').config()
 
 const app = express()
 
+// define routes
+app.get("/api", (req, res) => {
+    // send the request back to the client
+    console.log("GET /api");
+    res.send({ message: "Hello from the server!" }).status(200);
+});
+
 if (process.env.NODE_ENV === "production") {
     console.log("production mode");
     const __dirname = path.resolve();
