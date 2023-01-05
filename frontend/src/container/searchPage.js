@@ -5,11 +5,10 @@ import Map from "../component/metroMap"
 import { useNavigate, useLocation, useParams } from 'react-router-dom'
 import { Divider, Tag, Avatar, Card, Rate, Modal, Button } from 'antd';
 import { SearchOutlined, TagsOutlined, InfoOutlined } from '@ant-design/icons';
-
-import axios from 'axios'
-const instance = axios.create({
-    baseURL: 'http://localhost:4000/api'
-})
+import { api } from '../connection'
+// const instance = axios.create({
+//     baseURL: 'http://localhost:4000/api'
+// })
 
 const Wrapper = styled.section`
   display: flex;
@@ -86,7 +85,7 @@ const SearchPage = () => {
     const [nameFilter, setNameFilter] = useState('')
 
     const getRestaurant = async () => {
-        const restaurants = await instance.get('/getSearch', {params:state})
+        const restaurants = await api.get('/getSearch', {params:state})
         setRestaurant(restaurants.data);
     }
 

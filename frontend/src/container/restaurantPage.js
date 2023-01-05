@@ -5,10 +5,10 @@ import Information from './information';
 import Comment from './comment';
 import Review from './review';
 import ReviewPage from './reviewPage';
-import axios from 'axios'
-const instance = axios.create({
-    baseURL: 'http://localhost:4000/api'
-})
+import { api } from '../connection'
+// const instance = axios.create({
+//     baseURL: 'http://localhost:4000/api'
+// })
 
 
 const Wrapper = styled.section`
@@ -115,17 +115,17 @@ const RestaurantPage = () => {
     const [openReview, SetOpenReview] = useState(false);
 
     const getInfo = async () => {
-        const info = await instance.get('/getInfo', {params:{id}})
+        const info = await api.get('/getInfo', {params:{id}})
         setInfo(info.data);
     }
 
     const getComments = async () => {
-        const comments = await instance.get('/getCommentsByRestaurantId', {params: {restaurantId: id}});
+        const comments = await api.get('/getCommentsByRestaurantId', {params: {restaurantId: id}});
         setComments(comments.data.contents);
     }
 
     const getPosts = async () => {
-        const posts = await instance.get('/getPostsByRestaurantId', {params: {restaurantId: id}});
+        const posts = await api.get('/getPostsByRestaurantId', {params: {restaurantId: id}});
         setPosts(posts.data.contents);
     }
 
