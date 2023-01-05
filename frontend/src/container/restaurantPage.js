@@ -147,7 +147,8 @@ const RestaurantPage = () => {
     return (
         <Wrapper>
         <p style={{ fontSize:'35px', marginLeft:'60px', marginTop:'20px', fontFamily:'fantasy' }}>Back</p>
-        <div className='backtofind' onClick={() => {navigate(-1)}}>🍥</div>
+        <div className='backtofind' onClick={() => {navigate("/")}}>🍥</div>
+
         {Object.keys(info).length === 0 ? 
             <></> 
             : 
