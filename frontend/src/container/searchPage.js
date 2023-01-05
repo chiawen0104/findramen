@@ -3,9 +3,8 @@ import styled from 'styled-components';
 import NavBar from '../component/navigationBar';
 import Map from "../component/metroMap"
 import { useNavigate, useLocation, useParams } from 'react-router-dom'
-import { Divider, Tag, Avatar, Card, Rate } from 'antd';
-import { SearchOutlined, TagsOutlined, } from '@ant-design/icons';
-import { Button } from 'antd';
+import { Divider, Tag, Avatar, Card, Rate, Modal, Button } from 'antd';
+import { SearchOutlined, TagsOutlined, InfoOutlined } from '@ant-design/icons';
 
 import axios from 'axios'
 const instance = axios.create({
@@ -61,6 +60,7 @@ padding-left: 50px;
 padding-right: 50px;
 overflow: auto;
 
+
 &::-webkit-scrollbar{
     width:0.5em;
 }
@@ -111,6 +111,24 @@ const SearchPage = () => {
         navigate("/restaurant/" + id)
     }
 
+    const popInfo = () => {
+        Modal.info({
+          title: 'Instruction',
+          content: (
+            <div>
+              <p>一開始會出現所有台北拉麵店，按下藍色搜尋紐便會篩選店家，</p>
+              <p>左邊是篩選欄位，中間為台北捷運圖，右邊為符合的拉麵店，</p>
+              <p>左邊的表格展開後可以勾選想要的品項、風格、口味...等等， </p>
+              <p>中間的捷運圖可以點選想要的捷運線（上方按鈕）/捷運站（站名），</p>
+              <p>標籤和捷運都選擇好後，可以決定是否要優先顯示評分高的店家，</p>
+              <p>按下Search就會篩選出符合條件的店家，點選右方的店家會跳到店家資訊頁面</p>
+            </div>
+          ),
+          width: '35%',
+          onOk() {},
+        });
+    };
+
     useEffect(() => {
         getRestaurant()
         // console.log(mrtFilter);
@@ -124,6 +142,7 @@ const SearchPage = () => {
               <LeftImg src='https://i.ibb.co/Sr2G61x/top-Left-Logo.png'></LeftImg>
               <NavBar lineFilter={lineFilter} mrtFilter={mrtFilter}setmrtFilter={setmrtFilter}></NavBar>
             </LeftSide>
+            <Button shape='circle' icon={<InfoOutlined style={{width: '80%'}}/>} onClick={popInfo} style={{position: 'absolute', top: '94%', left: '35px', width: '50px', height: '50px'}} />
             <RightSide>
             <div style={ {margin: 'initial', padding: 20 } }> 
                 <input type="text" name="search" id="search" style={{ width: 210, height: 30, fontSize: 16 }} placeholder="請輸入餐廳名稱 (不限路線)" value={ nameFilter } onChange={ handleChange }></input>
