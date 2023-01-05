@@ -33,7 +33,6 @@ mongoose.connect(
 )
 
 if(mongoose.connection.readyState == 2){
-    mongoose.set("strictQuery", false);
     console.log('DB online')
     routes(app)
     app.listen(port, () => {
