@@ -5,8 +5,8 @@ import mongoose from 'mongoose'
 import path from "path";
 require('dotenv').config()
 
-
 const app = express()
+routes(app)
 
 if (process.env.NODE_ENV !== "production") {
     app.use(cors());
@@ -32,11 +32,8 @@ else {
     console.log("development mode")
 }
 
-// app.use(cors())
-// app.use(express.json())
 
-const port = process.env.PORT || 4000
-
+mongoose.set('strictQuery', false)
 mongoose.connect(
     process.env.MONGO_URL,{
         useNewUrlParser: true,
@@ -44,9 +41,10 @@ mongoose.connect(
     }
 )
 
+const port = process.env.PORT || 4000
 if(mongoose.connection.readyState == 2){
     console.log('DB online')
-    routes(app)
+    // routes(app)
     app.listen(port, () => {
         console.log(`Server is up on port ${port}.`)
     })
