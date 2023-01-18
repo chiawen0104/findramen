@@ -6,7 +6,7 @@ import path from "path";
 require('dotenv').config()
 
 const app = express()
-routes(app)
+// routes(app)
 
 if (process.env.NODE_ENV !== "production") {
     app.use(cors());
@@ -22,6 +22,7 @@ app.get("/api", (req, res) => {
 
 if (process.env.NODE_ENV === "production") {
     console.log("production mode");
+    routes(app)
     const __dirname = path.resolve();
     app.use(express.static(path.join(__dirname, "../frontend", "build")));
     app.get("/*", function (req, res) {
@@ -30,6 +31,7 @@ if (process.env.NODE_ENV === "production") {
 }
 else {
     console.log("development mode")
+    routes(app)
 }
 
 
