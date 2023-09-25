@@ -12,7 +12,7 @@
 ## FB社團貼文連結：https://www.facebook.com/groups/NTURicWebProg/permalink/1828605354154043/
 
 ## 在本機端開啟流程
-將github上的final檔案clone下來後，到backend資料夾開終端機先yarn install，再yarn server開啟後端（載入餐廳資訊）；再開另一個終端機到frontend資料夾先yarn install，再yarn start開啟前端（純網站頁面）。
+將github上的final檔案clone下來後，到backend資料夾設定```.env```的```<MONGO_PASSWORD>```開終端機先yarn install，再yarn server開啟後端（載入餐廳資訊）；再開另一個終端機到frontend資料夾先yarn install，再yarn start開啟前端（純網站頁面）。
 ### 下載套件
 - Under 'findramen/backend': download the packages:
 ```
